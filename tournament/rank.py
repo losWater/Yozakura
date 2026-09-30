@@ -4,8 +4,8 @@
 门禁（淘汰）：前1500有效无重、前3500有效重码个位数、前6000三码损失≤100、重码对增加≤20、虫鸟不同键。
 （p 排名门禁已由作者撤销，不参与淘汰。）
 
-用法：python tournament/rank.py calibrate          # 两口径各校准一次
-      python tournament/rank.py rank [typed|full]   # 输出排名与 64 强
+用法：python tournament/rank.py calibrate              # 两口径各校准一次
+      python tournament/rank.py rank [typed|full|mix]   # 输出排名与 64 强（正式采用 mix：两口径五五开）
 """
 import glob, json, sys, collections
 from pathlib import Path
@@ -66,9 +66,30 @@ def calibrate():
         print(mode, '校准方案', len(rows), '基线总分', round(base['总分'], 2))
 
 
+MIX = {'typed': 0.5, 'full': 0.5}      # 作者 2026-09-30：两口径五五开
+
+
+def mixed_score(ev):
+    """混合口径：各口径总分按 MIX 加权；理论分、实打分同样加权以便查看。"""
+    out = {'总分': 0.0, '理论分': 0.0, '实打分': 0.0, '分口径': {}}
+    for m, w in MIX.items():
+        sc = json.load(open(ROOT / f'eval/calib/scale_{m}.json', encoding='utf-8'))['尺子']
+        s = SC.score(flatten(ev, m), sc)
+        out['分口径'][m] = s
+        for k in ('总分', '理论分', '实打分'):
+            out[k] += w * s[k]
+    out['理论分项'] = out['分口径']['typed']['理论分项']
+    out['实打分项'] = out['分口径']['typed']['实打分项']
+    return out
+
+
 def rank(mode):
-    scale = json.load(open(ROOT / f'eval/calib/scale_{mode}.json', encoding='utf-8'))['尺子']
-    base = SC.score(json.load(open(ROOT / f'eval/calib/scale_{mode}.json', encoding='utf-8'))['原始值']['build/out/fixtest'], scale)
+    if mode == 'mix':
+        cal = {m: json.load(open(ROOT / f'eval/calib/scale_{m}.json', encoding='utf-8')) for m in MIX}
+        base = {'总分': sum(w * SC.score(cal[m]['原始值']['build/out/fixtest'], cal[m]['尺子'])['总分'] for m, w in MIX.items())}
+    else:
+        scale = json.load(open(ROOT / f'eval/calib/scale_{mode}.json', encoding='utf-8'))['尺子']
+        base = SC.score(json.load(open(ROOT / f'eval/calib/scale_{mode}.json', encoding='utf-8'))['原始值']['build/out/fixtest'], scale)
     jobs = json.load(open(T / 'jobs.json', encoding='utf-8'))['jobs']
     rows = []
     for j in jobs:
@@ -80,7 +101,7 @@ def rank(mode):
             rows.append({**j, 'ok': False, 'why': '运行失败'})
             continue
         fails = [g for g in GATES if not ev['gates']['门禁'][g]]
-        s = SC.score(flatten(ev, mode), scale)
+        s = mixed_score(ev) if mode == 'mix' else SC.score(flatten(ev, mode), scale)
         rows.append({'id': j['id'], 'group': j['group'], 'kind': j['kind'], 'ok': not fails, 'why': fails,
                      '总分': s['总分'], '理论分': s['理论分'], '实打分': s['实打分'],
                      '理论分项': s['理论分项'], '实打分项': s['实打分项'], 'cross': ev['cross']})

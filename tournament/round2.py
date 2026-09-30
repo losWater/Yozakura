@@ -1,6 +1,6 @@
 """第二轮排位赛：64 强在 set1–set5 五套新句子上各实打一次，取实打分平均；理论分沿用第一轮。
 总分 = 0.7 × 理论分 + 0.3 × 五次实打分平均。尺子与第一轮同口径、同冻结尺子。
-用法：python tournament/round2.py [typed|full]"""
+用法：python tournament/round2.py [typed|full|mix]（正式采用 mix）"""
 import json, sys, statistics
 from pathlib import Path
 
@@ -17,7 +17,8 @@ T = ROOT / 'runs/formal'
 
 def main(mode):
     r1 = json.load(open(T / f'round1_{mode}.json', encoding='utf-8'))
-    scale = json.load(open(ROOT / f'eval/calib/scale_{mode}.json', encoding='utf-8'))['尺子']
+    modes = RK.MIX if mode == 'mix' else {mode: 1.0}
+    scales = {m: json.load(open(ROOT / f'eval/calib/scale_{m}.json', encoding='utf-8'))['尺子'] for m in modes}
     sets = []
     for k in range(1, 6):
         sets.append((json.load(open(ROOT / f'eval/sentences/set{k}.json', encoding='utf-8')),
@@ -27,16 +28,17 @@ def main(mode):
         ev = json.load(open(T / jid / 'eval.json', encoding='utf-8'))
         out = sorted((T / jid).glob('output-*'))[0]
         items = build(EV.EL, str(out / 'code.txt'))
-        its = items if mode == 'typed' else EV.full_only(items, out / 'code.txt')
-        book = type_sim.code_book(its)
-        typing_scores, details = [], []
+        books = {m: type_sim.code_book(items if m == 'typed' else EV.full_only(items, out / 'code.txt')) for m in modes}
+        typing_scores, theory = [], 0.0
         for S, R in sets:
-            t = type_sim.simulate(book, S, R)
-            flat = RK.flatten({**ev, mode: {**ev[mode], 'type': t}}, mode)
-            s = SC.score(flat, scale)
-            typing_scores.append(s['实打分'])
-            theory = s['理论分']
-            details.append({k: v for k, v in t.items() if k not in ('热力', '最忙键')})
+            ts = 0.0
+            for m, w in modes.items():
+                t = type_sim.simulate(books[m], S, R)
+                s = SC.score(RK.flatten({**ev, m: {**ev[m], 'type': t}}, m), scales[m])
+                ts += w * s['实打分']
+            typing_scores.append(ts)
+        for m, w in modes.items():
+            theory += w * SC.score(RK.flatten(ev, m), scales[m])['理论分']
         avg = statistics.mean(typing_scores)
         rows.append({'id': jid, '理论分': theory, '实打五次': typing_scores, '实打平均': avg,
                      '实打标准差': statistics.pstdev(typing_scores), '总分': 0.7 * theory + 0.3 * avg,
