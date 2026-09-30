@@ -15,6 +15,9 @@ use crate::编码信息;
 struct Tier {
     indices: Vec<usize>,
     weight: f64,
+    /// true：仅当有更常用（元素序号更小）且签名不同的读音同码才算违例（有效重码口径）
+    #[serde(default)]
+    effective: bool,
 }
 
 #[derive(serde::Deserialize)]
@@ -102,7 +105,7 @@ pub fn 计算(rows: &[编码信息], p: &默认目标函数参数) -> Option<分
         let mut v = 0usize;
         for &i in &tier.indices {
             let others = &by_code[&rows[i].全码.原始编码];
-            if others.iter().any(|&j| j != i && c.signature[j] != c.signature[i]) {
+            if others.iter().any(|&j| j != i && (!tier.effective || j < i) && c.signature[j] != c.signature[i]) {
                 v += 1;
             }
         }

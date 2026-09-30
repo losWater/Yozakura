@@ -60,6 +60,10 @@ assert all(layout.values()), [g for g, k in layout.items() if not k]
 E54 = yaml.safe_load(open(F54 / 'elements.yaml', encoding='utf-8'))
 basis = {(r['字'], r['拼音']): r for r in load(ROOT / 'data/inputs/夜桜字音基准.json')}
 fixed_short = {(e['词'], e['拼音']): e['简码长度'] for e in E54 if e.get('简码长度')}
+FIX_PATH = ROOT / 'data/inputs/2.5一二简固定.json'
+USE_FIX25 = '"fix25": true' in (sys.argv[2] if len(sys.argv) > 2 else '')
+if USE_FIX25:   # 作者 2026-09-30：固定夜莺2.5 全部一简、二简（码为本字音节前缀者）
+    fixed_short = {(c, py): n for c, py, n in load(FIX_PATH)['fixed']}
 reserved = [e for e in E54 if e['拼音'] == 'reserved']
 
 entries = []
@@ -160,7 +164,7 @@ json.dump({'groups': groups, 'layout': layout, 'mutex': MUTEX,
            'tier_indices': {n: t['indices'] for n, t in tiers.items()}},
           open(OUT / 'meta.json', 'w', encoding='utf-8'), ensure_ascii=False)
 # ---------- 夜桜附加目标项配置 ----------
-W = {'excl1500': 5.0, 'excl3500': 1.0, 'overload': 1.0, 'rank_gate': 50.0, 'eq23': 0.0, 'eq34': 0.0,
+W = {'fix25': False, 'eff1500': 0.0, 'eff3500': 0.0, 'excl1500': 5.0, 'excl3500': 1.0, 'overload': 1.0, 'rank_gate': 50.0, 'eq23': 0.0, 'eq34': 0.0,
      'mutex': 1000.0, 'alpha': 4.0}
 W.update(json.loads(sys.argv[2]) if len(sys.argv) > 2 else {})
 n_real = sum(1 for e in entries if e['拼音'] != 'reserved')
@@ -172,7 +176,9 @@ share = {k: (1 / diff[k]) ** W['alpha'] for k in KEYS}
 share = {k: v / sum(share.values()) for k, v in share.items()}
 yz = {'n': n_real, 'signature': signature, 'frequency': [float(e['频率']) for e in entries[:n_real]],
       'exclusive': [{'indices': tiers[1500]['indices'], 'weight': W['excl1500']},
-                    {'indices': tiers[3500]['indices'], 'weight': W['excl3500']}],
+                    {'indices': tiers[3500]['indices'], 'weight': W['excl3500']},
+                    {'indices': tiers[1500]['indices'], 'weight': W['eff1500'], 'effective': True},
+                    {'indices': tiers[3500]['indices'], 'weight': W['eff3500'], 'effective': True}],
       'target_share': share, 'overload_weight': W['overload'],
       'rank_gate': {'p': 21}, 'rank_gate_weight': W['rank_gate'],
       'eq23_weight': W['eq23'], 'eq34_weight': W['eq34'],

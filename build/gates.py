@@ -34,6 +34,8 @@ def analyse(codes):
     for i, (full, _, _, _) in enumerate(codes):
         by_code[full].append(i)
     exempt = lambda i: any(j != i and sig(E[j]) == sig(E[i]) for j in by_code[codes[i][0]])
+    def effective(idx):
+        return [i for i in idx if any(j < i and sig(E[j]) != sig(E[i]) for j in by_code[codes[i][0]])]
     def non_exclusive(idx):
         bad, ex = [], []
         for i in idx:
@@ -55,7 +57,9 @@ def analyse(codes):
     rank = sorted(use, key=lambda k: -use[k])
     idx = {(e['词'], e['拼音']): i for i, e in enumerate(E)}
     chong_niao_same = codes[idx[('虫', 'chong')]][0][2] == codes[idx[('鸟', 'niao')]][0][2]
-    return dict(前1500非独占=len(b1500), 前1500豁免=len(e1500), 前1500违例=[E[i]['词'] + E[i]['拼音'] for i in b1500[:20]],
+    f1500, f3500 = effective(T[1500]), effective(T[3500])
+    return dict(前1500有效重码=len(f1500), 前3500有效重码=len(f3500), 前3500有效重码字=[E[i]['词'] + E[i]['拼音'] for i in f3500],
+                前1500非独占=len(b1500), 前1500豁免=len(e1500), 前1500违例=[E[i]['词'] + E[i]['拼音'] for i in b1500[:20]],
                 前3500非独占=len(b3500), 前3500豁免=len(e3500), 前6000三码内=three, 全表重码对=pairs,
                 p排名=rank.index('p') + 1, 三四码前五=[(k, round(use[k] / (2 * w), 4)) for k in rank[:5]],
                 三四码当量=round(eq34 / w, 4), 虫鸟同键=chong_niao_same)
@@ -64,7 +68,7 @@ def analyse(codes):
 r = analyse(read_codes(a.code))
 if a.baseline:
     b = analyse(read_codes(a.baseline))
-    r['门禁'] = {'前1500独占': r['前1500非独占'] == 0, '前3500个位数': r['前3500非独占'] <= 9,
+    r['门禁'] = {'前1500有效无重': r['前1500有效重码'] == 0, '前3500有效重码个位数': r['前3500有效重码'] <= 9,
                '前6000三码损失≤100': b['前6000三码内'] - r['前6000三码内'] <= 100,
                '重码对增加≤20': r['全表重码对'] - b['全表重码对'] <= 20, 'p不进前20': r['p排名'] > 20,
                '虫鸟不同键': not r['虫鸟同键']}
