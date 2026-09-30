@@ -147,6 +147,9 @@ for code, v in old_targets.items():
         unmapped += 1
 assert len(new_targets) == len(old_targets) - unmapped
 obj['character_word_collision']['targets'] = new_targets
+_W = json.loads(sys.argv[2]) if len(sys.argv) > 2 else {}
+if 'cross' in _W:   # 字词避重权重（2.0 为 0.1）
+    obj['character_word_collision']['weight'] = float(_W['cross'])
 
 # target200：按字重新对应
 t200 = load(F54 / 'targets.json')
@@ -164,7 +167,7 @@ json.dump({'groups': groups, 'layout': layout, 'mutex': MUTEX,
            'tier_indices': {n: t['indices'] for n, t in tiers.items()}},
           open(OUT / 'meta.json', 'w', encoding='utf-8'), ensure_ascii=False)
 # ---------- 夜桜附加目标项配置 ----------
-W = {'fix25': False, 'eff1500': 0.0, 'eff3500': 0.0, 'excl1500': 5.0, 'excl3500': 1.0, 'overload': 1.0, 'rank_gate': 50.0, 'eq23': 0.0, 'eq34': 0.0,
+W = {'cross': 0.1, 'fix25': False, 'eff1500': 0.0, 'eff3500': 0.0, 'excl1500': 5.0, 'excl3500': 1.0, 'overload': 1.0, 'rank_gate': 50.0, 'eq23': 0.0, 'eq34': 0.0,
      'mutex': 1000.0, 'alpha': 4.0}
 W.update(json.loads(sys.argv[2]) if len(sys.argv) > 2 else {})
 n_real = sum(1 for e in entries if e['拼音'] != 'reserved')

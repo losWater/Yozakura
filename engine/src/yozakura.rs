@@ -50,33 +50,60 @@ struct Config {
 
 struct Data {
     c: Config,
-    eq: HashMap<String, f64>,
+    /// 当量表按键编号展开：eq[a * radix + b]
+    eq: Vec<f64>,
+    radix: usize,
+    /// 目标份额、排名门禁按键编号
+    share: Vec<f64>,
+    gate: Vec<(usize, usize)>,
+    key_of: Vec<char>,
 }
 
 static DATA: OnceLock<Option<Data>> = OnceLock::new();
 
-fn data() -> Option<&'static Data> {
+thread_local! {
+    static SCRATCH: std::cell::RefCell<rustc_hash::FxHashMap<u64, (usize, u32, usize)>> =
+        std::cell::RefCell::new(rustc_hash::FxHashMap::default());
+}
+
+fn data(p: &默认目标函数参数) -> Option<&'static Data> {
     DATA.get_or_init(|| {
         let path = std::env::var("NIGHTINGALE_YOZAKURA").ok()?;
         let c: Config = serde_json::from_str(&std::fs::read_to_string(&path).expect("读取夜桜配置失败"))
             .expect("解析夜桜配置失败");
-        let eq = serde_json::from_str(&std::fs::read_to_string(&c.matrix).expect("读取当量矩阵失败"))
-            .expect("解析当量矩阵失败");
+        let raw: HashMap<String, f64> =
+            serde_json::from_str(&std::fs::read_to_string(&c.matrix).expect("读取当量矩阵失败"))
+                .expect("解析当量矩阵失败");
         assert_eq!(c.signature.len(), c.n);
         assert_eq!(c.frequency.len(), c.n);
-        Some(Data { c, eq })
+        let radix = p.进制 as usize;
+        let mut key_of = vec!['\0'; radix];
+        for (&d, &k) in &p.数字转键 {
+            key_of[d as usize] = k;
+        }
+        let mut eq = vec![1.3; radix * radix];
+        for a in 0..radix {
+            for b in 0..radix {
+                let mut s = String::new();
+                s.push(key_of[a]);
+                s.push(key_of[b]);
+                if let Some(v) = raw.get(&s) {
+                    eq[a * radix + b] = *v;
+                }
+            }
+        }
+        let mut share = vec![0.0; radix];
+        for d in 0..radix {
+            share[d] = c.target_share.get(&key_of[d]).copied().unwrap_or(1.0 / 26.0);
+        }
+        let gate = c
+            .rank_gate
+            .iter()
+            .map(|(k, &r)| ((0..radix).find(|&d| key_of[d] == *k).unwrap(), r))
+            .collect();
+        Some(Data { c, eq, radix, share, gate, key_of })
     })
     .as_ref()
-}
-
-fn keys(code: u64, p: &默认目标函数参数) -> Vec<char> {
-    let mut n = code;
-    let mut out = Vec::with_capacity(4);
-    while n > 0 {
-        out.push(*p.数字转键.get(&(n % p.进制)).unwrap());
-        n /= p.进制;
-    }
-    out
 }
 
 #[derive(Default, Debug, Clone)]
@@ -91,64 +118,85 @@ pub struct 分项 {
 }
 
 pub fn 计算(rows: &[编码信息], p: &默认目标函数参数) -> Option<分项> {
-    let d = data()?;
+    let d = data(p)?;
     let c = &d.c;
-    let codes: Vec<Vec<char>> = rows[..c.n].iter().map(|r| keys(r.全码.原始编码, p)).collect();
+    let r = d.radix as u64;
     let mut out = 分项::default();
 
-    // 独占码位
-    let mut by_code: HashMap<u64, Vec<usize>> = HashMap::new();
-    for (i, r) in rows[..c.n].iter().enumerate() {
-        by_code.entry(r.全码.原始编码).or_default().push(i);
-    }
-    for tier in &c.exclusive {
-        let mut v = 0usize;
-        for &i in &tier.indices {
-            let others = &by_code[&rows[i].全码.原始编码];
-            if others.iter().any(|&j| j != i && (!tier.effective || j < i) && c.signature[j] != c.signature[i]) {
-                v += 1;
-            }
+    // 独占码位：每个码记 (最小序号 m1, 其签名 s1, 签名不同于 s1 的最小序号 m2)
+    SCRATCH.with(|cell| {
+        let mut map = cell.borrow_mut();
+        map.clear();
+        for i in 0..c.n {
+            let code = rows[i].全码.原始编码;
+            let si = c.signature[i];
+            map.entry(code)
+                .and_modify(|e| {
+                    if e.2 == usize::MAX && si != e.1 {
+                        e.2 = i;
+                    }
+                })
+                .or_insert((i, si, usize::MAX));
         }
-        out.exclusive_violations.push(v);
-        out.total += tier.weight * v as f64;
-    }
+        for tier in &c.exclusive {
+            let mut v = 0usize;
+            for &i in &tier.indices {
+                let (m1, s1, m2) = map[&rows[i].全码.原始编码];
+                let si = c.signature[i];
+                let hit = if si != s1 {
+                    // 最小序号者签名不同，且必在 i 之前
+                    let _ = m1;
+                    true
+                } else if tier.effective {
+                    m2 < i
+                } else {
+                    m2 != usize::MAX
+                };
+                if hit {
+                    v += 1;
+                }
+            }
+            out.exclusive_violations.push(v);
+            out.total += tier.weight * v as f64;
+        }
+    });
 
-    // 三四码负荷与分段当量
-    let mut use_: HashMap<char, f64> = HashMap::new();
+    // 三四码负荷与分段当量（全码四位：个位为第 1 码）
+    let mut use_ = vec![0.0f64; d.radix];
     let (mut e23, mut e34, mut w) = (0.0, 0.0, 0.0);
-    let pair = |a: char, b: char| -> f64 {
-        let mut s = String::with_capacity(8);
-        s.push(a);
-        s.push(b);
-        *d.eq.get(&s).unwrap_or(&1.3)
-    };
-    for (i, k) in codes.iter().enumerate() {
-        if k.len() < 4 {
+    for i in 0..c.n {
+        let code = rows[i].全码.原始编码;
+        if code < r * r * r {
             continue;
         }
+        let k2 = ((code / r) % r) as usize;
+        let k3 = ((code / (r * r)) % r) as usize;
+        let k4 = ((code / (r * r * r)) % r) as usize;
         let f = c.frequency[i];
-        *use_.entry(k[2]).or_default() += f;
-        *use_.entry(k[3]).or_default() += f;
-        e23 += f * pair(k[1], k[2]);
-        e34 += f * pair(k[2], k[3]);
+        use_[k3] += f;
+        use_[k4] += f;
+        e23 += f * d.eq[k2 * d.radix + k3];
+        e34 += f * d.eq[k3 * d.radix + k4];
         w += f;
     }
     if w > 0.0 {
         out.eq23 = e23 / w;
         out.eq34 = e34 / w;
-        let mut shares: Vec<(char, f64)> =
-            ('a'..='z').map(|k| (k, use_.get(&k).copied().unwrap_or(0.0) / (2.0 * w))).collect();
+        let mut shares: Vec<(usize, f64)> = (0..d.radix)
+            .filter(|&k| d.key_of[k].is_ascii_lowercase())
+            .map(|k| (k, use_[k] / (2.0 * w)))
+            .collect();
         for &(k, u) in &shares {
-            let t = c.target_share.get(&k).copied().unwrap_or(1.0 / 26.0);
-            let excess = (u - t).max(0.0);
+            let excess = (u - d.share[k]).max(0.0);
             out.overload += excess * excess;
         }
-        shares.sort_by(|a, b| b.1.partial_cmp(&a.1).unwrap());
-        for (&k, &min_rank) in &c.rank_gate {
-            // 须排第 min_rank 名或更后：超出第 (min_rank-1) 名份额的部分计罚
-            let u = shares.iter().find(|x| x.0 == k).unwrap().1;
-            let bar = shares[min_rank - 1].1;
-            out.rank_excess += (u - bar).max(0.0);
+        if !d.gate.is_empty() {
+            shares.sort_by(|a, b| b.1.partial_cmp(&a.1).unwrap());
+            for &(k, min_rank) in &d.gate {
+                let u = shares.iter().find(|x| x.0 == k).unwrap().1;
+                let bar = shares[min_rank - 1].1;
+                out.rank_excess += (u - bar).max(0.0);
+            }
         }
     }
     out.total += c.overload_weight * out.overload * 1e4
@@ -157,8 +205,9 @@ pub fn 计算(rows: &[编码信息], p: &默认目标函数参数) -> Option<分
         + c.eq34_weight * out.eq34;
 
     for m in &c.mutex {
-        let (a, b) = (&codes[m.a], &codes[m.b]);
-        if a.len() > m.position && b.len() > m.position && a[m.position] == b[m.position] {
+        let pos = r.pow(m.position as u32);
+        let (a, b) = (rows[m.a].全码.原始编码, rows[m.b].全码.原始编码);
+        if a >= pos && b >= pos && (a / pos) % r == (b / pos) % r {
             out.mutex_violations += 1;
             out.total += m.weight;
         }
