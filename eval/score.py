@@ -32,6 +32,14 @@ TYPE_CATS = {
     '键位负荷': (15, [('负荷偏差L1', 7, False), ('最忙键份额', 4, False), ('小指份额', 4, False)]),
 }
 MARGIN = 0.25
+# 最小有意义跨度：低于此的差异视为无实际差别，防止极小差异经线性放大成噪声（('rel', x) 为取值的比例）
+FLOOR = {'keyEq': ('rel', .02), 'ziEq': ('rel', .02), 'keyLength': ('rel', .02), 'selectRate': ('abs', .01),
+         'msRate': ('abs', .005), 'ssRate': ('abs', .005), 'pdRate': ('abs', .005), 'lfdRate': ('abs', .005),
+         'tribleRate': ('abs', .005), 'dhRate': ('abs', .02),
+         '字均当量': ('rel', .02), '键均当量': ('rel', .02), '字均键数': ('rel', .02), '选重率': ('abs', .01),
+         'ms率': ('abs', .005), 'ss率': ('abs', .005), 'pd率': ('abs', .005), 'lfd率': ('abs', .005),
+         '三连击率': ('abs', .005), 'dh率': ('abs', .02), '负荷偏差L1': ('abs', .03), '最忙键份额': ('abs', .01),
+         '小指份额': ('abs', .01), '左手份额': ('abs', .02), 'cross': ('rel', .2)}
 
 
 def raw_metrics(run_dir, set_k):
@@ -86,7 +94,8 @@ def score(flat, scale):
 
 
 def calibrate():
-    runs = ['build/out/fixtest'] + [d.rstrip('/') for d in sorted(glob.glob('runs/b[1-7]/*/'))
+    # 只用与正式赛可比的方案：固定 2.5 一二简（b3 起）
+    runs = ['build/out/fixtest'] + [d.rstrip('/') for d in sorted(glob.glob('runs/b[3-7]/*/'))
                                     if glob.glob(d + 'output-*') and Path(d, 'elements.yaml').exists()]
     rows = {r: raw_metrics(ROOT / r, 0) for r in runs}
     keys = next(iter(rows.values())).keys()
@@ -95,7 +104,15 @@ def calibrate():
         vs = [rows[r][k] for r in rows]
         lo, hi = min(vs), max(vs)
         pad = (hi - lo) * MARGIN
-        scale[k] = [lo - pad, hi + pad]
+        lo, hi = lo - pad, hi + pad
+        name = k.split('.')[-1]
+        if name in FLOOR:
+            kind, x = FLOOR[name]
+            need = x * abs((lo + hi) / 2) if kind == 'rel' else x
+            if hi - lo < need:
+                mid = (lo + hi) / 2
+                lo, hi = mid - need / 2, mid + need / 2
+        scale[k] = [lo, hi]
     json.dump({'校准方案': runs, '尺子': scale, '原始值': rows}, open(SCALE, 'w', encoding='utf-8'), ensure_ascii=False, indent=1)
     print('校准方案', len(rows), '指标', len(scale))
 

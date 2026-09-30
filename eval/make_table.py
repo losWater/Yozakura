@@ -2,8 +2,18 @@
 用法：python eval/make_table.py <元素表 elements.yaml> <code.txt> <输出 tsv>"""
 import sys, yaml
 
+_LOADER = getattr(yaml, 'CSafeLoader', yaml.SafeLoader)
+_CACHE = {}
+
+
+def load_elements(path):
+    if path not in _CACHE:
+        _CACHE[path] = yaml.load(open(path, encoding='utf-8'), Loader=_LOADER)
+    return _CACHE[path]
+
+
 def build(elements, code_txt):
-    E = yaml.safe_load(open(elements, encoding='utf-8'))
+    E = load_elements(elements)
     n = sum(1 for e in E if e['拼音'] != 'reserved')
     rows = [l.rstrip('\n').split('\t') for l in open(code_txt, encoding='utf-8')][:n]
     items = []

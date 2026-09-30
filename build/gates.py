@@ -4,14 +4,16 @@ import json, sys, collections, argparse
 from pathlib import Path
 import yaml
 
-ap = argparse.ArgumentParser()
-ap.add_argument('inp'); ap.add_argument('code'); ap.add_argument('--baseline')
-a = ap.parse_args()
-INP = Path(a.inp)
-E = yaml.safe_load(open(INP / 'elements.yaml', encoding='utf-8'))
-meta = json.load(open(INP / 'meta.json', encoding='utf-8'))
-cfg = json.load(open(INP / 'run.json', encoding='utf-8'))
-N = sum(1 for e in E if e['拼音'] != 'reserved')
+_L = getattr(yaml, 'CSafeLoader', yaml.SafeLoader)
+
+
+def setup(inp):
+    global INP, E, meta, cfg, N
+    INP = Path(inp)
+    E = yaml.load(open(INP / 'elements.yaml', encoding='utf-8'), Loader=_L)
+    meta = json.load(open(INP / 'meta.json', encoding='utf-8'))
+    cfg = json.load(open(INP / 'run.json', encoding='utf-8'))
+    N = sum(1 for e in E if e['拼音'] != 'reserved')
 EQ = {}
 for l in open(Path(__file__).resolve().parent.parent / 'data/inputs/当量表.tsv', encoding='utf-8'):
     p = l.rstrip('\n').split('\t')
@@ -65,11 +67,25 @@ def analyse(codes):
                 三四码当量=round(eq34 / w, 4), 虫鸟同键=chong_niao_same)
 
 
-r = analyse(read_codes(a.code))
-if a.baseline:
-    b = analyse(read_codes(a.baseline))
-    r['门禁'] = {'前1500有效无重': r['前1500有效重码'] == 0, '前3500有效重码个位数': r['前3500有效重码'] <= 9,
+_BASE = {}
+
+
+def check(code, baseline=None):
+    r = analyse(read_codes(code))
+    if baseline:
+        if baseline not in _BASE:
+            _BASE[baseline] = analyse(read_codes(baseline))
+        b = _BASE[baseline]
+        r['门禁'] = {'前1500有效无重': r['前1500有效重码'] == 0, '前3500有效重码个位数': r['前3500有效重码'] <= 9,
                '前6000三码损失≤100': b['前6000三码内'] - r['前6000三码内'] <= 100,
                '重码对增加≤20': r['全表重码对'] - b['全表重码对'] <= 20, 'p不进前20': r['p排名'] > 20,
                '虫鸟不同键': not r['虫鸟同键']}
-print(json.dumps(r, ensure_ascii=False, indent=1))
+    return r
+
+
+if __name__ == '__main__':
+    ap = argparse.ArgumentParser()
+    ap.add_argument('inp'); ap.add_argument('code'); ap.add_argument('--baseline')
+    a = ap.parse_args()
+    setup(a.inp)
+    print(json.dumps(check(a.code, a.baseline), ensure_ascii=False, indent=1))
