@@ -9,3 +9,4 @@ reading/out/*.jsonl
 engine/target/
 runs/
 build/out/
+tools/
