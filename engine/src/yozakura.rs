@@ -18,6 +18,9 @@ struct Tier {
     /// true：仅当有更常用（元素序号更小）且签名不同的读音同码才算违例（有效重码口径）
     #[serde(default)]
     effective: bool,
+    /// 分档当量用：true 时档内按读音频率加权（否则不加权平均）
+    #[serde(default)]
+    weighted: bool,
 }
 
 #[derive(serde::Deserialize)]
@@ -46,10 +49,54 @@ struct Config {
     eq34_weight: f64,
     mutex: Vec<Mutex>,
     matrix: String,
+    /// 分档当量（作者 2026-10-01）：若提供，E₂₃/E₃₄ 改为各档内不加权平均、再按档权合成；
+    /// 档内只含需要用到形码的读音（固定一二简读音已在生成配置时排除）。
+    #[serde(default)]
+    eq_bins: Vec<Tier>,
+    /// 形码成本（作者 2026-10-01）：只算形码管得到的读音（排除固定一二简）；
+    /// 三简读音成本 = 2→3 当量；打全码读音成本 = (2→3 + 3→4)/2。
+    /// 前1500 档不加权平均，1500 以后按频率加权，两者按 top_share 合成。
+    #[serde(default)]
+    shape: Option<ShapeCfg>,
+    /// 字词撞码（作者 2026-10-01）：只算二字词；读音有一二三简则不算；必须打全码者全码等于词码即撞。
+    #[serde(default)]
+    word_clash: Vec<ClashRule>,
+}
+
+#[derive(serde::Deserialize)]
+struct ClashRule {
+    chars: Vec<usize>,
+    words: Vec<String>,
+    weight: f64,
+}
+
+#[derive(serde::Deserialize)]
+struct ShapeCfg {
+    top: Vec<usize>,
+    rest: Vec<usize>,
+    top_share: f64,
+    weight: f64,
+    /// 门禁：four_idx 中打四码的读音数 ≤ four_max；san_idx 中三简读音数 ≥ san_min
+    four_idx: Vec<usize>,
+    four_max: usize,
+    san_idx: Vec<usize>,
+    san_min: usize,
+    /// 四码门禁（硬）每超一个的罚分
+    gate_weight: f64,
+    /// 三简软约束：每少一个的罚分（作者：3600 为软约束）
+    #[serde(default)]
+    san_weight: f64,
+    /// p 软约束：形码读音（按频率）形码按键中 p 的占比超过 p_cap 的部分 × p_weight
+    #[serde(default)]
+    p_cap: f64,
+    #[serde(default)]
+    p_weight: f64,
 }
 
 struct Data {
     c: Config,
+    /// 字词撞码规则的词码集合（与 c.word_clash 同序）
+    clash_codes: Vec<rustc_hash::FxHashSet<u64>>,
     /// 当量表按键编号展开：eq[a * radix + b]
     eq: Vec<f64>,
     radix: usize,
@@ -101,13 +148,43 @@ fn data(p: &默认目标函数参数) -> Option<&'static Data> {
             .iter()
             .map(|(k, &r)| ((0..radix).find(|&d| key_of[d] == *k).unwrap(), r))
             .collect();
-        Some(Data { c, eq, radix, share, gate, key_of })
+        let digit = |k: char| (0..radix).find(|&d| key_of[d] == k).unwrap() as u64;
+        let clash_codes = c
+            .word_clash
+            .iter()
+            .map(|rule| {
+                rule.words
+                    .iter()
+                    .map(|w| {
+                        let (mut v, mut m) = (0u64, 1u64);
+                        for ch in w.chars() {
+                            v += digit(ch) * m;
+                            m *= radix as u64;
+                        }
+                        v
+                    })
+                    .collect()
+            })
+            .collect();
+        Some(Data { c, clash_codes, eq, radix, share, gate, key_of })
     })
     .as_ref()
 }
 
 #[derive(Default, Debug, Clone)]
+pub struct 形码分项 {
+    pub p_share: f64,
+    pub top: f64,
+    pub rest: f64,
+    pub cost: f64,
+    pub four_top: usize,
+    pub san: usize,
+}
+
+#[derive(Default, Debug, Clone)]
 pub struct 分项 {
+    pub shape: Option<形码分项>,
+    pub clashes: Vec<usize>,
     pub exclusive_violations: Vec<usize>,
     pub overload: f64,
     pub rank_excess: f64,
@@ -182,6 +259,33 @@ pub fn 计算(rows: &[编码信息], p: &默认目标函数参数) -> Option<分
     if w > 0.0 {
         out.eq23 = e23 / w;
         out.eq34 = e34 / w;
+        if !c.eq_bins.is_empty() {
+            let (mut s23, mut s34, mut sw) = (0.0, 0.0, 0.0);
+            for bin in &c.eq_bins {
+                let (mut a, mut b, mut k, mut kw) = (0.0, 0.0, 0usize, 0.0);
+                for &i in &bin.indices {
+                    let code = rows[i].全码.原始编码;
+                    if code < r * r * r {
+                        continue;
+                    }
+                    let k2 = ((code / r) % r) as usize;
+                    let k3 = ((code / (r * r)) % r) as usize;
+                    let k4 = ((code / (r * r * r)) % r) as usize;
+                    let fw = if bin.weighted { c.frequency[i] } else { 1.0 };
+                    a += fw * d.eq[k2 * d.radix + k3];
+                    b += fw * d.eq[k3 * d.radix + k4];
+                    k += 1;
+                    kw += fw;
+                }
+                if k > 0 && kw > 0.0 {
+                    s23 += bin.weight * a / kw;
+                    s34 += bin.weight * b / kw;
+                    sw += bin.weight;
+                }
+            }
+            out.eq23 = s23 / sw;
+            out.eq34 = s34 / sw;
+        }
         let mut shares: Vec<(usize, f64)> = (0..d.radix)
             .filter(|&k| d.key_of[k].is_ascii_lowercase())
             .map(|k| (k, use_[k] / (2.0 * w)))
@@ -203,6 +307,75 @@ pub fn 计算(rows: &[编码信息], p: &默认目标函数参数) -> Option<分
         + c.rank_gate_weight * out.rank_excess * 1e2
         + c.eq23_weight * out.eq23
         + c.eq34_weight * out.eq34;
+
+    if let Some(sc) = &c.shape {
+        let r2 = r * r;
+        let r3 = r2 * r;
+        // 返回 (成本, 是否三简, 是否四码)
+        let cost = |i: usize| -> (f64, bool, bool) {
+            let full = rows[i].全码.原始编码;
+            let short = rows[i].简码.原始编码;
+            let k2 = ((full / r) % r) as usize;
+            let k3 = ((full / r2) % r) as usize;
+            let k4 = ((full / r3) % r) as usize;
+            let e23 = d.eq[k2 * d.radix + k3];
+            let e34 = d.eq[k3 * d.radix + k4];
+            let san = short >= r2 && short < r3 && short != full;
+            let shorter = short > 0 && short < r3 && short != full;
+            if san { (e23, true, false) } else { ((e23 + e34) / 2.0, false, !shorter) }
+        };
+        let mut x = 形码分项::default();
+        let mut a = 0.0;
+        for &i in &sc.top { a += cost(i).0; }
+        x.top = if sc.top.is_empty() { 0.0 } else { a / sc.top.len() as f64 };
+        let (mut b, mut bw) = (0.0, 0.0);
+        for &i in &sc.rest { let fi = c.frequency[i]; b += fi * cost(i).0; bw += fi; }
+        x.rest = if bw > 0.0 { b / bw } else { 0.0 };
+        x.cost = sc.top_share * x.top + (1.0 - sc.top_share) * x.rest;
+        x.four_top = sc.four_idx.iter().filter(|&&i| cost(i).2).count();
+        if sc.p_weight > 0.0 {
+            let pk = d.key_of.iter().position(|&k| k == 'p').unwrap() as u64;
+            let (mut pp, mut tt) = (0.0, 0.0);
+            for &i in sc.top.iter().chain(sc.rest.iter()) {
+                let fi = c.frequency[i];
+                let full = rows[i].全码.原始编码;
+                let k3 = (full / r2) % r;
+                let k4 = (full / r3) % r;
+                if cost(i).1 {
+                    tt += fi;
+                    if k3 == pk { pp += fi; }
+                } else {
+                    tt += 2.0 * fi;
+                    if k3 == pk { pp += fi; }
+                    if k4 == pk { pp += fi; }
+                }
+            }
+            x.p_share = if tt > 0.0 { pp / tt } else { 0.0 };
+            out.total += sc.p_weight * (x.p_share - sc.p_cap).max(0.0);
+        }
+        x.san = sc.san_idx.iter().filter(|&&i| cost(i).1).count();
+        out.total += sc.weight * x.cost
+            + sc.gate_weight * (x.four_top.saturating_sub(sc.four_max) as f64)
+            + sc.san_weight * (sc.san_min.saturating_sub(x.san) as f64);
+        out.shape = Some(x);
+    }
+
+    {
+        let r3 = r * r * r;
+        for (rule, codes) in c.word_clash.iter().zip(&d.clash_codes) {
+            let mut v = 0usize;
+            for &i in &rule.chars {
+                let full = rows[i].全码.原始编码;
+                let short = rows[i].简码.原始编码;
+                let shorter = short > 0 && short < r3 && short != full;
+                if !shorter && codes.contains(&full) {
+                    v += 1;
+                }
+            }
+            out.clashes.push(v);
+            out.total += rule.weight * v as f64;
+        }
+    }
 
     for m in &c.mutex {
         let pos = r.pow(m.position as u32);
@@ -226,5 +399,11 @@ pub fn 报告(rows: &[编码信息], p: &默认目标函数参数) {
             "YOZAKURA exclusive={:?} overload={:.6e} rank_excess={:.6} eq23={:.6} eq34={:.6} mutex={} total={:.6}",
             x.exclusive_violations, x.overload, x.rank_excess, x.eq23, x.eq34, x.mutex_violations, x.total
         );
+        if !x.clashes.is_empty() {
+            eprintln!("YOZAKURA_CLASH {:?}", x.clashes);
+        }
+        if let Some(s) = &x.shape {
+            eprintln!("YOZAKURA_SHAPE top={:.6} rest={:.6} cost={:.6} four_top={} san={} p_share={:.6}", s.top, s.rest, s.cost, s.four_top, s.san, s.p_share);
+        }
     }
 }

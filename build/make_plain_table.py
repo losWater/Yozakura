@@ -24,7 +24,7 @@ INP = ROOT / 'build/out/formal'
 L = getattr(yaml, 'CSafeLoader', yaml.SafeLoader)
 
 
-def main(run_dir, out_dir):
+def main(run_dir, out_dir, scheme='ziranma'):
     run_dir, out_dir = Path(run_dir), Path(out_dir)
     out = sorted(run_dir.glob('output-*'))[0]
     cfg = yaml.load(open(out / 'config.yaml', encoding='utf-8'), Loader=L)
@@ -57,7 +57,7 @@ def main(run_dir, out_dir):
     all_py = json.load(open(ROOT / 'data/inputs/全音节映射.json', encoding='utf-8'))['小鹤']
     xh2zr = {}
     for py in all_py:
-        xh2zr.setdefault(encode(py, 'xiaohe'), set()).add(encode(py, 'ziranma'))
+        xh2zr.setdefault(encode(py, 'xiaohe'), set()).add(encode(py, scheme))
     assert all(len(v) == 1 for v in xh2zr.values())
     xh2zr = {k: v.pop() for k, v in xh2zr.items()}
     old_keys = json.load(open(ROOT / 'data/baseline/root_key.json', encoding='utf-8'))
@@ -98,7 +98,8 @@ def main(run_dir, out_dir):
             if ch not in placed:
                 placed.add(ch)
                 lines.append(f'{ch}\t{code}\n')
-    path = out_dir / f'夜桜_{run_dir.name}_普通单字表.txt'
+    tag = '' if scheme == 'ziranma' else '小鹤_'
+    path = out_dir / f'夜桜_{tag}{run_dir.name}_普通单字表.txt'
     path.write_text(''.join(lines), encoding='utf-8')
     stat = collections.Counter(len(c) for c in slots for _ in slots[c])
     print('输出', path, '行数', len(lines), '；码长分布', dict(sorted(stat.items())),
@@ -107,4 +108,4 @@ def main(run_dir, out_dir):
 
 
 if __name__ == '__main__':
-    main(sys.argv[1], sys.argv[2])
+    main(sys.argv[1], sys.argv[2], sys.argv[3] if len(sys.argv) > 3 else 'ziranma')

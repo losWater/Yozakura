@@ -66,10 +66,12 @@ if USE_FIX25:   # 作者 2026-09-30：固定夜莺2.5 全部一简、二简（�
     fixed_short = {(c, py): n for c, py, n in load(FIX_PATH)['fixed']}
 reserved = [e for e in E54 if e['拼音'] == 'reserved']
 
+_W0 = json.loads(sys.argv[2]) if len(sys.argv) > 2 else {}
+SCHEME = _W0.get('scheme', 'ziranma')     # 双拼方案：ziranma（夜桜）/ xiaohe（实验：与夜莺2.5同双拼）
 entries = []
 for (c, py), r in basis.items():
     rs = splits[c]
-    zr = encode(py, 'ziranma')
+    zr = encode(py, SCHEME)
     e = {'词': c, '拼音': py,
          '元素序列': [{'element': f'P_{zr[0]}', 'index': 0}, {'element': f'P_{zr[1]}', 'index': 0},
                    {'element': g_of[rs[0][0]], 'index': 0}, {'element': g_of[rs[-1][0]], 'index': 0}],
@@ -134,7 +136,7 @@ for (c, py), r in basis.items():
     xh2py.setdefault(r['小鹤音码'], set()).add(py)
 xh2zr = {}
 for xh, pys in xh2py.items():
-    zs = {encode(p, 'ziranma') for p in pys}
+    zs = {encode(p, SCHEME) for p in pys}
     assert len(zs) == 1, (xh, pys)
     xh2zr[xh] = zs.pop()
 old_targets = obj['character_word_collision']['targets']
@@ -167,7 +169,7 @@ json.dump({'groups': groups, 'layout': layout, 'mutex': MUTEX,
            'tier_indices': {n: t['indices'] for n, t in tiers.items()}},
           open(OUT / 'meta.json', 'w', encoding='utf-8'), ensure_ascii=False)
 # ---------- 夜桜附加目标项配置 ----------
-W = {'cross': 0.1, 'fix25': False, 'eff1500': 0.0, 'eff3500': 0.0, 'excl1500': 5.0, 'excl3500': 1.0, 'overload': 1.0, 'rank_gate': 50.0, 'eq23': 0.0, 'eq34': 0.0,
+W = {'clash': False, 'shape_cost': 0, 'scheme': 'ziranma', 'eq_shape': False, 'eq_bins': False, 'cross': 0.1, 'fix25': False, 'eff1500': 0.0, 'eff3500': 0.0, 'excl1500': 5.0, 'excl3500': 1.0, 'overload': 1.0, 'rank_gate': 50.0, 'eq23': 0.0, 'eq34': 0.0,
      'mutex': 1000.0, 'alpha': 4.0}
 W.update(json.loads(sys.argv[2]) if len(sys.argv) > 2 else {})
 n_real = sum(1 for e in entries if e['拼音'] != 'reserved')
@@ -187,6 +189,37 @@ yz = {'n': n_real, 'signature': signature, 'frequency': [float(e['频率']) for 
       'eq23_weight': W['eq23'], 'eq34_weight': W['eq34'],
       'mutex': [{'a': pos[('虫', 'chong')], 'b': pos[('鸟', 'niao')], 'position': 2, 'weight': W['mutex']}],
       'matrix': str(OUT / 'matrix.json')}
+if W.get('clash'):   # 字词撞码（作者 2026-10-01）：①前1500×前1万 硬；②前1500×前3万 软；③前3500×前1万 软
+    sys.path.insert(0, str(ROOT / 'eval'))
+    from word_clash import top_words
+    tw = [c for _, c in top_words(SCHEME, 30000)]
+    yz['word_clash'] = [
+        {'chars': tiers[1500]['indices'], 'words': tw[:10000], 'weight': W.get('clash_hard', 200.0)},
+        {'chars': tiers[1500]['indices'], 'words': tw[:30000], 'weight': W.get('clash_1500_3w', 5.0)},
+        {'chars': tiers[3500]['indices'], 'words': tw[:10000], 'weight': W.get('clash_3500_1w', 2.0)}]
+if W.get('shape_cost'):   # 形码成本（作者 2026-10-01）
+    fixed_idx = {i for i, e in enumerate(entries[:n_real]) if e.get('简码长度')}
+    t1500, t6000 = set(tiers[1500]['indices']), set(tiers[6000]['indices'])
+    yz['shape'] = {'top': sorted(t1500 - fixed_idx),
+                   'rest': [i for i in range(n_real) if i not in t1500 and i not in fixed_idx],
+                   'top_share': W.get('top_share', 0.5), 'weight': W['shape_cost'],
+                   'four_idx': sorted(t1500), 'four_max': W.get('four_max', 120),
+                   'san_idx': sorted(t6000 - fixed_idx), 'san_min': W.get('san_min', 3600),
+                   'gate_weight': W.get('shape_gate', 200.0), 'san_weight': W.get('san_weight', 1.0),
+                   'p_cap': W.get('p_cap', 0.04), 'p_weight': W.get('p_weight', 0.0)}
+if W.get('eq_shape'):   # 第二原则：形码管得到的读音（排除固定一二简），档内按字频加权
+    fixed_idx = {i for i, e in enumerate(entries[:n_real]) if e.get('简码长度')}
+    yz['eq_bins'] = [{'indices': [i for i in range(n_real) if i not in fixed_idx], 'weight': 1.0, 'weighted': True}]
+elif W.get('eq_bins'):   # 分档不加权当量：排除固定一二简读音
+    fixed_idx = {i for i, e in enumerate(entries[:n_real]) if e.get('简码长度')}
+    edges = [(0, 300, 30), (300, 500, 20), (500, 1500, 25), (1500, 3000, 15), (3000, 6000, 10), (6000, None, 5)]
+    prev, bins = set(), []
+    for lo, hi, wt in edges:
+        cur = set(tiers[hi]['indices']) if hi else set(range(n_real))
+        band = sorted((cur - prev) - fixed_idx)
+        bins.append({'indices': band, 'weight': wt})
+        prev = cur
+    yz['eq_bins'] = bins
 json.dump(yz, open(OUT / 'yozakura.json', 'w', encoding='utf-8'), ensure_ascii=False)
 json.dump(W, open(OUT / 'weights.json', 'w', encoding='utf-8'), ensure_ascii=False)
 print('根组', len(groups), '元素条目', len(entries), '字词避重目标', len(new_targets), '未换算', unmapped)

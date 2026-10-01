@@ -10,28 +10,32 @@ import json, os, random, subprocess, sys, time
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
-T = ROOT / 'runs/formal'
-INP = ROOT / 'build/out/formal'
+TOUR = os.environ.get('TOUR', 'formal')              # 赛事名：runs/<TOUR>、build/out/<TOUR>
+T = ROOT / 'runs' / TOUR
+INP = ROOT / 'build/out' / TOUR
+GROUPS = int(os.environ.get('GROUPS', 32))
+SQUADS = int(os.environ.get('SQUADS', 4))
 ENGINE = ROOT / 'engine/target/release/chai'
 STEPS = 100_000
 MAX_PAR = int(os.environ.get('MAX_PAR', 4))
 WEIGHTS = {"fix25": True, "eff1500": 100, "eff3500": 10, "excl1500": 3, "excl3500": 1,
            "overload": 0, "rank_gate": 0, "eq23": 300, "eq34": 300, "cross": 1.0}
+WEIGHTS.update(json.loads(os.environ.get('WEIGHTS_EXTRA', '{}')))
 KEYS = 'abcdefghijklmnopqrstuvwxyz'
 
 
 def init():
-    subprocess.run([sys.executable, str(ROOT / 'build/make_inputs.py'), 'formal', json.dumps(WEIGHTS)], check=True)
+    subprocess.run([sys.executable, str(ROOT / 'build/make_inputs.py'), TOUR, json.dumps(WEIGHTS)], check=True)
     base = json.load(open(INP / 'run.json', encoding='utf-8'))
     base['optimization']['metaheuristic']['parameters']['steps'] = STEPS
     groups = sorted(k for k in base['form']['mapping'] if k.startswith('G'))
     proj = {g: base['form']['mapping'][g] for g in groups}
     jobs = []
-    for g in range(1, 33):
-        for q in range(1, 5):
+    for g in range(1, GROUPS + 1):
+        for q in range(1, SQUADS + 1):
             for s, kind in enumerate(('random', 'random', 'proj', 'shuf50'), 1):
                 jid = f'g{g:02d}q{q}s{s}'
-                seed = 20260930_000000 + g * 1000 + q * 10 + s
+                seed = 20260930_000000 + g * 1000 + q * 10 + s + (0 if TOUR == 'formal' else 7_000_000)
                 rng = random.Random(seed)
                 if kind == 'random':
                     start = {k: rng.choice(KEYS) for k in groups}
