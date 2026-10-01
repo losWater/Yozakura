@@ -121,7 +121,10 @@ for g, k in layout.items():
     m[g] = k
 for k in KEYS:
     m[f'P_{k}'] = k
-cfg['generated_mapping_space'] = {g: [{'value': k, 'score': 0.0} for k in KEYS] for g in groups}
+_mc = float((json.loads(sys.argv[2]) if len(sys.argv) > 2 else {}).get('move_cost', 0))
+# 换键代价（作者 2026-10-01）：留在夜莺2.5 原键得 0，换到其他键得 move_cost（经引擎正则化计入目标）
+cfg['generated_mapping_space'] = {g: [{'value': k, 'score': 0.0 if k == layout[g] else _mc} for k in KEYS] for g in groups}
+cfg['optimization']['objective']['regularization_strength'] = 1.0
 cfg['generated_mapping_space'].update({f'P_{k}': [{'value': k, 'score': 0.0}] for k in KEYS})
 obj = cfg['optimization']['objective']
 for part in ('characters_full', 'characters_short'):
@@ -169,7 +172,7 @@ json.dump({'groups': groups, 'layout': layout, 'mutex': MUTEX,
            'tier_indices': {n: t['indices'] for n, t in tiers.items()}},
           open(OUT / 'meta.json', 'w', encoding='utf-8'), ensure_ascii=False)
 # ---------- 夜桜附加目标项配置 ----------
-W = {'clash': False, 'shape_cost': 0, 'scheme': 'ziranma', 'eq_shape': False, 'eq_bins': False, 'cross': 0.1, 'fix25': False, 'eff1500': 0.0, 'eff3500': 0.0, 'excl1500': 5.0, 'excl3500': 1.0, 'overload': 1.0, 'rank_gate': 50.0, 'eq23': 0.0, 'eq34': 0.0,
+W = {'move_cost': 0, 'clash': False, 'shape_cost': 0, 'scheme': 'ziranma', 'eq_shape': False, 'eq_bins': False, 'cross': 0.1, 'fix25': False, 'eff1500': 0.0, 'eff3500': 0.0, 'excl1500': 5.0, 'excl3500': 1.0, 'overload': 1.0, 'rank_gate': 50.0, 'eq23': 0.0, 'eq34': 0.0,
      'mutex': 1000.0, 'alpha': 4.0}
 W.update(json.loads(sys.argv[2]) if len(sys.argv) > 2 else {})
 n_real = sum(1 for e in entries if e['拼音'] != 'reserved')
