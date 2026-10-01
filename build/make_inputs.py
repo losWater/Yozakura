@@ -186,7 +186,8 @@ yz = {'n': n_real, 'signature': signature, 'frequency': [float(e['频率']) for 
       'exclusive': [{'indices': tiers[1500]['indices'], 'weight': W['excl1500']},
                     {'indices': tiers[3500]['indices'], 'weight': W['excl3500']},
                     {'indices': tiers[1500]['indices'], 'weight': W['eff1500'], 'effective': True},
-                    {'indices': tiers[3500]['indices'], 'weight': W['eff3500'], 'effective': True}],
+                    {'indices': tiers[3500]['indices'], 'weight': W['eff3500'], 'effective': True,
+                     'allow': W.get('eff3500_allow', 0)}],
       'target_share': share, 'overload_weight': W['overload'],
       'rank_gate': {'p': 21}, 'rank_gate_weight': W['rank_gate'],
       'eq23_weight': W['eq23'], 'eq34_weight': W['eq34'],
@@ -199,7 +200,8 @@ if W.get('clash'):   # 字词撞码（作者 2026-10-01）：①前1500×前1万
     yz['word_clash'] = [
         {'chars': tiers[1500]['indices'], 'words': tw[:10000], 'weight': W.get('clash_hard', 200.0)},
         {'chars': tiers[1500]['indices'], 'words': tw[:30000], 'weight': W.get('clash_1500_3w', 5.0)},
-        {'chars': tiers[3500]['indices'], 'words': tw[:10000], 'weight': W.get('clash_3500_1w', 2.0)}]
+        {'chars': tiers[3500]['indices'], 'words': tw[:10000], 'weight': W.get('clash_3500_1w', 2.0),
+         'allow': W.get('clash3_allow', 0)}]
 if W.get('shape_cost'):   # 形码成本（作者 2026-10-01）
     fixed_idx = {i for i, e in enumerate(entries[:n_real]) if e.get('简码长度')}
     t1500, t6000 = set(tiers[1500]['indices']), set(tiers[6000]['indices'])

@@ -33,7 +33,8 @@ def init():
     jobs = []
     for g in range(1, GROUPS + 1):
         for q in range(1, SQUADS + 1):
-            for s, kind in enumerate(('random', 'random', 'proj', 'shuf50'), 1):
+            kinds = tuple(os.environ.get('SQUAD_KINDS', 'random,random,proj,shuf50').split(','))
+            for s, kind in enumerate(kinds, 1):
                 jid = f'g{g:02d}q{q}s{s}'
                 seed = 20260930_000000 + g * 1000 + q * 10 + s + (0 if TOUR == 'formal' else 7_000_000)
                 rng = random.Random(seed)

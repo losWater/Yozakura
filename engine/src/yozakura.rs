@@ -21,6 +21,9 @@ struct Tier {
     /// 分档当量用：true 时档内按读音频率加权（否则不加权平均）
     #[serde(default)]
     weighted: bool,
+    /// 允许的违例数，超出部分才计罚（用于“前3571 有效重码 ≤9”硬门禁）
+    #[serde(default)]
+    allow: usize,
 }
 
 #[derive(serde::Deserialize)]
@@ -68,6 +71,9 @@ struct ClashRule {
     chars: Vec<usize>,
     words: Vec<String>,
     weight: f64,
+    /// 允许的撞码数；超出部分每个罚 weight（作者 2026-10-01：规则③设为硬约束 ≤ 5）
+    #[serde(default)]
+    allow: usize,
 }
 
 #[derive(serde::Deserialize)]
@@ -373,7 +379,7 @@ pub fn 计算(rows: &[编码信息], p: &默认目标函数参数) -> Option<分
                 }
             }
             out.clashes.push(v);
-            out.total += rule.weight * v as f64;
+            out.total += rule.weight * v.saturating_sub(rule.allow) as f64;
         }
     }
 
