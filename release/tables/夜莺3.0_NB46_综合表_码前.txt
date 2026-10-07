@@ -27325,8 +27325,8 @@ fuzu	飞砂走石
 fuzv	负罪
 fuzv	服罪
 fuzv	翻身做主
-fuzw	丰收在望
 fuzw	脯
+fuzw	丰收在望
 fuzy	肤
 fuzy	发生作用
 fv	发展

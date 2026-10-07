@@ -94,6 +94,9 @@ for c, w, before in json.load(open(ROOT / 'data/inputs/3.0词序调整.json', en
     ws.remove(w); ws.insert(ws.index(before), w)
 
 
+KEEP = {(ch, c) for c, ch, _ in json.load(open(ROOT / 'data/inputs/3.0词序调整.json', encoding='utf-8')).get('字不让', [])}   # 作者逐个指定不让位的字
+
+
 def has_short(ch, sy):
     return (ch, sy) in ONE or any(len(x) < 4 and x[:2] == sy for x in codes_of[ch])
 
@@ -103,6 +106,7 @@ def can_yield(ch, code, w):
     if len(code) == 4 and len(w) == 2 and has_short(ch, sy): return True, '有简码'
     if (ch, code) in TOLERANCE: return True, '容错码'
     if (ch, code) in CUSTOM: return False, '自定义码（彩蛋）'
+    if (ch, code) in KEEP: return False, '作者指定不让'
     if len(code) <= 3: return False, '简码不让'          # 作者 2026-10-07：字重要，一二三简都是给字的，简词是送的
     if (len(code) < 4 or len(w) > 2) and protected(ch, sy): return False, '常用字不让'
     cf = rf.get((ch, sy), 0); wf = wfreq(w)
