@@ -1,5 +1,5 @@
 """试算：新增一个归并根会怎样（不动正式数据，全部输出到独立目录）。
-把指定字拆分里的一段（如 八＋㐅）合并成新根，并入某根组；重建引擎输入 → NB46 重跑引擎 → 出表（含手动调整）→ 门禁 → 与正式表对比 → 实打统计。
+把指定字拆分里的一段（如 八＋㐅）合并成新根并入某根组，或换成已有字根（如 贝字框＋二 → 曰）；重建引擎输入 → NB46 重跑引擎 → 出表（含手动调整）→ 门禁 → 与正式表对比 → 实打统计。
 用法：.venv/bin/python release/whatif_root.py <名字> <新根> <并入组> <原序列,逗号分隔> [只作用于这些字 | -排除这些字]
 例：  .venv/bin/python release/whatif_root.py fuA 父 G007 八,㐅 父爸爷爹斧釜
 """
@@ -32,14 +32,15 @@ json.dump(sp, open(spath, 'w', encoding='utf-8'), ensure_ascii=False)
 print(f'改拆分 {len(changed)} 字：{"".join(changed)}')
 
 # 2. 引擎输入
-env = dict(os.environ, YZ_SPLITS=str(spath), YZ_EXTRA_ROOTS=json.dumps({group: [root]}, ensure_ascii=False),
+known = {r for rs in json.load(open(ROOT / 'build/out/n30/meta.json', encoding='utf-8'))['groups'].values() for r in rs}
+env = dict(os.environ, YZ_SPLITS=str(spath), YZ_EXTRA_ROOTS=json.dumps({} if root in known else {group: [root]}, ensure_ascii=False),   # 已有字根（如 曰）不重复加
            YZ_FIX=str(ROOT / 'data/inputs/3.0一二简.json'))
 w = (ROOT / 'build/out/n30/weights.json').read_text(encoding='utf-8')
 subprocess.run([PY, str(ROOT / 'build/make_inputs.py'), OUT.name, w], env=env, check=True, stdout=subprocess.DEVNULL)
 
 # 3. NB46 重跑引擎
 cfg = json.load(open(OUT / 'run.json', encoding='utf-8'))
-cfg['form'] = json.load(open(ROOT / 'runs/n30_v30/nb46_yao/run.json', encoding='utf-8'))['form']
+cfg['form'] = json.load(open(ROOT / 'runs/n30_v30/nb46_fu/run.json', encoding='utf-8'))['form']
 for o in RUN.glob('output-*'): subprocess.run(['rm', '-rf', str(o)])
 json.dump(cfg, open(RUN / 'run.json', 'w', encoding='utf-8'), ensure_ascii=False)
 eenv = dict(os.environ, NIGHTINGALE_YOZAKURA=str(OUT / 'yozakura.json'), NIGHTINGALE_TARGET_DIR=str(OUT), NIGHTINGALE_TARGET_WEIGHT='0')

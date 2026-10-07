@@ -9923,8 +9923,10 @@
 泖	mca
 渵	mcah
 泖	mcai
-昴	mcb
+冒	mcb
+冒	mcbb
 眊	mcbg
+毷	mcbg
 昴	mcbi
 戼	mcbp
 軞	mccg
@@ -9961,10 +9963,8 @@
 帽	mcpb
 髦	mcpg
 瓱	mcpg
-冒	mcr
+瑁	mcr
 瑁	mcrb
-冒	mcrb
-毷	mcrg
 冃	mcrp
 锚	mcs
 锚	mcsh
@@ -10308,6 +10308,7 @@
 矈	mmbl
 矏	mmbl
 矊	mmbp
+冕	mmbs
 麫	mmcb
 葂	mmgi
 黽	mmhh
@@ -10325,8 +10326,6 @@
 丏	mmp
 丏	mmpb
 靣	mmpt
-冕	mmr
-冕	mmrs
 免	mms
 勉	mmsi
 𩾃	mmss
@@ -19206,7 +19205,9 @@ m	otl
 煦	xub
 晇	xubb
 盱	xubc
+冔	xubc
 旴	xubc
+勖	xubi
 朂	xubi
 暊	xubl
 煦	xubp
@@ -19269,9 +19270,7 @@ m	otl
 欻	xupx
 序	xuq
 序	xuqz
-勖	xur
-冔	xurc
-勖	xuri
+顼	xur
 顼	xurj
 珝	xuro
 珬	xurp

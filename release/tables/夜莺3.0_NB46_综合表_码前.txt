@@ -72368,8 +72368,10 @@ mca	泖
 mcah	渵
 mcai	泖
 mcan	茅庵
-mcb	昴
+mcb	冒
+mcbb	冒
 mcbg	眊
+mcbg	毷
 mcbi	毛笔
 mcbi	昴
 mcbk	毛病
@@ -72514,11 +72516,9 @@ mcqm	毛钱
 mcqq	毛球
 mcqr	帽圈
 mcqu	毛渠
-mcr	冒
+mcr	瑁
 mcr	梅菜肉
 mcrb	瑁
-mcrb	冒
-mcrg	毷
 mcrj	贸然
 mcrj	冒然
 mcro	貌若
@@ -74788,6 +74788,7 @@ mmbl	矏
 mmbo	绵薄
 mmbp	矊
 mmbr	麻木不仁
+mmbs	冕
 mmbu	面部
 mmbu	棉布
 mmbw	棉被
@@ -74984,7 +74985,6 @@ mmqr	秘密潜入
 mmqu	免去
 mmqx	面洽
 mmqx	眉目清秀
-mmr	冕
 mmr	蒙面人
 mmr	贸贸然
 mmr	牧马人
@@ -74995,7 +74995,6 @@ mmrh	茫茫人海
 mmrl	漫漫人生路
 mmrr	绵软
 mmrs	面容
-mmrs	冕
 mmrs	棉绒
 mmrx	泯灭人性
 mms	免
@@ -138101,6 +138100,7 @@ xuba	心神不安
 xubb	晇
 xubc	虚报
 xubc	盱
+xubc	冔
 xubc	旴
 xubc	续保
 xubd	心神不定
@@ -138110,6 +138110,7 @@ xubf	信赏必罚
 xubg	学术报告
 xubh	新手保护
 xubi	显示不出
+xubi	勖
 xubi	朂
 xubj	消失不见
 xubj	携手并进
@@ -138411,12 +138412,10 @@ xuqu	序曲
 xuqv	向上取整
 xuqx	携手前行
 xuqz	序
-xur	勖
+xur	顼
 xur	心上人
 xurc	现实如此
-xurc	冔
 xuri	旭日
-xuri	勖
 xurj	惜时如金
 xurj	顼
 xuro	虚弱

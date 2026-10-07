@@ -72368,8 +72368,10 @@ Mbps	mbps
 渵	mcah
 泖	mcai
 茅庵	mcan
-昴	mcb
+冒	mcb
+冒	mcbb
 眊	mcbg
+毷	mcbg
 毛笔	mcbi
 昴	mcbi
 毛病	mcbk
@@ -72514,11 +72516,9 @@ Mbps	mbps
 毛球	mcqq
 帽圈	mcqr
 毛渠	mcqu
-冒	mcr
+瑁	mcr
 梅菜肉	mcr
 瑁	mcrb
-冒	mcrb
-毷	mcrg
 贸然	mcrj
 冒然	mcrj
 貌若	mcro
@@ -74788,6 +74788,7 @@ Mbps	mbps
 绵薄	mmbo
 矊	mmbp
 麻木不仁	mmbr
+冕	mmbs
 面部	mmbu
 棉布	mmbu
 棉被	mmbw
@@ -74984,7 +74985,6 @@ Mbps	mbps
 免去	mmqu
 面洽	mmqx
 眉目清秀	mmqx
-冕	mmr
 蒙面人	mmr
 贸贸然	mmr
 牧马人	mmr
@@ -74995,7 +74995,6 @@ Mbps	mbps
 漫漫人生路	mmrl
 绵软	mmrr
 面容	mmrs
-冕	mmrs
 棉绒	mmrs
 泯灭人性	mmrx
 免	mms
@@ -138101,6 +138100,7 @@ Word	word
 晇	xubb
 虚报	xubc
 盱	xubc
+冔	xubc
 旴	xubc
 续保	xubc
 心神不定	xubd
@@ -138110,6 +138110,7 @@ Word	word
 学术报告	xubg
 新手保护	xubh
 显示不出	xubi
+勖	xubi
 朂	xubi
 消失不见	xubj
 携手并进	xubj
@@ -138411,12 +138412,10 @@ Word	word
 向上取整	xuqv
 携手前行	xuqx
 序	xuqz
-勖	xur
+顼	xur
 心上人	xur
 现实如此	xurc
-冔	xurc
 旭日	xuri
-勖	xuri
 惜时如金	xurj
 顼	xurj
 虚弱	xuro
