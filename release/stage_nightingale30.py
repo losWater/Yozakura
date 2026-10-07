@@ -1,7 +1,7 @@
 """在独立目录搭一个“夜莺仓库”结构，放入 夜莺3.0 维护目录，供夜莺仓库的构建工具（tools/maintenance/build_mac.py --root）使用。
 正式夜莺仓库不动：assets、.cache 用符号链接指向 ~/Nightingale；tools 复制一份并做两处处理：
   1. 标识去掉版本号：yeying25_ → yeying_（方案 id、文件名、Lua 模块、用户词库名；作者 2026-10-07：不要版本标识）。
-  2. 验证脚本里写死的 2.5 测试码换成 3.0：子 zip→zie；尧/翘/悄 改为 yce、ycee、qneo、qnv（戈无点在 E）。
+  2. verify_single 里写死的 2.5 测试码 子 zip→zie（verify_release 已改为从包内码表抽测试码）。
 夜莺3.0/
   主表：单字表（3.0 普通单字表去符号 + 彩蛋码/容错码）、字词表（release/make_ciku.py）、符号表与快符（沿用 2.5）
   配置：编码类型（3.0 的彩蛋码、容错码）、单字版差异与词语读音（空，同 2.5）
@@ -38,11 +38,7 @@ for p in sorted(tools.rglob('*'), key=lambda p: -len(p.parts)):
             t2 = t2.replace(a, b)
         if t2 != t: p.write_text(t2, encoding='utf-8')
     if 'yeying25_' in p.name: p.rename(p.with_name(p.name.replace('yeying25_', 'yeying_')))
-TEST_PATCH = [('rime_mac/verify_single.py', "'zip{space}'", "'zie{space}'"),
-              ('rime_mac/verify_release.py', "    inputs = ['ycv{space}', 'ycvp{space}', 'ycpp{space}', 'qnvo{space}', 'qnp{space}', 'qnpo', 'qnv{space}']",
-               "    inputs = ['yce{space}', 'ycee{space}', 'qneo{space}', 'qnv{space}']"),
-              ('rime_mac/verify_release.py', "    for keys, char in [('ycv{space}','尧'), ('ycvp{space}','尧'), ('ycpp{space}','尧'),\n                       ('qnvo{space}','翘'), ('qnp{space}','翘'), ('qnv{space}','悄')]:",
-               "    for keys, char in [('yce{space}','尧'), ('ycee{space}','尧'), ('qneo{space}','翘'), ('qnv{space}','悄')]:")]
+TEST_PATCH = [('rime_mac/verify_single.py', "'zip{space}'", "'zie{space}'")]   # verify_release 已改为从包内码表抽测试码，不用再改
 for f, a, b in TEST_PATCH:
     t = (tools / f).read_text(encoding='utf-8'); assert a in t, (f, a[:40]); (tools / f).write_text(t.replace(a, b), encoding='utf-8')
 (STAGE / '.cache').mkdir(exist_ok=True)

@@ -1,7 +1,7 @@
 # Source: 夜莺 3.0 候选 NB46 普通单字表（~/Yozakura；二简 ui=事、en=嗯；试用）+ 夜莺 2.5 快符
 ---
 name: yeying_tune
-version: "3.0-nb46-single.16"
+version: "local-202610071038"
 sort: by_weight
 use_preset_vocabulary: false
 columns: [text, code, weight]
@@ -9950,8 +9950,10 @@ $	k	99997
 泖	mca	99999
 渵	mcah	99999
 泖	mcai	99999
-昴	mcb	99999
+冒	mcb	99999
+冒	mcbb	99999
 眊	mcbg	99999
+毷	mcbg	99998
 昴	mcbi	99999
 戼	mcbp	99999
 軞	mccg	99999
@@ -9988,10 +9990,8 @@ $	k	99997
 帽	mcpb	99999
 髦	mcpg	99999
 瓱	mcpg	99998
-冒	mcr	99999
+瑁	mcr	99999
 瑁	mcrb	99999
-冒	mcrb	99998
-毷	mcrg	99999
 冃	mcrp	99999
 锚	mcs	99999
 锚	mcsh	99999
@@ -10335,6 +10335,7 @@ $	k	99997
 矈	mmbl	99999
 矏	mmbl	99998
 矊	mmbp	99999
+冕	mmbs	99999
 麫	mmcb	99999
 葂	mmgi	99999
 黽	mmhh	99999
@@ -10352,8 +10353,6 @@ $	k	99997
 丏	mmp	99999
 丏	mmpb	99999
 靣	mmpt	99999
-冕	mmr	99999
-冕	mmrs	99999
 免	mms	99999
 勉	mmsi	99999
 𩾃	mmss	99999
@@ -19251,8 +19250,10 @@ m	otl	99999
 煦	xub	99999
 晇	xubb	99999
 盱	xubc	99999
-旴	xubc	99998
-朂	xubi	99999
+冔	xubc	99998
+旴	xubc	99997
+勖	xubi	99999
+朂	xubi	99998
 暊	xubl	99999
 煦	xubp	99999
 昫	xubt	99999
@@ -19314,9 +19315,7 @@ m	otl	99999
 欻	xupx	99999
 序	xuq	99999
 序	xuqz	99999
-勖	xur	99999
-冔	xurc	99999
-勖	xuri	99999
+顼	xur	99999
 顼	xurj	99999
 珝	xuro	99999
 珬	xurp	99999
