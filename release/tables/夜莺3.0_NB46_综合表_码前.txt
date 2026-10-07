@@ -27258,7 +27258,7 @@ fuxx	俯下
 fuxy	风湿性关节炎
 fuxy	砆
 fuxy	鈇
-fuy	夫
+fuy	附
 fuy	发生于
 fuy	发烧友
 fuya	府衙
@@ -27292,10 +27292,10 @@ fuyu	富裕
 fuyw	发生意外
 fuyx	风霜雨雪
 fuyx	肺肾阴虚
-fuyy	浮云
 fuyy	夫
 fuyy	阝
 fuyy	邞
+fuyy	浮云
 fuyy	附属医院
 fuyy	封神演义
 fuyz	富有
@@ -51818,7 +51818,7 @@ jhzv	经合组织
 ji	己
 ji	坚持
 ji	经常
-jia	济
+jia	激
 jiaa	濈
 jiad	洎
 jiaf	泲
@@ -51827,8 +51827,8 @@ jiag	瀱
 jiah	激昂
 jiai	极爱
 jiaj	鹡
-jian	积案
 jian	济
+jian	积案
 jiap	済
 jiaq	激
 jias	汲
@@ -90567,7 +90567,7 @@ qlzz	抢走
 qm	前
 qm	前面
 qm	全面
-qma	潜
+qma	浅
 qmab	潜
 qmac	汘
 qmae	浅

@@ -1,7 +1,7 @@
 # Source: 夜莺 3.0 候选 NB46 普通单字表（~/Yozakura；二简 ui=事、en=嗯；试用）+ 夜莺 2.5 快符
 ---
 name: yeying_tune
-version: "local-202610071038"
+version: "local-202610071053"
 sort: by_weight
 use_preset_vocabulary: false
 columns: [text, code, weight]
@@ -3292,7 +3292,7 @@ columns: [text, code, weight]
 鍑	fuxq	99999
 砆	fuxy	99999
 鈇	fuxy	99998
-夫	fuy	99999
+附	fuy	99999
 附	fuyf	99999
 夫	fuyy	99999
 阝	fuyy	99998
@@ -6368,7 +6368,7 @@ columns: [text, code, weight]
 矜	jbz	99999
 矜	jbzq	99999
 己	ji	99999
-济	jia	99999
+激	jia	99999
 濈	jiaa	99999
 洎	jiad	99999
 泲	jiaf	99999
@@ -13179,7 +13179,7 @@ m	otl	99999
 腔	qlz	99999
 腔	qlzm	99999
 前	qm	99999
-潜	qma	99999
+浅	qma	99999
 潜	qmab	99999
 汘	qmac	99999
 浅	qmae	99999

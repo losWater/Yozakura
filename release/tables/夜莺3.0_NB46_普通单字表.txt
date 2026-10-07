@@ -3275,7 +3275,7 @@
 鍑	fuxq
 砆	fuxy
 鈇	fuxy
-夫	fuy
+附	fuy
 附	fuyf
 夫	fuyy
 阝	fuyy
@@ -6345,7 +6345,7 @@
 矜	jbz
 矜	jbzq
 己	ji
-济	jia
+激	jia
 濈	jiaa
 洎	jiad
 泲	jiaf
@@ -13146,7 +13146,7 @@ m	otl
 腔	qlz
 腔	qlzm
 前	qm
-潜	qma
+浅	qma
 潜	qmab
 汘	qmac
 浅	qmae

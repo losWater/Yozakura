@@ -58,10 +58,11 @@ for _n in (1, 2, 3):
         if _l.strip(): LEVEL[_l.strip()] = _n
 import os
 PROTECT = os.environ.get('YZ_PROTECT', 'freq')     # 作者 2026-10-07 定：三码位与长词都用 freq
+PROTECT_MIN = float(os.environ.get('YZ_PROTECT_MIN', '0.1'))   # 读音字频门槛（每百万），低于它的通规字读音才按公式让位
 
 
 def protected(ch, sy):
-    if PROTECT == 'freq': return ch in LEVEL and rf.get((ch, sy), 0) >= 0.1
+    if PROTECT == 'freq': return ch in LEVEL and rf.get((ch, sy), 0) >= PROTECT_MIN
     return LEVEL.get(ch, 9) <= 2
 
 # ---- 字 ----

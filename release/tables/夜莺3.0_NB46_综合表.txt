@@ -27258,7 +27258,7 @@ ez收徒	ezut
 风湿性关节炎	fuxy
 砆	fuxy
 鈇	fuxy
-夫	fuy
+附	fuy
 发生于	fuy
 发烧友	fuy
 府衙	fuya
@@ -27292,10 +27292,10 @@ ez收徒	ezut
 发生意外	fuyw
 风霜雨雪	fuyx
 肺肾阴虚	fuyx
-浮云	fuyy
 夫	fuyy
 阝	fuyy
 邞	fuyy
+浮云	fuyy
 附属医院	fuyy
 封神演义	fuyy
 富有	fuyz
@@ -51818,7 +51818,7 @@ ip正确	ipvq
 己	ji
 坚持	ji
 经常	ji
-济	jia
+激	jia
 濈	jiaa
 洎	jiad
 泲	jiaf
@@ -51827,8 +51827,8 @@ ip正确	ipvq
 激昂	jiah
 极爱	jiai
 鹡	jiaj
-积案	jian
 济	jian
+积案	jian
 済	jiap
 激	jiaq
 汲	jias
@@ -90567,7 +90567,7 @@ py交易	pyjy
 前	qm
 前面	qm
 全面	qm
-潜	qma
+浅	qma
 潜	qmab
 汘	qmac
 浅	qmae
