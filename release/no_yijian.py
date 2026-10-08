@@ -16,7 +16,7 @@ L = getattr(yaml, 'CSafeLoader', yaml.SafeLoader)
 E = yaml.load(open(ROOT / 'build/out/n30/elements.yaml', encoding='utf-8'), Loader=L)
 FR = {(e['词'], e['拼音']): e['频率'] for e in E if e['拼音'] != 'reserved'}
 TOT = sum(FR.values())
-ONE = [(c, p) for c, p, n in json.load(open(ROOT / 'data/inputs/3.0一二简.json', encoding='utf-8'))['fixed'] if n == 1]
+ONE = [(c, p) for c, p, n in json.load(open(ROOT / 'data/inputs/一二简.json', encoding='utf-8'))['fixed'] if n == 1]
 src, outdir = Path(sys.argv[1]), Path(sys.argv[2])
 outdir.mkdir(parents=True, exist_ok=True)
 

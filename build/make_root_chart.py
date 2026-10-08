@@ -30,6 +30,7 @@ def nowrap(name):
 
 def main(layout_path, out, title='夜莺 3.0 · 字根图', clean=False):
     lay = json.load(open(layout_path, encoding='utf-8'))
+    scheme = Path(layout_path).stem.split('_')[0]        # 布局名取自文件名（NB46_layout.json → NB46）
     fam = family_map()
     tpl = open(SRC / '字根图.html', encoding='utf-8-sig').read()
     head = tpl[:tpl.find('<div class="root-page">')]
@@ -67,8 +68,8 @@ def main(layout_path, out, title='夜莺 3.0 · 字根图', clean=False):
                          f'{f" <span class=moved>（2.5 在 {o.upper()}）</span>" if o else ""}</div></div>')
     n_moved = sum(1 for g in G if lay[g] != B[g])
     body = (f'<div class="root-page"><section class="root-intro"><div><h1>{e(title)}</h1>'
-            + (f'<p>NB46 方案 · 根族分组显示 · 共 {len(G)} 组</p></div></section>' if clean else
-               f'<p>NB46 方案 · 根族分组显示 · 共 {len(G)} 组，其中 {n_moved} 组相对 2.5 换键（标“原X”）</p></div></section>')
+            + (f'<p>{scheme} 方案 · 根族分组显示 · 共 {len(G)} 组</p></div></section>' if clean else
+               f'<p>{scheme} 方案 · 根族分组显示 · 共 {len(G)} 组，其中 {n_moved} 组相对 2.5 换键（标“原X”）</p></div></section>')
             + '<div class="root-controls"><label class="root-search"><span>查字根或键位</span><input id="root-search" placeholder="例如：木、赢字架、e"></label>'
             '<div class="root-options"><button id="compact-view" aria-pressed="true">紧凑键盘</button><button id="full-view" aria-pressed="false">展开归并根</button>'
             '<button id="print-roots">打印</button></div></div><div class="root-guide"><p>根族标题在键盘上显示，成员见下方归并字根表。</p>'

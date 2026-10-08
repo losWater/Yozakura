@@ -34,7 +34,7 @@ print(f'改拆分 {len(changed)} 字：{"".join(changed)}')
 # 2. 引擎输入
 known = {r for rs in json.load(open(ROOT / 'build/out/n30/meta.json', encoding='utf-8'))['groups'].values() for r in rs}
 env = dict(os.environ, YZ_SPLITS=str(spath), YZ_EXTRA_ROOTS=json.dumps({} if root in known else {group: [root]}, ensure_ascii=False),   # 已有字根（如 曰）不重复加
-           YZ_FIX=str(ROOT / 'data/inputs/3.0一二简.json'))
+           YZ_FIX=str(ROOT / 'data/inputs/一二简.json'))
 w = (ROOT / 'build/out/n30/weights.json').read_text(encoding='utf-8')
 subprocess.run([PY, str(ROOT / 'build/make_inputs.py'), OUT.name, w], env=env, check=True, stdout=subprocess.DEVNULL)
 
@@ -49,13 +49,13 @@ subprocess.run([str(ROOT / 'engine/target/release/chai'), 'encode', 'run.json', 
                stdout=subprocess.DEVNULL, stderr=open(RUN / 'stderr.log', 'w'), check=True)
 
 # 4. 出表（含手动调整）
-tenv = dict(env, YZ_INP=OUT.name, YZ_MANUAL=str(ROOT / 'data/inputs/3.0手动调整.json'))
+tenv = dict(env, YZ_INP=OUT.name, YZ_MANUAL=str(ROOT / 'data/inputs/手动调整.json'))
 subprocess.run([PY, str(ROOT / 'build/make_plain_table.py'), str(RUN), str(TBL), 'xiaohe'], env=tenv, check=True, stdout=subprocess.DEVNULL)
 new = next(TBL.glob('*.txt'))
 
 # 5. 门禁
 print('== 门禁（试算）'); subprocess.run([PY, str(ROOT / 'release/check_table.py'), str(new), '1'], env=tenv, check=True)
-print('== 门禁（现行）'); subprocess.run([PY, str(ROOT / 'release/check_table.py'), str(ROOT / 'release/tables/夜莺3.0_NB46_普通单字表.txt'), '1'], check=True)
+print('== 门禁（现行）'); subprocess.run([PY, str(ROOT / 'release/check_table.py'), str(ROOT / 'release/tables/普通单字表.txt'), '1'], check=True)
 
 # 6. 对比
 def load(p):
@@ -63,7 +63,7 @@ def load(p):
     for l in open(p, encoding='utf-8'):
         ch, c = l.rstrip('\n').split('\t'); d[ch].append(c)
     return d
-old, nw = load(ROOT / 'release/tables/夜莺3.0_NB46_普通单字表.txt'), load(new)
+old, nw = load(ROOT / 'release/tables/普通单字表.txt'), load(new)
 E = yaml.load(open(ROOT / 'build/out/n30/elements.yaml', encoding='utf-8'), Loader=yaml.CSafeLoader)
 fr = collections.Counter()
 for e in E:
@@ -76,7 +76,7 @@ for c in diff:
     print(f'  {c} {1e6 * fr[c] / tot:7.1f}/百万  {"/".join(o)}  →  {"/".join(n)}')
 
 # 7. 实打
-a, b = real_typing(str(ROOT / 'release/tables/夜莺3.0_NB46_普通单字表.txt'), 'xiaohe'), real_typing(str(new), 'xiaohe')
+a, b = real_typing(str(ROOT / 'release/tables/普通单字表.txt'), 'xiaohe'), real_typing(str(new), 'xiaohe')
 print('\n== 实打（6 套 88 万字）')
 for k in ('字均键数', '键均当量', '四码%', '选重%', '小指干扰%', '同指大跨排%'):
     print(f'  {k}: {a[k]:.4f} → {b[k]:.4f}')

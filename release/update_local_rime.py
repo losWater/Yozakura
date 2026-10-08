@@ -4,7 +4,7 @@
 3. 夜莺整句 yeying_sentence：无一简表 → 整句包 → 反查数据
 4. 正式三方案 yeying_v5 / yeying_shape / yeying_single：搭台 → 夜莺构建工具出包（不跑验证，发布时才验证）
 5. 只复制有变化的文件到 ~/Library/Rime，然后让鼠须管重新部署；~/Downloads 里的单字表、字词表、综合表一并刷新
-上次装进去的单字表存在 ~/.cache/yeying-local/installed_普通单字表.txt（make_dict 要用它区分附加条目）；首次取 git 标签 v3.0 的表。
+上次装进去的单字表存在 ~/.cache/yeying-local/installed_普通单字表.txt（make_dict 要用它区分附加条目）；首次取上一版 git 标签（v<上一版>）的表。
 用法：.venv/bin/python release/update_local_rime.py
 """
 import datetime, filecmp, shutil, subprocess, sys
@@ -14,17 +14,21 @@ PY = str(ROOT / '.venv/bin/python')
 RIME = Path.home() / 'Library/Rime'
 DL = Path.home() / 'Downloads'
 STATE = Path.home() / '.cache/yeying-local'
-STAGE = Path.home() / '.cache/yeying30-build'
+sys.path.insert(0, str(ROOT / 'release'))
+from config import C
+STAGE = C.STAGE
 TABLES = ROOT / 'release/tables'
-PLAIN = TABLES / '夜莺3.0_NB46_普通单字表.txt'
+PLAIN = TABLES / '普通单字表.txt'
 SENT_PKG = DL / '虎整句-Rime-20261001-D89-r3-四档纠错瓢虫版'
-NOYJ = DL / '夜莺3.0_NB46_无一简试验版_普通单字表.txt'
+NOYJ = DL / f'{C.NAME}_{C.LAYOUT}_无一简试验版_普通单字表.txt'
 run = lambda *a, **k: subprocess.run([str(x) for x in a], check=True, **k)
 quiet = dict(stdout=subprocess.DEVNULL)
 STATE.mkdir(parents=True, exist_ok=True)
 installed = STATE / 'installed_普通单字表.txt'
 if not installed.exists():
-    installed.write_bytes(subprocess.run(['git', '-C', str(ROOT), 'show', f'v3.0:{PLAIN.relative_to(ROOT)}'], check=True, capture_output=True).stdout)
+    for path in (PLAIN.relative_to(ROOT), 'release/tables/夜莺3.0_NB46_普通单字表.txt'):   # 3.0 标签里的表还是旧文件名
+        r = subprocess.run(['git', '-C', str(ROOT), 'show', f'v{C.PREV}:{path}'], capture_output=True)
+        if r.returncode == 0: installed.write_bytes(r.stdout); break
 
 print('1/5 字词表'); run(PY, ROOT / 'release/make_ciku.py', **quiet)
 print('2/5 调频方案')
@@ -37,7 +41,7 @@ shutil.copy(tmp / 'noyj/C升二简且抢三码_普通单字表.txt', NOYJ)
 run(PY, ROOT / 'rime/sentence/build_sentence.py', SENT_PKG, NOYJ, tmp / 'sentence', **quiet)
 run(PY, ROOT / 'rime/make_lookup.py', tmp / 'sentence/yeying_sentence.codes.txt', ROOT / 'rime/Rime/lua/yeying_sentence_lookup_data.lua', '0', **quiet)
 print('4/5 正式三方案（构建，不验证）')
-run(PY, ROOT / 'release/stage_nightingale30.py', **quiet)
+run(PY, ROOT / 'release/stage_rime.py', **quiet)
 run(PY, STAGE / 'tools/maintenance/build_mac.py', '--root', STAGE, stdout=open(STAGE / 'build.log', 'w'), stderr=subprocess.STDOUT)
 print('5/5 安装')
 SKIP = ('.md', '.example')
@@ -57,13 +61,13 @@ def install(src_dir, names=None):
 
 
 for d in ('release-dual', 'release-single'):
-    install(STAGE / '夜莺3.0/产物/mac' / d)
+    install(C.MAC_OUT / d)
 install(ROOT / 'rime/Rime', {'yeying_tune.dict.yaml', 'lua/yeying_tune_lookup_data.lua', 'lua/yeying_sentence_lookup_data.lua'})
 install(tmp / 'sentence')
 shutil.copy(PLAIN, installed)
 for name in ('普通单字表', '字词表', '综合表', '综合表_码前'):
-    shutil.copy(TABLES / f'夜莺3.0_NB46_{name}.txt', DL / f'夜莺3.0_NB46_{name}.txt')
-(DL / '夜莺3.0_NB46_普通单字表_码前.txt').write_text(
+    shutil.copy(TABLES / f'{name}.txt', DL / f'{C.NAME}_{C.LAYOUT}_{name}.txt')
+(DL / f'{C.NAME}_{C.LAYOUT}_普通单字表_码前.txt').write_text(
     ''.join(f'{c}\t{t}\n' for t, c in (l.rstrip('\n').split('\t')[:2] for l in open(PLAIN, encoding='utf-8-sig') if '\t' in l)), encoding='utf-8')
 print('更新文件：', ' '.join(changed) or '无')
 if changed:

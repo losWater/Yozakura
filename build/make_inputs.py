@@ -64,7 +64,7 @@ assert all(layout.values()), [g for g, k in layout.items() if not k]
 E54 = yaml.safe_load(open(F54 / 'elements.yaml', encoding='utf-8'))
 basis = {(r['字'], r['拼音']): r for r in load(ROOT / 'data/inputs/夜桜字音基准.json')}
 fixed_short = {(e['词'], e['拼音']): e['简码长度'] for e in E54 if e.get('简码长度')}
-FIX_PATH = ROOT / os.environ.get('YZ_FIX', 'data/inputs/2.5一二简固定.json')   # 3.0 起用 data/inputs/3.0一二简.json
+FIX_PATH = ROOT / os.environ.get('YZ_FIX', 'data/inputs/2.5一二简固定.json')   # 3.0 起用 data/inputs/一二简.json
 USE_FIX25 = '"fix25": true' in (sys.argv[2] if len(sys.argv) > 2 else '')
 if USE_FIX25:   # 作者 2026-09-30：固定夜莺2.5 全部一简、二简（码为本字音节前缀者）
     fixed_short = {(c, py): n for c, py, n in load(FIX_PATH)['fixed']}

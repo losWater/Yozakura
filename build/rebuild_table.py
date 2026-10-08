@@ -1,7 +1,7 @@
 """正式单字表重建：改了拆分（data/baseline/splits.json）、根组或手动调整之后跑这一条。
-1. 重建引擎输入 build/out/n30（一二简固定取 data/inputs/3.0一二简.json）
+1. 重建引擎输入 build/out/n30（一二简固定取 data/inputs/一二简.json）
 2. NB46 布局重跑引擎，结果固定放在 runs/n30_v30/current（不再每次另起目录）
-3. 出普通单字表（含手动二简/三简 data/inputs/3.0手动调整.json）→ release/tables/夜莺3.0_NB46_普通单字表.txt
+3. 出普通单字表（含手动二简/三简 data/inputs/手动调整.json）→ release/tables/普通单字表.txt
 4. 门禁（只作参考）＋ 与上一版表的码变化清单
 用法：.venv/bin/python build/rebuild_table.py [--check 试算表]   # --check：核对新表与试算结果逐字节一致
 """
@@ -12,9 +12,9 @@ PY = str(ROOT / '.venv/bin/python')
 INP = ROOT / 'build/out/n30'
 RUN = ROOT / 'runs/n30_v30/current'
 FORM = ROOT / 'release/NB46_form.json'                     # NB46 的引擎 form（布局），与具体哪次运行无关
-TABLE = ROOT / 'release/tables/夜莺3.0_NB46_普通单字表.txt'
-FIX = ROOT / 'data/inputs/3.0一二简.json'
-MANUAL = ROOT / 'data/inputs/3.0手动调整.json'
+TABLE = ROOT / 'release/tables/普通单字表.txt'
+FIX = ROOT / 'data/inputs/一二简.json'
+MANUAL = ROOT / 'data/inputs/手动调整.json'
 
 if not FORM.exists():                                       # 首次：从现有运行取出 form 存档
     json.dump(json.load(open(ROOT / 'runs/n30_v30/nb46_fu/run.json', encoding='utf-8'))['form'], open(FORM, 'w', encoding='utf-8'), ensure_ascii=False)

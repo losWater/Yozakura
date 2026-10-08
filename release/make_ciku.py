@@ -1,5 +1,5 @@
 """夜莺 3.0 字词表与综合表（第一版草稿）。
-- 词：2.5 字词表的全部多字词条，词与词的顺序原样保留（词码只看双拼，与字根无关）；作者指定的调换见 data/inputs/3.0词序调整.json。
+- 词：2.5 字词表的全部多字词条，词与词的顺序原样保留（词码只看双拼，与字根无关）；作者指定的调换见 data/inputs/词序调整.json。
 - 字：3.0 普通单字表（去掉符号表条目），字与字按 3.0 顺序。
 - 特殊码：保留 莺 by、鹤 eh（自定义码），剧 jv、绪 xv（ü 容错）；ü 三码容错（予居欲狙羽郁巨，这些字没有三简）按 3.0 全码重新推导：ü 写 v + 全码第三码；
   依赖 2.5 字根的容错与 六 lqq 去掉。
@@ -32,7 +32,7 @@ def rd(p):
 
 W25 = rd(N25 / '主表/字词表.txt')
 SYM = rd(N25 / '主表/符号表.txt'); SYMSET = set(SYM)
-D30 = [r for r in rd(ROOT / 'release/tables/夜莺3.0_NB46_普通单字表.txt') if r not in SYMSET]
+D30 = [r for r in rd(ROOT / 'release/tables/普通单字表.txt') if r not in SYMSET]
 
 # ---- 频率 ----
 E = yaml.load(open(ROOT / 'build/out/n30/elements.yaml', encoding='utf-8'), Loader=yaml.CSafeLoader)
@@ -49,7 +49,7 @@ for l in open(ROOT / 'data/inputs/tigress_ci.dict.yaml', encoding='utf-8'):
         wt[p[0]] = max(wt.get(p[0], 0), int(p[1]))
 wtot = sum(wt.values())
 wfreq = lambda w: wt[w] / wtot * 1e6 if w in wt else None
-ONE = {(c, encode(p, 'xiaohe')) for c, p, n in json.load(open(ROOT / 'data/inputs/3.0一二简.json', encoding='utf-8'))['fixed'] if n == 1}
+ONE = {(c, encode(p, 'xiaohe')) for c, p, n in json.load(open(ROOT / 'data/inputs/一二简.json', encoding='utf-8'))['fixed'] if n == 1}
 
 # “不让位的字”口径（环境变量 YZ_PROTECT）：level12 = 通规一、二级字（默认）；freq = 通规 8105 中字频 ≥ 0.1/百万的读音
 LEVEL = {}
@@ -90,12 +90,12 @@ for t in '予居欲狙羽郁巨':
 words = collections.defaultdict(list)
 for t, c in W25:
     if len(t) > 1: words[c].append(t)
-for c, w, before in json.load(open(ROOT / 'data/inputs/3.0词序调整.json', encoding='utf-8'))['提前']:   # 作者指定的词序调整
+for c, w, before in json.load(open(ROOT / 'data/inputs/词序调整.json', encoding='utf-8'))['提前']:   # 作者指定的词序调整
     ws = words[c]; assert w in ws and before in ws, (c, w, before)
     ws.remove(w); ws.insert(ws.index(before), w)
 
 
-KEEP = {(ch, c) for c, ch, _ in json.load(open(ROOT / 'data/inputs/3.0词序调整.json', encoding='utf-8')).get('字不让', [])}   # 作者逐个指定不让位的字
+KEEP = {(ch, c) for c, ch, _ in json.load(open(ROOT / 'data/inputs/词序调整.json', encoding='utf-8')).get('字不让', [])}   # 作者逐个指定不让位的字
 
 # ü 容错词（作者 2026-10-08）：虎码词频前 TOL_TOP 的二字词，第一字 ju/qu/xu 可写 jv/qv/xv，第二字只有 ju 可写 jv；
 # 新码上排在原有长词前面（长词让），与单字的冲突按二字词的让位规则（字有简码或词频超过字频 16 倍才让）。
@@ -151,7 +151,7 @@ for code in sorted(set(chars) | set(words)):
     table += [(t, code) for t in order]
 
 OUT.mkdir(parents=True, exist_ok=True)
-(OUT / '夜莺3.0_NB46_字词表.txt').write_text(''.join(f'{t}\t{c}\n' for t, c in table), encoding='utf-8')
+(OUT / '字词表.txt').write_text(''.join(f'{t}\t{c}\n' for t, c in table), encoding='utf-8')
 
 # 综合表：字词表 + 符号 + 快符
 groups = collections.defaultdict(list)
@@ -163,8 +163,8 @@ for line in (N25 / '主表/快符.txt').read_text(encoding='utf-8-sig').splitlin
     assert 1 <= pos <= len(groups[code]) + 1, ('快符候选位超出范围', line)
     groups[code].insert(pos - 1, text)
 combined = [(t, c) for c in sorted(groups) for t in groups[c] if not t.startswith('$ddcmd(')]
-(OUT / '夜莺3.0_NB46_综合表.txt').write_text(''.join(f'{t}\t{c}\n' for t, c in combined), encoding='utf-8')
-(OUT / '夜莺3.0_NB46_综合表_码前.txt').write_text(''.join(f'{c}\t{t}\n' for t, c in combined), encoding='utf-8')
+(OUT / '综合表.txt').write_text(''.join(f'{t}\t{c}\n' for t, c in combined), encoding='utf-8')
+(OUT / '综合表_码前.txt').write_text(''.join(f'{c}\t{t}\n' for t, c in combined), encoding='utf-8')
 
 # ---- 报告 ----
 n_words = sum(len(v) for v in words.values()); n_out_words = sum(1 for t, c in table if len(t) > 1)
@@ -174,4 +174,4 @@ print('特殊码', special, '；未能推导的 ü 容错', ''.join(skipped), '�
 print('短码位简词超上限', len(overflow), '；全码位字词同码按规则判定', len(log), '处，其中词占首选', sum(1 for x in log if len(x[4]) > 1))
 json.dump({'特殊码': special, 'ü容错未推导': skipped, 'ü容错词': {v: ts for v, ts in sorted(tol_words.items())}, '超上限': overflow,
            '全码位判定': [(c, C, w, [list(d) for d in dec], first) for c, C, w, dec, first in log]},
-          open(OUT / '夜莺3.0_NB46_字词表_说明.json', 'w', encoding='utf-8'), ensure_ascii=False, indent=1)
+          open(OUT / '字词表_说明.json', 'w', encoding='utf-8'), ensure_ascii=False, indent=1)

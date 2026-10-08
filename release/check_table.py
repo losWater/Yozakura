@@ -14,7 +14,7 @@ N = sum(1 for e in E if e['拼音'] != 'reserved')
 g_of = {r: g for g, rs in META['groups'].items() for r in rs}
 sp = json.load(open(os.environ.get('YZ_SPLITS') or ROOT / 'data/baseline/splits.json', encoding='utf-8'))
 T1, T3 = set(META['tier_indices']['1500']), set(META['tier_indices']['3500'])
-ONE = {(c, p) for c, p, n in json.load(open(ROOT / 'data/inputs/3.0一二简.json', encoding='utf-8'))['fixed'] if n == 1}
+ONE = {(c, p) for c, p, n in json.load(open(ROOT / 'data/inputs/一二简.json', encoding='utf-8'))['fixed'] if n == 1}
 path = sys.argv[1]; use_one = (sys.argv[2] if len(sys.argv) > 2 else '1') == '1'
 wr = {}
 for r, (w, c) in enumerate(top_words('xiaohe', 30000), 1): wr.setdefault(c, []).append((r, w))
