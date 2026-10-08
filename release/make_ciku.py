@@ -58,6 +58,7 @@ for _n in (1, 2, 3):
         if _l.strip(): LEVEL[_l.strip()] = _n
 import os
 PROTECT = os.environ.get('YZ_PROTECT', 'freq')     # 作者 2026-10-07 定：三码位与长词都用 freq
+SHORT_RATIO = float(os.environ.get('YZ_SHORT_RATIO', '1000'))   # 三码位：词频超过字频这么多倍才让词在前（作者 2026-10-08 定 1000）
 PROTECT_MIN = float(os.environ.get('YZ_PROTECT_MIN', '0.1'))   # 读音字频门槛（每百万），低于它的通规字读音才按公式让位
 
 
@@ -107,6 +108,9 @@ def can_yield(ch, code, w):
     if (ch, code) in TOLERANCE: return True, '容错码'
     if (ch, code) in CUSTOM: return False, '自定义码（彩蛋）'
     if (ch, code) in KEEP: return False, '作者指定不让'
+    if len(code) == 3:                                  # 作者 2026-10-08：三码位只在词频超过字频 SHORT_RATIO 倍时让给简词（生僻字占的空三简）
+        r = (wfreq(w) or WORD_DEFAULT) / max(rf.get((ch, sy), 0), 0.01)   # 字频下限 0.01/百万（与作者看的统计同口径）
+        if r > SHORT_RATIO: return True, f'三码位{r:.0f}倍'
     if len(code) <= 3: return False, '简码不让'          # 作者 2026-10-07：字重要，一二三简都是给字的，简词是送的
     if (len(code) < 4 or len(w) > 2) and protected(ch, sy): return False, '常用字不让'
     cf = rf.get((ch, sy), 0); wf = wfreq(w)

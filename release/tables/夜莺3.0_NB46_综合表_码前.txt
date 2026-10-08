@@ -1808,8 +1808,8 @@ bbgt	不必管他
 bbgu	步步高升
 bbgu	髌骨
 bbgx	版本更新
-bbh	豳
 bbh	并不会
+bbh	豳
 bbh	不包含
 bbhd	滨海
 bbhh	百般呵护
@@ -4760,8 +4760,8 @@ bjan	办案
 bjan	湴
 bjap	辬
 bjay	保洁阿姨
-bjb	昄
 bjb	笔记本
+bjb	昄
 bjb	不仅不
 bjbc	半饱
 bjbc	板报
@@ -6673,8 +6673,8 @@ bnfr	不能否认
 bnfw	膘肥
 bnfx	不难发现
 bnfy	本能反应
-bng	藨
 bng	不能够
+bng	藨
 bng	并能够
 bngc	标高
 bngd	百年孤独
@@ -15571,8 +15571,8 @@ dgqm	灯前
 dgqp	打感情牌
 dgqx	多管齐下
 dgqy	邓
-dgr	璒
 dgr	打工人
+dgr	璒
 dgr	德国人
 dgrf	等人
 dgrm	夺冠热门
@@ -30428,8 +30428,8 @@ ggww	更为
 ggwx	椩
 ggwy	亘古未有
 ggwz	广告位招租
-ggx	𬒔
 ggx	高跟鞋
+ggx	𬒔
 ggx	广告学
 ggxb	更新
 ggxb	刚刚下班
@@ -35663,8 +35663,8 @@ gzkm	工作狂魔
 gzkr	够宽
 gzkt	佝
 gzku	够酷
-gzl	耇
 gzl	骨子里
+gzl	耇
 gzl	工作量
 gzl	瓜子脸
 gzla	够啦
@@ -41453,8 +41453,8 @@ hutx	函数图象
 hutz	虎头
 hutz	画蛇添足
 hutz	户头
-huu	嫭
 huu	活生生
+huu	嫭
 huu	护手霜
 huub	浑身是宝
 huub	嫮
@@ -43368,8 +43368,8 @@ hyuw	海洋生物
 hyux	慧眼识英雄
 hyuy	欢迎使用
 hyuz	怀孕生子
-hyv	惛
 hyv	后遗症
+hyv	惛
 hyv	换言之
 hyvb	虎牙直播
 hyvb	惛
@@ -43632,8 +43632,8 @@ hzlu	后路
 hzlu	厚禄
 hzly	后轮
 hzly	猴子捞月
-hzm	堠
 hzm	孩子们
+hzm	堠
 hzma	后妈
 hzmc	猴毛
 hzmd	后买
@@ -50142,8 +50142,8 @@ izwt	种族问题
 izwt	椆
 izww	臭味
 izww	成则为王
-izx	侴
 izx	创造性
+izx	侴
 izxg	侴
 izxi	抽吸
 izxk	丑行
@@ -56910,8 +56910,8 @@ jst	计算题
 jstd	窘态
 jstd	囧态
 jstu	囧途
-jsu	颎
 jsu	就算是
+jsu	颎
 jsu	江苏省
 jsuf	囧神
 jsui	囧事
@@ -57752,8 +57752,8 @@ julx	军事路线
 july	巨轮
 july	近水楼台先得月
 july	计深虑远
-jum	弆
 jum	叫什么
+jum	弆
 jum	见世面
 juma	局麻
 jumb	居民
@@ -63865,8 +63865,8 @@ kys	科研所
 kysi	困死
 kysu	锟
 kysu	鲲
-kyu	婫
 kyu	可以说
+kyu	婫
 kyu	可以是
 kyuj	昆山
 kyuj	课余时间
@@ -64351,8 +64351,8 @@ lbat	瀶
 lbaw	淋
 lbaw	了吧？
 lbawe	了吧？”
-lbb	瞵
 lbb	冷冰冰
+lbb	瞵
 lbb	老伯伯
 lbba	淋巴
 lbba	萝卜白菜各有所爱
@@ -68340,8 +68340,8 @@ lnqi	聊起
 lnqn	料峭
 lnqp	聊且
 lnqt	了却
-lnr	髎
 lnr	老年人
+lnr	髎
 lnrc	缭绕
 lnre	撩惹
 lnrf	撩人
@@ -73221,8 +73221,8 @@ mggy	蒙古高原
 mggy	鄸
 mggz	萌
 mggz	蒙垢
-mgh	㠓
 mgh	玫瑰花
+mgh	㠓
 mgh	没搞好
 mghe	猛喝
 mghe	甿
@@ -73414,8 +73414,8 @@ mgwt	某个问题
 mgwt	敏感问题
 mgwu	萌物
 mgwz	橗
-mgx	礞
 mgx	没关系
+mgx	礞
 mgx	免贵姓
 mgxb	萌新
 mgxd	没关系的
@@ -78103,8 +78103,8 @@ nafg	那封
 nafi	乸
 nafj	那番
 nafu	纳福
-nag	𦰡
 nag	哪个
+nag	𦰡
 nage	那个
 nage	哪个
 nagj	哪敢
@@ -79787,8 +79787,8 @@ njts	男同
 njts	南通
 njtu	喃
 njtz	南头
-nju	婻
 nju	那就是
+nju	婻
 nju	南京市
 nju	那件事
 njua	南沙
@@ -80846,8 +80846,8 @@ npx	牛皮癣
 npxb	内皮细胞
 npxu	嗫嚅
 npxu	孽畜
-npy	陧
 npy	女朋友
+npy	陧
 npy	男朋友
 npym	陧
 npyr	孽缘
@@ -93965,8 +93965,8 @@ qyif	群臣
 qyif	秋月春风
 qyih	秋月春花
 qyir	取义成仁
-qyj	囷
 qyj	企业家
+qyj	囷
 qyj	却已经
 qyjc	犬牙交错
 qyjd	亲眼见到
@@ -103036,8 +103036,8 @@ thkt	傏
 thku	塘库
 thkx	偒
 thkz	堂口
-thl	耥
 thl	太好了
+thl	耥
 thl	太坏了
 thla	烫蜡
 thle	躺了
@@ -117393,8 +117393,8 @@ vakf	偧
 vakj	乍看
 vakk	乍
 vakz	闸口
-val	霅
 val	张爱玲
+val	霅
 valc	扎牢
 vale	炸了
 valf	霅
@@ -118281,8 +118281,8 @@ vdot	摘
 vdpd	摘牌
 vdpu	中等偏上
 vdpx	中等偏下
-vdq	瘵
 vdq	主动权
+vdq	瘵
 vdq	主导权
 vdq	赚大钱
 vdqd	值得期待
@@ -118744,8 +118744,8 @@ vfai	珍爱
 vfaj	浈
 vfap	政府安排
 vfaq	这份爱情
-vfb	昣
 vfb	支付宝
+vfb	昣
 vfbb	政府颁布
 vfbc	珍宝
 vfbe	弫
@@ -120583,8 +120583,8 @@ viqu	智取
 viqu	支取
 viqv	痣
 viqx	正常情况下
-vir	氏
 vir	主持人
+vir	氏
 vir	正常人
 vire	炙热
 vire	制热
@@ -124951,8 +124951,8 @@ vyiw	中央常委
 vyix	卓有成效
 vyiy	正月初一
 vyiy	主要成员
-vyj	窀
 vyj	转眼间
+vyj	窀
 vyj	眨眼间
 vyjb	窀
 vyjd	状元及第
@@ -124978,8 +124978,8 @@ vyjw	中央纪委
 vyjx	准假
 vyjx	注意脚下
 vyjy	重要经验
-vyk	衠
 vyk	这一刻
+vyk	衠
 vyk	乍一看
 vykc	准考
 vykh	这样可好
@@ -136618,8 +136618,8 @@ xpsp	些
 xpsq	躞
 xpsu	歇宿
 xpsv	邪祟
-xpt	叶
 xpt	须菩提
+xpt	叶
 xpt	橡皮艇
 xpta	斜塔
 xptc	鞋套
@@ -137211,8 +137211,8 @@ xrju	选举
 xrju	欣然接受
 xrjw	陷入绝望
 xrjx	悬架
-xrk	儇
 xrk	向日葵
+xrk	儇
 xrke	选课
 xrkg	形容枯槁
 xrkh	陷入困惑
@@ -137407,8 +137407,8 @@ xrwu	行若无事
 xrwv	先入为主
 xrww	选为
 xrww	宣威
-xrx	碹
 xrx	虚荣心
+xrx	碹
 xrx	吸入性
 xrxb	悬心
 xrxk	选型
@@ -141010,8 +141010,8 @@ ybux	印刷
 ybux	也不是不行
 ybuy	姻
 ybuz	印绶
-ybv	愔
 ybv	用不着
+ybv	愔
 ybv	一巴掌
 ybvb	以暴制暴
 ybvb	永不止步
@@ -141200,8 +141200,8 @@ ycbu	要不
 ycbu	腰部
 ycbv	暚
 ycbw	腰背
-ycc	轺
 ycc	一次次
+ycc	轺
 ycc	一层层
 yccc	药草
 yccd	药材

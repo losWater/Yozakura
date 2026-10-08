@@ -1805,8 +1805,8 @@ www.baidu.com	baidu
 步步高升	bbgu
 髌骨	bbgu
 版本更新	bbgx
-豳	bbh
 并不会	bbh
+豳	bbh
 不包含	bbh
 滨海	bbhd
 百般呵护	bbhh
@@ -4757,8 +4757,8 @@ B佬	bilc
 湴	bjan
 辬	bjap
 保洁阿姨	bjay
-昄	bjb
 笔记本	bjb
+昄	bjb
 不仅不	bjb
 半饱	bjbc
 板报	bjbc
@@ -6670,8 +6670,8 @@ B佬	bilc
 膘肥	bnfw
 不难发现	bnfx
 本能反应	bnfy
-藨	bng
 不能够	bng
+藨	bng
 并能够	bng
 标高	bngc
 百年孤独	bngd
@@ -15565,8 +15565,8 @@ DDoS	ddos
 打感情牌	dgqp
 多管齐下	dgqx
 邓	dgqy
-璒	dgr
 打工人	dgr
+璒	dgr
 德国人	dgr
 等人	dgrf
 夺冠热门	dgrm
@@ -30417,8 +30417,8 @@ ez收徒	ezut
 椩	ggwx
 亘古未有	ggwy
 广告位招租	ggwz
-𬒔	ggx
 高跟鞋	ggx
+𬒔	ggx
 广告学	ggx
 更新	ggxb
 刚刚下班	ggxb
@@ -35652,8 +35652,8 @@ Google	goog
 够宽	gzkr
 佝	gzkt
 够酷	gzku
-耇	gzl
 骨子里	gzl
+耇	gzl
 工作量	gzl
 瓜子脸	gzl
 够啦	gzla
@@ -41441,8 +41441,8 @@ https://	http
 虎头	hutz
 画蛇添足	hutz
 户头	hutz
-嫭	huu
 活生生	huu
+嫭	huu
 护手霜	huu
 浑身是宝	huub
 嫮	huub
@@ -43356,8 +43356,8 @@ https://	http
 慧眼识英雄	hyux
 欢迎使用	hyuy
 怀孕生子	hyuz
-惛	hyv
 后遗症	hyv
+惛	hyv
 换言之	hyv
 虎牙直播	hyvb
 惛	hyvb
@@ -43620,8 +43620,8 @@ https://	http
 厚禄	hzlu
 后轮	hzly
 猴子捞月	hzly
-堠	hzm
 孩子们	hzm
+堠	hzm
 后妈	hzma
 猴毛	hzmc
 后买	hzmd
@@ -50128,8 +50128,8 @@ ip正确	ipvq
 椆	izwt
 臭味	izww
 成则为王	izww
-侴	izx
 创造性	izx
+侴	izx
 侴	izxg
 抽吸	izxi
 丑行	izxk
@@ -56895,8 +56895,8 @@ https://www.jsxiaoshi.com/	jisu
 窘态	jstd
 囧态	jstd
 囧途	jstu
-颎	jsu
 就算是	jsu
+颎	jsu
 江苏省	jsu
 囧神	jsuf
 囧事	jsui
@@ -57737,8 +57737,8 @@ https://www.jsxiaoshi.com/	jisu
 巨轮	july
 近水楼台先得月	july
 计深虑远	july
-弆	jum
 叫什么	jum
+弆	jum
 见世面	jum
 局麻	juma
 居民	jumb
@@ -63849,8 +63849,8 @@ $ddcmd(　　　静夜思·李白\r\r床前明月光，疑是地上霜。\r举�
 困死	kysi
 锟	kysu
 鲲	kysu
-婫	kyu
 可以说	kyu
+婫	kyu
 可以是	kyu
 昆山	kyuj
 课余时间	kyuj
@@ -64334,8 +64334,8 @@ $ddcmd(　　　静夜思·李白\r\r床前明月光，疑是地上霜。\r举�
 淋	lbaw
 了吧？	lbaw
 了吧？”	lbawe
-瞵	lbb
 冷冰冰	lbb
+瞵	lbb
 老伯伯	lbb
 淋巴	lbba
 萝卜白菜各有所爱	lbba
@@ -68323,8 +68323,8 @@ $ddcmd(　　　静夜思·李白\r\r床前明月光，疑是地上霜。\r举�
 料峭	lnqn
 聊且	lnqp
 了却	lnqt
-髎	lnr
 老年人	lnr
+髎	lnr
 缭绕	lnrc
 撩惹	lnre
 撩人	lnrf
@@ -73203,8 +73203,8 @@ Mbps	mbps
 鄸	mggy
 萌	mggz
 蒙垢	mggz
-㠓	mgh
 玫瑰花	mgh
+㠓	mgh
 没搞好	mgh
 猛喝	mghe
 甿	mghe
@@ -73396,8 +73396,8 @@ Mbps	mbps
 敏感问题	mgwt
 萌物	mgwu
 橗	mgwz
-礞	mgx
 没关系	mgx
+礞	mgx
 免贵姓	mgx
 萌新	mgxb
 没关系的	mgxd
@@ -78084,8 +78084,8 @@ https://typer.owenyang.top/	mxyi
 乸	nafi
 那番	nafj
 纳福	nafu
-𦰡	nag
 哪个	nag
+𦰡	nag
 那个	nage
 哪个	nage
 哪敢	nagj
@@ -79768,8 +79768,8 @@ https://typer.owenyang.top/	mxyi
 南通	njts
 喃	njtu
 南头	njtz
-婻	nju
 那就是	nju
+婻	nju
 南京市	nju
 那件事	nju
 南沙	njua
@@ -80826,8 +80826,8 @@ https://typer.owenyang.top/	mxyi
 内皮细胞	npxb
 嗫嚅	npxu
 孽畜	npxu
-陧	npy
 女朋友	npy
+陧	npy
 男朋友	npy
 陧	npym
 孽缘	npyr
@@ -93097,8 +93097,8 @@ QQ音乐	qqyy
 秋月春风	qyif
 秋月春花	qyih
 取义成仁	qyir
-囷	qyj
 企业家	qyj
+囷	qyj
 却已经	qyj
 犬牙交错	qyjc
 亲眼见到	qyjd
@@ -102164,8 +102164,8 @@ san值狂掉	svkd
 塘库	thku
 偒	thkx
 堂口	thkz
-耥	thl
 太好了	thl
+耥	thl
 太坏了	thl
 烫蜡	thla
 躺了	thle
@@ -116518,8 +116518,8 @@ https://api.ihint.me/shuang/	ulpb
 乍看	vakj
 乍	vakk
 闸口	vakz
-霅	val
 张爱玲	val
+霅	val
 扎牢	valc
 炸了	vale
 霅	valf
@@ -117406,8 +117406,8 @@ https://api.ihint.me/shuang/	ulpb
 摘牌	vdpd
 中等偏上	vdpu
 中等偏下	vdpx
-瘵	vdq
 主动权	vdq
+瘵	vdq
 主导权	vdq
 赚大钱	vdq
 值得期待	vdqd
@@ -117869,8 +117869,8 @@ https://api.ihint.me/shuang/	ulpb
 浈	vfaj
 政府安排	vfap
 这份爱情	vfaq
-昣	vfb
 支付宝	vfb
+昣	vfb
 政府颁布	vfbb
 珍宝	vfbc
 弫	vfbe
@@ -119708,8 +119708,8 @@ https://api.ihint.me/shuang/	ulpb
 支取	viqu
 痣	viqv
 正常情况下	viqx
-氏	vir
 主持人	vir
+氏	vir
 正常人	vir
 炙热	vire
 制热	vire
@@ -124076,8 +124076,8 @@ https://api.ihint.me/shuang/	ulpb
 卓有成效	vyix
 正月初一	vyiy
 主要成员	vyiy
-窀	vyj
 转眼间	vyj
+窀	vyj
 眨眼间	vyj
 窀	vyjb
 状元及第	vyjd
@@ -124103,8 +124103,8 @@ https://api.ihint.me/shuang/	ulpb
 准假	vyjx
 注意脚下	vyjx
 重要经验	vyjy
-衠	vyk
 这一刻	vyk
+衠	vyk
 乍一看	vyk
 准考	vykc
 这样可好	vykh
@@ -135739,8 +135739,8 @@ Word	word
 躞	xpsq
 歇宿	xpsu
 邪祟	xpsv
-叶	xpt
 须菩提	xpt
+叶	xpt
 橡皮艇	xpt
 斜塔	xpta
 鞋套	xptc
@@ -136332,8 +136332,8 @@ Word	word
 欣然接受	xrju
 陷入绝望	xrjw
 悬架	xrjx
-儇	xrk
 向日葵	xrk
+儇	xrk
 选课	xrke
 形容枯槁	xrkg
 陷入困惑	xrkh
@@ -136528,8 +136528,8 @@ Word	word
 先入为主	xrwv
 选为	xrww
 宣威	xrww
-碹	xrx
 虚荣心	xrx
+碹	xrx
 吸入性	xrx
 悬心	xrxb
 选型	xrxk
@@ -140130,8 +140130,8 @@ magnet:?xt=urn:btih:	xylw
 也不是不行	ybux
 姻	ybuy
 印绶	ybuz
-愔	ybv
 用不着	ybv
+愔	ybv
 一巴掌	ybv
 以暴制暴	ybvb
 永不止步	ybvb
@@ -140320,8 +140320,8 @@ magnet:?xt=urn:btih:	xylw
 腰部	ycbu
 暚	ycbv
 腰背	ycbw
-轺	ycc
 一次次	ycc
+轺	ycc
 一层层	ycc
 药草	yccc
 药材	yccd
