@@ -98,6 +98,9 @@ for l in open(N25 / '产物/综合字词表.txt', encoding='utf-8-sig'):
 # 2026-10-02：3.0 起嗯补了 en 读音并列为正式二简，此时不再留给词
 if ('嗯', 'en') not in fixed_short:
     _word2.setdefault('en', '嗯')
+if SCHEME != 'xiaohe':   # 词的二码是声母缩写，与双拼无关；只需让出本方案下单字二简的码
+    for _c in {encode(py, SCHEME) for (c, py), n in fixed_short.items() if n == 2}:
+        _word2.pop(_c, None)
 _have = {''.join(x['element'][2:] for x in e['元素序列']) for e in reserved}
 for code, word in sorted(_word2.items()):
     if code not in _have:
@@ -147,7 +150,10 @@ for k in KEYS:
     m[f'P_{k}'] = k
 _mc = float((json.loads(sys.argv[2]) if len(sys.argv) > 2 else {}).get('move_cost', 0))
 # 换键代价（作者 2026-10-01）：留在夜莺2.5 原键得 0，换到其他键得 move_cost（经引擎正则化计入目标）
-cfg['generated_mapping_space'] = {g: [{'value': k, 'score': 0.0 if k == layout[g] else _mc} for k in KEYS] for g in groups}
+_mb = layout   # YZ_MOVE_BASE=<form.json>：换键代价改为相对该布局（夜桜：相对 3.1 NB46）
+if os.environ.get('YZ_MOVE_BASE'):
+    _mb = {g: load(os.environ['YZ_MOVE_BASE'])['mapping'][g] for g in groups}
+cfg['generated_mapping_space'] = {g: [{'value': k, 'score': 0.0 if k == _mb[g] else _mc} for k in KEYS] for g in groups}
 cfg['optimization']['objective']['regularization_strength'] = 1.0
 cfg['generated_mapping_space'].update({f'P_{k}': [{'value': k, 'score': 0.0}] for k in KEYS})
 obj = cfg['optimization']['objective']
