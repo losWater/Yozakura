@@ -5520,8 +5520,8 @@ bkjl	并将
 bkjl	兵将
 bkjm	并肩
 bkjm	兵舰
-bkjn	冰窖
 bkjn	病娇
+bkjn	冰窖
 bkjr	不可加入
 bkjt	摒绝
 bkju	病句
@@ -12711,6 +12711,7 @@ cvgc	催告
 cvgc	萃
 cvgc	催稿
 cvgd	从这个角度
+cvgg	催更
 cvgg	毳
 cvgg	催耕
 cvgj	操之过急
@@ -15659,6 +15660,7 @@ dgwf	等温
 dgwk	都给我哭
 dgwm	点个外卖
 dgwm	带给我们
+dgwo	等我
 dgws	大公无私
 dgwv	德高望重
 dgwx	都给我笑
@@ -16010,6 +16012,7 @@ dhwe	𣗋
 dhwe	档
 dhwh	檔
 dhwj	当晚
+dhwo	当我
 dhwu	党务
 dhwu	当午
 dhww	档位
@@ -17068,8 +17071,8 @@ djxb	担心
 djxb	丹心
 djxc	东借西凑
 djxg	大惊小怪
-djxi	单膝
 djxi	旦夕
+djxi	单膝
 djxj	丁腈橡胶
 djxkdc	单行道
 djxl	单向
@@ -17934,9 +17937,9 @@ dmli	店里
 dmli	电力
 dmlj	电缆
 dmlk	电铃
+dmll	电量
 dmll	点亮
 dmll	掂量
-dmll	电量
 dmlm	电联
 dmln	电疗
 dmlo	电骡
@@ -19894,8 +19897,8 @@ dszo	动作
 dszt	胴
 dszu	侗族
 dszv	动嘴
-dt	冬天
 dt	点头
+dt	冬天
 dt	地铁
 dtb	大踏步
 dtb	跌停板
@@ -20569,8 +20572,8 @@ duyz	独有
 duz	肚
 duz	都是在
 duz	大傻子
-duzi	肚子
 duzi	独自
+duzi	肚子
 duzm	肚
 duzn	独生子女
 duzo	读作
@@ -32571,8 +32574,8 @@ gow	椁
 gowd	国外
 gowe	椁
 gowf	过问
-gowh	国王
 gowh	过往
+gowh	国王
 gowj	过完
 gowj	过万
 gowu	国务
@@ -33926,8 +33929,8 @@ gug	归属感
 gugb	公事公办
 gugc	孤高
 gugd	股改
-guge	骨骼
 guge	谷歌
+guge	骨骼
 gugg	故事梗概
 gugh	各说各话
 gugi	觚
@@ -37312,8 +37315,8 @@ heqx	和洽
 heqy	合群
 her	阂
 here	阖
-herf	鹤人
 herf	何人
+herf	鹤人
 herf	核仁
 heri	何日
 herj	赫然
@@ -37612,8 +37615,8 @@ hfps	魂飞魄散
 hfq	痕
 hfq	恢复期
 hfqi	很气
-hfql	合法权利
 hfql	很强
+hfql	合法权利
 hfqm	很浅
 hfqn	很巧
 hfqr	很全
@@ -40233,6 +40236,7 @@ hrdh	换挡
 hrdj	换弹
 hrdn	换掉
 hrdu	欢度
+hrdu	幻都
 hrdw	恍然大悟
 hrdx	哄然大笑
 hre	鹮
@@ -48675,6 +48679,7 @@ iuju	城市建设
 iujv	出局
 iujx	出家
 iujx	出嫁
+iujx	出价
 iujy	除菌
 iujy	储君
 iuk	储
@@ -52194,8 +52199,8 @@ jijb	基金
 jijb	集锦
 jijg	检察机关
 jijg	检查结果
-jiji	几级
 jiji	积极
+jiji	几级
 jiji	鸡鸡
 jijj	坚持己见
 jijj	解除警戒
@@ -53691,9 +53696,9 @@ jkvu	竞逐
 jkvv	颈椎
 jkvw	梷
 jkvx	疾控中心
+jkvy	精准
 jkvy	憬
 jkvy	惊
-jkvy	精准
 jkvz	荆州
 jkvz	靖州
 jkwa	井蛙
@@ -56152,6 +56157,7 @@ jqgv	酒柜
 jqgw	居全国首位
 jqgy	究其根源
 jqh	九
+jqhc	就好
 jqhc	九号
 jqhd	坚强后盾
 jqhe	纠合
@@ -58191,11 +58197,11 @@ juzv	教师资格证
 juzx	技术咨询
 juzy	节省资源
 juzz	粷
-jv	简直
 jv	剧
+jv	简直
 jv	接着
-jvb	颈椎病
 jvb	居
+jvb	颈椎病
 jvb	捡装备
 jvba	焦灼不安
 jvbb	金主爸爸
@@ -58400,8 +58406,8 @@ jvqk	剧情
 jvqm	拒签
 jvqn	截至去年
 jvqx	价值取向
-jvr	见证人
 jvr	巨
+jvr	见证人
 jvr	截止日
 jvr	剧中人
 jvrf	巨人
@@ -58534,8 +58540,8 @@ jvz	集中在
 jvz	居住在
 jvz	噘着嘴
 jvzd	聚在
-jvzi	句子
 jvzi	橘子
+jvzi	句子
 jvzu	剧组
 jvzu	聚众滋事
 jvzv	句斟字酌
@@ -65406,8 +65412,8 @@ ldv	领导者
 ldvc	劳动仲裁
 ldvc	领导致辞
 ldvd	赖债
-ldve	来着
 ldve	来者
+ldve	来着
 ldvf	劳动致富
 ldvf	力大砖飞
 ldvh	赖账
@@ -68268,8 +68274,8 @@ lmxg	连胜
 lmxg	连声
 lmxg	连升
 lmxg	练声
-lmxi	联系
 lmxi	练习
+lmxi	联系
 lmxk	脸型
 lmxk	脸形
 lmxl	联想
@@ -71390,8 +71396,8 @@ lyag	溣
 lyaj	乐业安居
 lyap	另有安排
 lyau	沦
-lyb	另一半
 lyb	另一边
+lyb	另一半
 lyb	老一辈
 lyba	伦巴
 lybb	良莠不辨
@@ -72517,8 +72523,8 @@ mccy	毛寸
 mcde	皃
 mcdg	毛邓
 mcdi	锚地
-mcdk	铆钉
 mcdk	锚定
+mcdk	铆钉
 mcdk	茅厕顿开
 mcdm	锚点
 mcdp	耄耋
@@ -78317,6 +78323,7 @@ napm	那片
 napm	那篇
 naqi	拿起
 naql	拿枪
+naqm	拿钱
 naqp	纳妾
 naqq	拿球
 naqr	拿权
@@ -83920,10 +83927,10 @@ ouqi	欧气
 our	殴
 oura	瓯
 ourh	殴
+ourj	偶然
 ourj	鸥
 ourj	鴎
 ourj	鷗
-ourj	偶然
 ourp	区
 ouru	殴辱
 ourx	欧
@@ -89522,9 +89529,9 @@ qiyf	汽车洋房
 qiyh	弃养
 qiyh	奇痒
 qiyh	汽车养护
+qiyi	奇异
 qiyi	起义
 qiyi	七一
-qiyi	奇异
 qiyi	歧义
 qiyj	气焰
 qiyj	鵸
@@ -90933,8 +90940,8 @@ qmld	却没料到
 qmle	欠了
 qmlg	前
 qmlh	前浪
-qmli	千里
 qmli	潜力
+qmli	千里
 qmlj	浅蓝
 qmll	钱粮
 qmlm	牵连
@@ -102494,8 +102501,8 @@ tdm	土地庙
 tdmc	胎毛
 tdmg	太猛
 tdmg	台盟
-tdmh	头顶冒汗
 tdmh	太忙
+tdmh	头顶冒汗
 tdmj	太慢
 tdmj	太满
 tdml	太倒霉了
@@ -105083,8 +105090,8 @@ tmta	天塌
 tmtd	天台
 tmtg	听没听过
 tmth	天堂
-tmti	天体
 tmti	天梯
+tmti	天体
 tmtj	天坛
 tmtk	天庭
 tmtl	通明透亮
@@ -106685,8 +106692,8 @@ tsye	同业
 tsye	铜业
 tsyh	同样
 tsyh	痛痒
-tsyi	统一
 tsyi	同意
+tsyi	统一
 tsyi	同义
 tsyj	童颜
 tsyj	童言
@@ -119282,8 +119289,8 @@ vfue	震慑
 vfuf	真身
 vfuf	真神
 vfuh	镇上
-vfui	真是
 vfui	真实
+vfui	真是
 vfui	阵势
 vfuj	征服世界
 vfuk	真帅
@@ -128012,8 +128019,8 @@ wjng	万能
 wjni	玩腻
 wjnj	万难
 wjnj	皖南
-wjnm	万年
 wjnm	晚年
+wjnm	万年
 wjns	玩弄
 wjnt	完虐
 wjny	维吉尼亚
@@ -136051,6 +136058,7 @@ xncy	小村
 xnd	皛
 xnd	学年度
 xnd	性虐待
+xndc	小岛
 xndc	笑道
 xndc	小刀
 xndcxnxi	小道消息
@@ -138823,8 +138831,8 @@ xuzw	夏熟作物
 xuzx	绣十字绣
 xuzy	学术自由
 xuzz	糈
-xv	寻找
 xv	绪
+xv	寻找
 xv	心中
 xva	修正案
 xvah	小众爱好
@@ -142513,9 +142521,9 @@ yeyh	液氧
 yeyi	业已
 yeyj	夜宴
 yeyj	页岩
-yeyk	野营
 yeyk	夜莺
 yeyk	夜桜
+yeyk	野营
 yeyn	养儿育女
 yeys	也用
 yeys	夜用
@@ -145080,8 +145088,8 @@ yjuc	有机蔬菜
 yjud	一箭双雕
 yjue	衍射
 yjuf	眼神
-yjuf	娮
 yjuf	延伸
+yjuf	娮
 yjug	衍生
 yjug	妍
 yjug	有机水果
@@ -148362,6 +148370,7 @@ yufo	玉佛
 yufp	雨水丰沛
 yufq	禹
 yuft	语
+yufu	渔夫
 yufu	预付
 yufu	迂腐
 yufw	与非
@@ -149124,8 +149133,8 @@ yvbv	抑制不住
 yvbw	永志不忘
 yvby	以直报怨
 yvby	一朝被蛇咬
-yvc	眼中刺
 yvc	郁
+yvc	眼中刺
 yvc	预制菜
 yvcg	引锥刺股
 yvcw	严重错误
@@ -149242,8 +149251,8 @@ yvkn	严重困难
 yvkw	一纸空文
 yvkx	有章可循
 yvkx	幼稚可笑
-yvl	意志力
 yvl	欲
+yvl	意志力
 yvl	圆周率
 yvlj	异指连击
 yvm	有这么
@@ -149401,8 +149410,8 @@ yvyx	一朝一夕
 yvyx	一针一线
 yvyy	越战越勇
 yvyy	野战医院
-yvz	一直在
 yvz	予
+yvz	一直在
 yvz	一阵子
 yvzx	一直在想
 yvzy	抑制作用

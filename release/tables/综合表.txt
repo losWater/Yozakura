@@ -5520,8 +5520,8 @@ B佬	bilc
 兵将	bkjl
 并肩	bkjm
 兵舰	bkjm
-冰窖	bkjn
 病娇	bkjn
+冰窖	bkjn
 不可加入	bkjr
 摒绝	bkjt
 病句	bkju
@@ -12711,6 +12711,7 @@ Ctrl	ctrl
 萃	cvgc
 催稿	cvgc
 从这个角度	cvgd
+催更	cvgg
 毳	cvgg
 催耕	cvgg
 操之过急	cvgj
@@ -15659,6 +15660,7 @@ DDoS	ddos
 都给我哭	dgwk
 点个外卖	dgwm
 带给我们	dgwm
+等我	dgwo
 大公无私	dgws
 德高望重	dgwv
 都给我笑	dgwx
@@ -16010,6 +16012,7 @@ DDoS	ddos
 档	dhwe
 檔	dhwh
 当晚	dhwj
+当我	dhwo
 党务	dhwu
 当午	dhwu
 档位	dhww
@@ -17068,8 +17071,8 @@ DDoS	ddos
 丹心	djxb
 东借西凑	djxc
 大惊小怪	djxg
-单膝	djxi
 旦夕	djxi
+单膝	djxi
 丁腈橡胶	djxj
 单行道	djxkdc
 单向	djxl
@@ -17934,9 +17937,9 @@ DDoS	ddos
 电力	dmli
 电缆	dmlj
 电铃	dmlk
+电量	dmll
 点亮	dmll
 掂量	dmll
-电量	dmll
 电联	dmlm
 电疗	dmln
 电骡	dmlo
@@ -19894,8 +19897,8 @@ DDoS	ddos
 胴	dszt
 侗族	dszu
 动嘴	dszv
-冬天	dt
 点头	dt
+冬天	dt
 地铁	dt
 大踏步	dtb
 跌停板	dtb
@@ -20569,8 +20572,8 @@ DDoS	ddos
 肚	duz
 都是在	duz
 大傻子	duz
-肚子	duzi
 独自	duzi
+肚子	duzi
 肚	duzm
 独生子女	duzn
 读作	duzo
@@ -32571,8 +32574,8 @@ Google	goog
 国外	gowd
 椁	gowe
 过问	gowf
-国王	gowh
 过往	gowh
+国王	gowh
 过完	gowj
 过万	gowj
 国务	gowu
@@ -33926,8 +33929,8 @@ Google	goog
 公事公办	gugb
 孤高	gugc
 股改	gugd
-骨骼	guge
 谷歌	guge
+骨骼	guge
 故事梗概	gugg
 各说各话	gugh
 觚	gugi
@@ -37312,8 +37315,8 @@ Google	goog
 合群	heqy
 阂	her
 阖	here
-鹤人	herf
 何人	herf
+鹤人	herf
 核仁	herf
 何日	heri
 赫然	herj
@@ -37612,8 +37615,8 @@ Google	goog
 痕	hfq
 恢复期	hfq
 很气	hfqi
-合法权利	hfql
 很强	hfql
+合法权利	hfql
 很浅	hfqm
 很巧	hfqn
 很全	hfqr
@@ -40233,6 +40236,7 @@ Google	goog
 换弹	hrdj
 换掉	hrdn
 欢度	hrdu
+幻都	hrdu
 恍然大悟	hrdw
 哄然大笑	hrdx
 鹮	hre
@@ -48675,6 +48679,7 @@ ip正确	ipvq
 出局	iujv
 出家	iujx
 出嫁	iujx
+出价	iujx
 除菌	iujy
 储君	iujy
 储	iuk
@@ -52194,8 +52199,8 @@ ip正确	ipvq
 集锦	jijb
 检察机关	jijg
 检查结果	jijg
-几级	jiji
 积极	jiji
+几级	jiji
 鸡鸡	jiji
 坚持己见	jijj
 解除警戒	jijj
@@ -53691,9 +53696,9 @@ https://www.jsxiaoshi.com/	jisu
 颈椎	jkvv
 梷	jkvw
 疾控中心	jkvx
+精准	jkvy
 憬	jkvy
 惊	jkvy
-精准	jkvy
 荆州	jkvz
 靖州	jkvz
 井蛙	jkwa
@@ -56152,6 +56157,7 @@ https://www.jsxiaoshi.com/	jisu
 居全国首位	jqgw
 究其根源	jqgy
 九	jqh
+就好	jqhc
 九号	jqhc
 坚强后盾	jqhd
 纠合	jqhe
@@ -58191,11 +58197,11 @@ https://www.jsxiaoshi.com/	jisu
 技术咨询	juzx
 节省资源	juzy
 粷	juzz
-简直	jv
 剧	jv
+简直	jv
 接着	jv
-颈椎病	jvb
 居	jvb
+颈椎病	jvb
 捡装备	jvb
 焦灼不安	jvba
 金主爸爸	jvbb
@@ -58400,8 +58406,8 @@ https://www.jsxiaoshi.com/	jisu
 拒签	jvqm
 截至去年	jvqn
 价值取向	jvqx
-见证人	jvr
 巨	jvr
+见证人	jvr
 截止日	jvr
 剧中人	jvr
 巨人	jvrf
@@ -58534,8 +58540,8 @@ https://www.jsxiaoshi.com/	jisu
 居住在	jvz
 噘着嘴	jvz
 聚在	jvzd
-句子	jvzi
 橘子	jvzi
+句子	jvzi
 剧组	jvzu
 聚众滋事	jvzu
 句斟字酌	jvzv
@@ -65406,8 +65412,8 @@ $	k
 劳动仲裁	ldvc
 领导致辞	ldvc
 赖债	ldvd
-来着	ldve
 来者	ldve
+来着	ldve
 劳动致富	ldvf
 力大砖飞	ldvf
 赖账	ldvh
@@ -68268,8 +68274,8 @@ $	k
 连声	lmxg
 连升	lmxg
 练声	lmxg
-联系	lmxi
 练习	lmxi
+联系	lmxi
 脸型	lmxk
 脸形	lmxk
 联想	lmxl
@@ -71390,8 +71396,8 @@ $	k
 乐业安居	lyaj
 另有安排	lyap
 沦	lyau
-另一半	lyb
 另一边	lyb
+另一半	lyb
 老一辈	lyb
 伦巴	lyba
 良莠不辨	lybb
@@ -72517,8 +72523,8 @@ Mbps	mbps
 皃	mcde
 毛邓	mcdg
 锚地	mcdi
-铆钉	mcdk
 锚定	mcdk
+铆钉	mcdk
 茅厕顿开	mcdk
 锚点	mcdm
 耄耋	mcdp
@@ -78317,6 +78323,7 @@ https://typer.owenyang.top/	mxyi
 那篇	napm
 拿起	naqi
 拿枪	naql
+拿钱	naqm
 纳妾	naqp
 拿球	naqq
 拿权	naqr
@@ -83920,10 +83927,10 @@ m	otl
 殴	our
 瓯	oura
 殴	ourh
+偶然	ourj
 鸥	ourj
 鴎	ourj
 鷗	ourj
-偶然	ourj
 区	ourp
 殴辱	ouru
 欧	ourx
@@ -89522,9 +89529,9 @@ py交易	pyjy
 弃养	qiyh
 奇痒	qiyh
 汽车养护	qiyh
+奇异	qiyi
 起义	qiyi
 七一	qiyi
-奇异	qiyi
 歧义	qiyi
 气焰	qiyj
 鵸	qiyj
@@ -90933,8 +90940,8 @@ py交易	pyjy
 欠了	qmle
 前	qmlg
 前浪	qmlh
-千里	qmli
 潜力	qmli
+千里	qmli
 浅蓝	qmlj
 钱粮	qmll
 牵连	qmlm
@@ -102494,8 +102501,8 @@ san值狂掉	svkd
 胎毛	tdmc
 太猛	tdmg
 台盟	tdmg
-头顶冒汗	tdmh
 太忙	tdmh
+头顶冒汗	tdmh
 太慢	tdmj
 太满	tdmj
 太倒霉了	tdml
@@ -105083,8 +105090,8 @@ T恤衫	tixuuj
 天台	tmtd
 听没听过	tmtg
 天堂	tmth
-天体	tmti
 天梯	tmti
+天体	tmti
 天坛	tmtj
 天庭	tmtk
 通明透亮	tmtl
@@ -106685,8 +106692,8 @@ T恤衫	tixuuj
 铜业	tsye
 同样	tsyh
 痛痒	tsyh
-统一	tsyi
 同意	tsyi
+统一	tsyi
 同义	tsyi
 童颜	tsyj
 童言	tsyj
@@ -119282,8 +119289,8 @@ https://api.ihint.me/shuang/	ulpb
 真身	vfuf
 真神	vfuf
 镇上	vfuh
-真是	vfui
 真实	vfui
+真是	vfui
 阵势	vfui
 征服世界	vfuj
 真帅	vfuk
@@ -128012,8 +128019,8 @@ WiFi	wifi
 玩腻	wjni
 万难	wjnj
 皖南	wjnj
-万年	wjnm
 晚年	wjnm
+万年	wjnm
 玩弄	wjns
 完虐	wjnt
 维吉尼亚	wjny
@@ -136051,6 +136058,7 @@ Word	word
 皛	xnd
 学年度	xnd
 性虐待	xnd
+小岛	xndc
 笑道	xndc
 小刀	xndc
 小道消息	xndcxnxi
@@ -138823,8 +138831,8 @@ Word	word
 绣十字绣	xuzx
 学术自由	xuzy
 糈	xuzz
-寻找	xv
 绪	xv
+寻找	xv
 心中	xv
 修正案	xva
 小众爱好	xvah
@@ -142513,9 +142521,9 @@ magnet:?xt=urn:btih:	xylw
 业已	yeyi
 夜宴	yeyj
 页岩	yeyj
-野营	yeyk
 夜莺	yeyk
 夜桜	yeyk
+野营	yeyk
 养儿育女	yeyn
 也用	yeys
 夜用	yeys
@@ -145080,8 +145088,8 @@ magnet:?xt=urn:btih:	xylw
 一箭双雕	yjud
 衍射	yjue
 眼神	yjuf
-娮	yjuf
 延伸	yjuf
+娮	yjuf
 衍生	yjug
 妍	yjug
 有机水果	yjug
@@ -148362,6 +148370,7 @@ magnet:?xt=urn:btih:	xylw
 雨水丰沛	yufp
 禹	yufq
 语	yuft
+渔夫	yufu
 预付	yufu
 迂腐	yufu
 与非	yufw
@@ -149124,8 +149133,8 @@ magnet:?xt=urn:btih:	xylw
 永志不忘	yvbw
 以直报怨	yvby
 一朝被蛇咬	yvby
-眼中刺	yvc
 郁	yvc
+眼中刺	yvc
 预制菜	yvc
 引锥刺股	yvcg
 严重错误	yvcw
@@ -149242,8 +149251,8 @@ magnet:?xt=urn:btih:	xylw
 一纸空文	yvkw
 有章可循	yvkx
 幼稚可笑	yvkx
-意志力	yvl
 欲	yvl
+意志力	yvl
 圆周率	yvl
 异指连击	yvlj
 有这么	yvm
@@ -149401,8 +149410,8 @@ magnet:?xt=urn:btih:	xylw
 一针一线	yvyx
 越战越勇	yvyy
 野战医院	yvyy
-一直在	yvz
 予	yvz
+一直在	yvz
 一阵子	yvz
 一直在想	yvzx
 抑制作用	yvzy

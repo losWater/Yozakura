@@ -72,17 +72,18 @@ for t, c in D30: chars[c].append(t)
 codes_of = collections.defaultdict(set)
 for t, c in D30: codes_of[t].add(c)
 special = []                                                    # (字, 码, 类型)
-TOLERANCE = set()                                               # 容错码条目（一律排在词后）
+TOLERANCE = set()                                               # 容错码条目（一律排在词后；ü 单字码不算，见下）
 CUSTOM = {('莺', 'by'), ('鹤', 'eh')}                            # 自定义码（彩蛋）固定在首位
-for t, c, kind in [('莺', 'by', '自定义码'), ('鹤', 'eh', '自定义码'), ('剧', 'jv', '容错码'), ('绪', 'xv', '容错码')]:
+# ü 单字码（作者 2026-10-15）：jv 剧、jvb 居这些是正式打法（居 jubt 难按），不是容错，和彩蛋码一样固定字在首位
+for t, c, kind in [('莺', 'by', '自定义码'), ('鹤', 'eh', '自定义码'), ('剧', 'jv', 'ü码'), ('绪', 'xv', 'ü码')]:
     assert not chars.get(c), (c, chars.get(c))
     chars[c].append(t); special.append((t, c, kind))
-    if kind == '容错码': TOLERANCE.add((t, c))
+    CUSTOM.add((t, c))
 skipped = []
 for t in '予居欲狙羽郁巨':
     full = sorted(c for c in codes_of[t] if len(c) == 4 and c[1] == 'u' and c[0] in 'jqxy')   # 2.5 做法：ü 写 v + 全码第三码
     if full and not chars.get(full[0][0] + 'v' + full[0][2]):
-        c = full[0][0] + 'v' + full[0][2]; chars[c].append(t); special.append((t, c, '容错码')); TOLERANCE.add((t, c))
+        c = full[0][0] + 'v' + full[0][2]; chars[c].append(t); special.append((t, c, 'ü码')); CUSTOM.add((t, c))
     else:
         skipped.append(t)
 
@@ -90,7 +91,10 @@ for t in '予居欲狙羽郁巨':
 words = collections.defaultdict(list)
 for t, c in W25:
     if len(t) > 1: words[c].append(t)
-for c, w, before in json.load(open(ROOT / 'data/inputs/词序调整.json', encoding='utf-8'))['提前']:   # 作者指定的词序调整
+ORDER = json.load(open(ROOT / 'data/inputs/词序调整.json', encoding='utf-8'))
+for c, w, _ in ORDER.get('新增词', []):                                   # 作者新增的词（码按作者给的），排在该码原有的词后面
+    assert w not in words[c], (c, w); words[c].append(w)
+for c, w, before in ORDER['提前']:   # 作者指定的词序调整
     ws = words[c]; assert w in ws and before in ws, (c, w, before)
     ws.remove(w); ws.insert(ws.index(before), w)
 
@@ -120,7 +124,7 @@ def can_yield(ch, code, w):
     sy = code[:2]
     if len(code) == 4 and len(w) == 2 and has_short(ch, sy): return True, '有简码'
     if (ch, code) in TOLERANCE: return True, '容错码'
-    if (ch, code) in CUSTOM: return False, '自定义码（彩蛋）'
+    if (ch, code) in CUSTOM: return False, '自定义码 / ü码'
     if (ch, code) in KEEP: return False, '作者指定不让'
     if len(code) == 3:                                  # 作者 2026-10-08：三码位只在词频超过字频 SHORT_RATIO 倍时让给简词（生僻字占的空三简）
         r = (wfreq(w) or WORD_DEFAULT) / max(rf.get((ch, sy), 0), 0.01)   # 字频下限 0.01/百万（与作者看的统计同口径）
@@ -133,6 +137,7 @@ def can_yield(ch, code, w):
 
 
 # ---- 合并 ----
+PINS = {c: ts for c, ts, _ in ORDER.get('钉选', [])}
 table, log, overflow = [], [], []
 for code in sorted(set(chars) | set(words)):
     C, W = chars.get(code, []), words.get(code, [])
@@ -148,6 +153,9 @@ for code in sorted(set(chars) | set(words)):
         else:
             order = C + W
         log.append((code, C, W[0], dec, order[0]))
+    if code in PINS:                                    # 作者钉选：指定的几项按顺序排最前，其余原序
+        assert all(x in order for x in PINS[code]), (code, PINS[code], order)
+        order = PINS[code] + [x for x in order if x not in PINS[code]]
     table += [(t, code) for t in order]
 
 OUT.mkdir(parents=True, exist_ok=True)
