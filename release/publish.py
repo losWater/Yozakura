@@ -56,6 +56,20 @@ def changelog_ready():
     assert len(body) > 3, '更新日志几乎是空的'
 
 
+def changelog_txt(md, out):
+    """更新日志纯文本版（线下用）：去掉 Markdown 符号，标题单独成行，条目用“·”开头。"""
+    lines = []
+    for l in md.read_text(encoding='utf-8').split('\n'):
+        if l.startswith('（草稿'): continue
+        l = l.replace('**', '')
+        if l.startswith('# '): l = l[2:]
+        elif l.startswith('## '): l = '【' + l[3:] + '】'; lines.append('')
+        elif l.startswith('  - '): l = '    - ' + l[4:]
+        elif l.startswith('- '): l = '· ' + l[2:]
+        lines.append(l)
+    out.write_text(re.sub(r'\n{3,}', '\n\n', '\n'.join(lines)).strip() + '\n', encoding='utf-8')
+
+
 def build(skip_table):
     OUT.mkdir(parents=True, exist_ok=True)
     step(1, '码表')
@@ -90,6 +104,7 @@ def build(skip_table):
     step(5, '校验值')
     (OUT / f'SHA256SUMS-tables-toolbox-{C.STAMP}.txt').write_text(
         ''.join(f'{sha(p)}  {p.name}\n' for p in (tables, toolbox)), encoding='utf-8')
+    changelog_txt(C.CHANGELOG, OUT / f'{C.NAME}更新日志.txt')
     step(6, '官网本地预览')
     shutil.rmtree(SITE, ignore_errors=True)
     run(PY, ROOT / 'release/make_website.py', SITE, **quiet)
