@@ -1,7 +1,7 @@
 # Source: 夜莺 3.0 候选 NB46 普通单字表（~/Yozakura；二简 ui=事、en=嗯；试用）+ 夜莺 2.5 快符
 ---
 name: yeying_tune
-version: "local-202610150641"
+version: "local-202610150658"
 sort: by_weight
 use_preset_vocabulary: false
 columns: [text, code, weight]
@@ -16878,7 +16878,7 @@ m	otl	99999
 胀	vhzd	99999
 粻	vhzd	99998
 粀	vhzp	99999
-知	vi	99999
+只	vi	99999
 治	via	99999
 汁	viac	99999
 洷	viaf	99999
@@ -16936,7 +16936,7 @@ m	otl	99999
 藢	vigq	99998
 觗	vigr	99999
 芷	vigs	99999
-智	vih	99999
+知	vih	99999
 智	vihb	99999
 雉	vihd	99999
 劕	vihg	99999

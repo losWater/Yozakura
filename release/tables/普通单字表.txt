@@ -16838,7 +16838,7 @@ m	otl
 胀	vhzd
 粻	vhzd
 粀	vhzp
-知	vi
+只	vi
 治	via
 汁	viac
 洷	viaf
@@ -16896,7 +16896,7 @@ m	otl
 藢	vigq
 觗	vigr
 芷	vigs
-智	vih
+知	vih
 智	vihb
 雉	vihd
 劕	vihg

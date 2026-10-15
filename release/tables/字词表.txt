@@ -119414,7 +119414,7 @@ https://api.ihint.me/shuang/	ulpb
 张嘴	vhzv
 掌嘴	vhzv
 中和作用	vhzy
-知	vi
+只	vi
 支持	vi
 正常	vi
 治	via
@@ -119607,7 +119607,7 @@ https://api.ihint.me/shuang/	ulpb
 直挂	vigx
 正常关系	vigx
 主持工作	vigz
-智	vih
+知	vih
 正常化	vih
 智	vihb
 只好	vihc
@@ -119635,8 +119635,8 @@ https://api.ihint.me/shuang/	ulpb
 知	viht
 知乎	vihu
 直呼	vihu
-只会	vihv
 智慧	vihv
+只会	vihv
 指挥	vihv
 执黑	vihw
 之花	vihx

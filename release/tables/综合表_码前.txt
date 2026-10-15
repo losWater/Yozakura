@@ -120289,7 +120289,7 @@ vhzp	粀
 vhzv	张嘴
 vhzv	掌嘴
 vhzy	中和作用
-vi	知
+vi	只
 vi	支持
 vi	正常
 via	治
@@ -120482,7 +120482,7 @@ vigw	指给
 vigx	直挂
 vigx	正常关系
 vigz	主持工作
-vih	智
+vih	知
 vih	正常化
 vihb	智
 vihc	只好
@@ -120510,8 +120510,8 @@ vihr	指环
 viht	知
 vihu	知乎
 vihu	直呼
-vihv	只会
 vihv	智慧
+vihv	只会
 vihv	指挥
 vihw	执黑
 vihx	之花
