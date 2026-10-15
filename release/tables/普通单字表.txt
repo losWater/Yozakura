@@ -19365,7 +19365,6 @@ m	otl
 硖	xxxy
 陜	xxyx
 陿	xxyx
-训	xy
 汛	xya
 洵	xyab
 汛	xyac
@@ -19390,7 +19389,7 @@ m	otl
 愻	xyev
 𬩽	xyey
 鄩	xyey
-讯	xyf
+训	xyf
 询	xyfb
 殉	xyfb
 讯	xyfc

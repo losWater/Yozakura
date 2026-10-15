@@ -139856,7 +139856,6 @@ xxzy	信息资源
 xxzy	学习咋样
 xxzy	学习资源
 xxzz	吓走
-xy	训
 xy	需要
 xy	幸运
 xy	下雨
@@ -139937,7 +139936,7 @@ xyeq	向隅而泣
 xyev	愻
 xyey	𬩽
 xyey	鄩
-xyf	讯
+xyf	训
 xyf	洗衣粉
 xyf	洗衣服
 xyfb	询

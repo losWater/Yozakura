@@ -138977,7 +138977,6 @@ Word	word
 学习咋样	xxzy
 学习资源	xxzy
 吓走	xxzz
-训	xy
 需要	xy
 幸运	xy
 下雨	xy
@@ -139058,7 +139057,7 @@ Word	word
 愻	xyev
 𬩽	xyey
 鄩	xyey
-讯	xyf
+训	xyf
 洗衣粉	xyf
 洗衣服	xyf
 询	xyfb
