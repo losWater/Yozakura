@@ -14269,14 +14269,14 @@ C位出道	cwid
 道具	dcjv
 到家	dcjx
 道家	dcjx
-导	dck
+倒	dck
 大词库	dck
 倒开	dckd
 刀客	dcke
 稻壳	dcke
 道可道	dckedc
-倒	dckg
 导坑	dckg
+倒	dckg
 稻糠	dckh
 多次考察	dcki
 导刊	dckj

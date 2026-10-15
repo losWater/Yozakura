@@ -1,7 +1,7 @@
 # Source: 夜莺 3.0 候选 NB46 普通单字表（~/Yozakura；二简 ui=事、en=嗯；试用）+ 夜莺 2.5 快符
 ---
 name: yeying_tune
-version: "local-202610150703"
+version: "local-202610150707"
 sort: by_weight
 use_preset_vocabulary: false
 columns: [text, code, weight]
@@ -1682,7 +1682,7 @@ columns: [text, code, weight]
 嶌	dchj	99998
 岛	dcj	99999
 岛	dcjh	99999
-导	dck	99999
+倒	dck	99999
 倒	dckg	99999
 导	dcko	99999
 衜	dcko	99998

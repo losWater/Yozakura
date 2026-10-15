@@ -14275,14 +14275,14 @@ dcju	打草惊蛇
 dcjv	道具
 dcjx	到家
 dcjx	道家
-dck	导
+dck	倒
 dck	大词库
 dckd	倒开
 dcke	刀客
 dcke	稻壳
 dckedc	道可道
-dckg	倒
 dckg	导坑
+dckg	倒
 dckh	稻糠
 dcki	多次考察
 dckj	导刊
