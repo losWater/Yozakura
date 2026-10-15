@@ -6,6 +6,7 @@
 - 完整拆分表：3.0 拆分
 另外把每个视图单独存成一页，放在输出目录的“单页”里，可单独离线打开。
 用法：python release/make_toolbox.py [输出目录]   # 默认 ~/Downloads/夜莺<版本>_工具箱
+      YZ_BRAND=yozakura/品牌.json python release/make_toolbox.py   # 换成别的方案（夜桜），见 release/config.py
 """
 import collections, json, re, subprocess, sys
 from pathlib import Path
@@ -14,8 +15,8 @@ N25 = Path.home() / 'Nightingale/夜莺2.5'
 sys.path.insert(0, str(ROOT / 'release'))
 from config import C
 OUT = Path(sys.argv[1]) if len(sys.argv) > 1 else Path.home() / f'Downloads/{C.NAME}_工具箱'
-SINGLE = ROOT / 'release/tables/字词表.txt'      # 单字编码（含彩蛋码、容错码）取自字词表
-PLAIN = ROOT / 'release/tables/普通单字表.txt'
+SINGLE = C.SINGLE      # 单字编码（含彩蛋码、容错码）取自字词表；None＝只用普通单字表
+PLAIN = C.PLAIN
 
 
 def locate(text, name):
@@ -41,7 +42,7 @@ page = (N25 / '资料/拆分原本.html').read_text(encoding='utf-8-sig')
 views, va, vb = locate(page, 'views')
 splits = json.load(open(ROOT / 'data/baseline/splits.json', encoding='utf-8'))
 meta = json.load(open(ROOT / 'build/out/n30/meta.json', encoding='utf-8'))
-layout = json.load(open(ROOT / f'release/{C.LAYOUT}_layout.json', encoding='utf-8'))
+layout = json.load(open(C.LAYOUT_PATH, encoding='utf-8'))
 g_of = {r: g for g, rs in meta['groups'].items() for r in rs}
 key = lambda r: layout[g_of[r]]
 names = lambda c: [p[0] for p in splits.get(c, [])]
@@ -50,7 +51,7 @@ names = lambda c: [p[0] for p in splits.get(c, [])]
 sym = set(rd(N25 / '主表/符号表.txt'))
 plain = [r for r in rd(PLAIN) if r not in sym]
 pos = set(plain)
-special = [r for r in rd(SINGLE) if len(r[0]) == 1 and r not in pos]
+special = [r for r in rd(SINGLE) if len(r[0]) == 1 and r not in pos] if SINGLE else []
 slots = collections.defaultdict(list)
 for t, c in plain + special: slots[c].append(t)
 codes_of = collections.defaultdict(list)
@@ -135,20 +136,22 @@ views['roots'] = t
 
 # ---- 字根图 ----
 chart = ROOT.parent / '.cache/yeying-toolbox-chart.html'
-subprocess.run([sys.executable, str(ROOT / 'build/make_root_chart.py'), str(ROOT / f'release/{C.LAYOUT}_layout.json'), str(chart), f'夜莺 {C.V} · 字根图', '--clean'], check=True, stdout=subprocess.DEVNULL)
+subprocess.run([sys.executable, str(ROOT / 'build/make_root_chart.py'), str(C.LAYOUT_PATH), str(chart), f'{C.NAME.removesuffix(C.V)} {C.V} · 字根图', '--clean'], check=True, stdout=subprocess.DEVNULL)
 views['image'] = chart.read_text(encoding='utf-8-sig'); chart.unlink()
 
 # ---- 字根练习 ----
 prac = ROOT.parent / '.cache/yeying-toolbox-practice.html'
-subprocess.run([sys.executable, str(ROOT / 'tool/practice/build_practice.py'), str(ROOT / f'release/{C.LAYOUT}_layout.json'), str(prac)], check=True)
+subprocess.run([sys.executable, str(ROOT / 'tool/practice/build_practice.py'), str(C.LAYOUT_PATH), str(prac)], check=True)
 views['practice'] = prac.read_text(encoding='utf-8')
 prac.unlink()
 
 for k, v in views.items():
     assert not re.search(r'夜莺\s*2\.[05]', v), (k, re.search(r'.{20}夜莺\s*2\.[05].{20}', v).group())
 html = page[:va] + json.dumps(views, ensure_ascii=False).replace('<', '\\u003c') + page[vb:]   # 同 2.5：内嵌页面里的 </script> 不能截断外层脚本
+html = rep(html, '<title>夜莺啾啾工具箱</title>', f'<title>{C.TOOLBOX}</title>')
+html = rep(html, '<h1>夜莺啾啾工具箱</h1>', f'<h1>{C.TOOLBOX}</h1>')
 OUT.mkdir(parents=True, exist_ok=True)
-(OUT / '夜莺啾啾工具箱.html').write_text(html, encoding='utf-8')
+(OUT / f'{C.TOOLBOX}.html').write_text(html, encoding='utf-8')
 LABEL = {'query': '拆分查询', 'components': '部件反查', 'practice': '字根练习', 'roots': '字根表', 'image': '字根图', 'text': '完整拆分表'}
 (OUT / '单页').mkdir(exist_ok=True)
 for k, v in views.items():

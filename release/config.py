@@ -26,6 +26,22 @@ class _C:
         self.TABLES = ROOT / 'release/tables'
         self.STAGE = Path.home() / '.cache/yeying-build'           # Rime 打包搭台目录（release/stage_rime.py）
         self.MAC_OUT = self.STAGE / f'{self.NAME}/产物/mac'           # 夜莺构建工具的 Mac 产物
+        # 工具箱/练习页用：默认取夜莺正式数据；环境变量 YZ_BRAND=<json> 可整体换成别的方案（如 yozakura/品牌.json）
+        self.LAYOUT_PATH = ROOT / f'release/{self.LAYOUT}_layout.json'
+        self.PLAIN = self.TABLES / '普通单字表.txt'
+        self.SINGLE = self.TABLES / '字词表.txt'                    # 单字的彩蛋码、容错码取自字词表；None 表示没有
+        self.PRACTICE_BASE = None                                   # 练习“只练改动过的根”的对照布局；None＝取 2.x 练习页里的键位
+        self.STORAGE = 'nightingale_memory_v1'                      # 练习进度的浏览器存储名
+        self.TOOLBOX = '夜莺啾啾工具箱'
+        if os.environ.get('YZ_BRAND'):
+            b = json.load(open(os.environ['YZ_BRAND'], encoding='utf-8'))
+            base = Path(os.environ['YZ_BRAND']).resolve().parent
+            path = lambda x: None if x is None else (base / x).resolve()
+            self.NAME, self.V, self.LAYOUT = b['名称'], b['版本'], b['布局名']
+            self.LAYOUT_PATH, self.PLAIN, self.SINGLE = path(b['布局']), path(b['单字表']), path(b.get('字词表'))
+            self.PRACTICE = {'版本': b['练习对照']['名称']}
+            self.PRACTICE_BASE = path(b['练习对照']['布局'])
+            self.STORAGE, self.TOOLBOX = b['练习存储'], b['工具箱名']
 
     def T(self, name):
         return self.TABLES / name
