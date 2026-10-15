@@ -19,7 +19,7 @@ from pathlib import Path
 import yaml
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT / 'lib'))
-from shuangpin import encode
+from shuangpin import encode, recode, recode_word
 
 N25 = Path.home() / 'Nightingale/夜莺2.5'
 sys.path.insert(0, str(ROOT / 'release'))
@@ -34,15 +34,24 @@ def rd(p):
 
 W25 = rd(N25 / '主表/字词表.txt')
 SYM = rd(N25 / '主表/符号表.txt'); SYMSET = set(SYM)
-D30 = [r for r in rd(C.T('普通单字表.txt')) if r not in SYMSET]
+D30 = [r for r in rd(C.PLAIN) if r not in SYMSET]
+SP = C.SCHEME                                   # 双拼方案；2.5 词码与词序调整里的码都是小鹤码，非小鹤时逐个换算
+WC = lambda w, c: recode_word(w, c, 'xiaohe', SP)
+from shuangpin import syllables
+_VALID = {encode(p, 'xiaohe') for p in syllables()} if SP != 'xiaohe' else set()
+KEPT = []                                                    # 非小鹤：词码里有音节表外的两码（作者自定义、特殊码），原样保留
+def WC(w, c):
+    if SP != 'xiaohe' and len(w) == 2 and len(c) >= 3 and any(h not in _VALID for h in ([c[:2], c[2:]] if len(c) == 4 else [c[:2]])):
+        KEPT.append(w + c)
+    return recode_word(w, c, 'xiaohe', SP)
 
 # ---- 频率 ----
-E = yaml.load(open(ROOT / 'build/out/n30/elements.yaml', encoding='utf-8'), Loader=yaml.CSafeLoader)
+E = yaml.load(open(C.INP / 'elements.yaml', encoding='utf-8'), Loader=yaml.CSafeLoader)
 tot = sum(e['频率'] for e in E if e['拼音'] != 'reserved')
 rf = collections.Counter()
 for e in E:
     if e['拼音'] == 'reserved': continue
-    try: rf[(e['词'], encode(e['拼音'], 'xiaohe'))] += e['频率'] / tot * 1e6
+    try: rf[(e['词'], encode(e['拼音'], SP))] += e['频率'] / tot * 1e6
     except Exception: pass
 wt = {}
 for l in open(ROOT / 'data/inputs/tigress_ci.dict.yaml', encoding='utf-8'):
@@ -51,7 +60,7 @@ for l in open(ROOT / 'data/inputs/tigress_ci.dict.yaml', encoding='utf-8'):
         wt[p[0]] = max(wt.get(p[0], 0), int(p[1]))
 wtot = sum(wt.values())
 wfreq = lambda w: wt[w] / wtot * 1e6 if w in wt else None
-ONE = {(c, encode(p, 'xiaohe')) for c, p, n in json.load(open(ROOT / 'data/inputs/一二简.json', encoding='utf-8'))['fixed'] if n == 1}
+ONE = {(c, encode(p, SP)) for c, p, n in json.load(open(ROOT / 'data/inputs/一二简.json', encoding='utf-8'))['fixed'] if n == 1}
 
 # “不让位的字”口径（环境变量 YZ_PROTECT）：level12 = 通规一、二级字（默认）；freq = 通规 8105 中字频 ≥ 0.1/百万的读音
 LEVEL = {}
@@ -74,14 +83,16 @@ for t, c in D30: chars[c].append(t)
 codes_of = collections.defaultdict(set)
 for t, c in D30: codes_of[t].add(c)
 special = []                                                    # (字, 码, 类型)
+skipped = []
 TOLERANCE = set()                                               # 容错码条目（一律排在词后；ü 单字码不算，见下）
 CUSTOM = {('莺', 'by'), ('鹤', 'eh')}                            # 自定义码（彩蛋）固定在首位
 # ü 单字码（作者 2026-10-15）：jv 剧、jvb 居这些是正式打法（居 jubt 难按），不是容错，和彩蛋码一样算自定义码、固定字在首位（夜莺构建工具只认 全码/简码/容错码/自定义码/全码词/简词）
 for t, c, kind in [('莺', 'by', '自定义码'), ('鹤', 'eh', '自定义码'), ('剧', 'jv', '自定义码'), ('绪', 'xv', '自定义码')]:
+    if SP != 'xiaohe' and chars.get(c):                 # 别的双拼下该码已是单字码位：不加彩蛋，报告
+        skipped.append(f'{t}{c}（已有{"".join(chars[c])}）'); continue
     assert not chars.get(c), (c, chars.get(c))
     chars[c].append(t); special.append((t, c, kind))
     CUSTOM.add((t, c))
-skipped = []
 for t in '予居欲狙羽郁巨':
     full = sorted(c for c in codes_of[t] if len(c) == 4 and c[1] == 'u' and c[0] in 'jqxy')   # 2.5 做法：ü 写 v + 全码第三码
     if full and not chars.get(full[0][0] + 'v' + full[0][2]):
@@ -92,8 +103,30 @@ for t in '予居欲狙羽郁巨':
 # ---- 词 ----
 words = collections.defaultdict(list)
 for t, c in W25:
-    if len(t) > 1: words[c].append(t)
+    if len(t) > 1: words[WC(t, c)].append(t)
 ORDER = json.load(open(ROOT / 'data/inputs/词序调整.json', encoding='utf-8'))
+
+
+def char_code(ch, code):
+    """单字码换方案：同读音（音节换算）、同码长的那个码。"""
+    if SP == 'xiaohe' or ch in chars.get(code, []): return code     # 特殊码（如 剧 jv）两方案相同
+    sy = recode(code[:2], 'xiaohe', SP)
+    hit = [x for x in codes_of[ch] if x[:2] == sy and len(x) == len(code)]
+    assert len(hit) == 1, (ch, code, hit)
+    return hit[0]
+
+
+def any_code(items, code):
+    return char_code(items[0], code) if len(items[0]) == 1 else WC(items[0], code)
+
+
+ORDER['新增词'] = [[WC(w, c), w, n] for c, w, n in ORDER.get('新增词', [])]
+ORDER['提前'] = [[WC(w, c), w, b] for c, w, b in ORDER['提前']]
+_pins = collections.OrderedDict()                       # 钉选：逐项换码（同一钉选里的词换方案后可能分到不同码位，各自保持原顺序）
+for c, ts, n in ORDER.get('钉选', []):
+    for t in ts: _pins.setdefault(any_code([t], c), ([], n))[0].append(t)
+ORDER['钉选'] = [[c, ts, n] for c, (ts, n) in _pins.items()]
+ORDER['字不让'] = [[char_code(ch, c), ch, n] for c, ch, n in ORDER.get('字不让', [])]
 for c, w, _ in ORDER.get('新增词', []):                                   # 作者新增的词（码按作者给的），排在该码原有的词后面
     assert w not in words[c], (c, w); words[c].append(w)
 for c, w, before in ORDER['提前']:   # 作者指定的词序调整
@@ -101,14 +134,14 @@ for c, w, before in ORDER['提前']:   # 作者指定的词序调整
     ws.remove(w); ws.insert(ws.index(before), w)
 
 
-KEEP = {(ch, c) for c, ch, _ in json.load(open(ROOT / 'data/inputs/词序调整.json', encoding='utf-8')).get('字不让', [])}   # 作者逐个指定不让位的字
+KEEP = {(ch, c) for c, ch, _ in ORDER.get('字不让', [])}   # 作者逐个指定不让位的字
 
 # ü 容错词（作者 2026-10-08）：虎码词频前 TOL_TOP 的二字词，第一字 ju/qu/xu 可写 jv/qv/xv，第二字只有 ju 可写 jv；
 # 新码上排在原有长词前面（长词让），与单字的冲突按二字词的让位规则（字有简码或词频超过字频 16 倍才让）。
 TOL_TOP = int(os.environ.get('YZ_TOL_TOP', '20000'))
 two_rank = {w: i for i, w in enumerate(sorted((w for w in wt if len(w) == 2), key=lambda w: -wt[w]), 1)}
 tol_words = collections.defaultdict(list)
-for t, c in sorted(((t, c) for t, c in W25 if len(t) == 2 and len(c) == 4 and two_rank.get(t, 10**9) <= TOL_TOP), key=lambda x: two_rank[x[0]]):
+for t, c in sorted(((t, WC(t, c)) for t, c in W25 if len(t) == 2 and len(c) == 4 and two_rank.get(t, 10**9) <= TOL_TOP), key=lambda x: two_rank[x[0]]):
     heads = [c[:2]] + ([c[0] + 'v'] if c[0] in 'jqx' and c[1] == 'u' else [])
     tails = [c[2:]] + (['jv'] if c[2:] == 'ju' else [])
     for v in (h + s for h in heads for s in tails):
@@ -182,7 +215,7 @@ combined = [(t, c) for c in sorted(groups) for t in groups[c] if not t.startswit
 n_words = sum(len(v) for v in words.values()); n_out_words = sum(1 for t, c in table if len(t) > 1)
 assert n_words == n_out_words, (n_words, n_out_words)
 print('字词表', len(table), '条（字', sum(1 for t, c in table if len(t) == 1), '词', n_out_words, '）；综合表', len(combined), '条')
-print('特殊码', special, '；未能推导的 ü 容错', ''.join(skipped), '；ü 容错词', sum(len(v) for v in tol_words.values()), '条（', len(tol_words), '码）')
+print('特殊码', special, '；未加或未能推导的特殊码', '、'.join(skipped), '；词码表外原样保留', len(set(KEPT)), ' '.join(dict.fromkeys(KEPT)), '；ü 容错词', sum(len(v) for v in tol_words.values()), '条（', len(tol_words), '码）')
 print('短码位简词超上限', len(overflow), '；全码位字词同码按规则判定', len(log), '处，其中词占首选', sum(1 for x in log if len(x[4]) > 1))
 json.dump({'特殊码': special, 'ü容错未推导': skipped, 'ü容错词': {v: ts for v, ts in sorted(tol_words.items())}, '超上限': overflow,
            '全码位判定': [(c, C, w, [list(d) for d in dec], first) for c, C, w, dec, first in log]},
