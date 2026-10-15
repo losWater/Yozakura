@@ -3154,7 +3154,7 @@
 负	fug
 驸	fugf
 负	fugj
-弗	fuh
+符	fuh
 阜	fuhc
 簠	fuhe
 筟	fuhe
@@ -3290,7 +3290,7 @@
 赴	fuxv
 趺	fuxy
 鈇	fuxy
-夫	fuy
+附	fuy
 附	fuyf
 夫	fuyy
 阝	fuyy
@@ -3982,7 +3982,7 @@
 弓	gsn
 龚	gsnl
 弓	gsnn
-工	gso
+攻	gso
 功	gsoi
 贡	gsoj
 拱	gsol
@@ -6420,7 +6420,7 @@
 降	jdyn
 壃	jdzp
 己	ji
-济	jia
+激	jia
 濈	jiaa
 脊	jiab
 洎	jiad
@@ -13066,7 +13066,7 @@ m	otl
 埼	qizk
 邔	qizy
 前	qm
-潜	qma
+浅	qma
 汘	qmac
 潜	qmad
 浅	qmae
@@ -16271,7 +16271,7 @@ m	otl
 襩	uudl
 襡	uudm
 鼠	uudn
-署	uue
+熟	uue
 戍	uuea
 署	uued
 孰	uueh
@@ -17402,7 +17402,7 @@ m	otl
 駯	vugl
 驻	vugz
 駐	vugz
-筑	vuh
+竹	vuh
 箸	vuhd
 竹	vuhh
 笜	vuhh
@@ -18101,7 +18101,7 @@ m	otl
 鰃	wzsx
 𬶏	wzsz
 鮠	wzsz
-味	wzt
+喂	wzt
 唯	wztd
 味	wztl
 喴	wztu
@@ -19381,7 +19381,7 @@ m	otl
 猩	xyo
 擤	xyoe
 猩	xyom
-形	xyp
+型	xyp
 形	xypf
 刑	xypg
 硎	xypg
@@ -19488,7 +19488,7 @@ m	otl
 垭	yazn
 堐	yazz
 又	yb
-油	yba
+游	yba
 游	ybae
 泑	ybai
 油	ybam
@@ -20614,7 +20614,7 @@ m	otl
 缘	yrio
 爰	yriq
 鶢	yriv
-园	yrj
+圆	yrj
 圜	yrjc
 园	yrje
 圆	yrjj
