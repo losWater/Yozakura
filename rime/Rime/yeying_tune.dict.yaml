@@ -1,7 +1,7 @@
 # Source: 夜莺 3.0 候选 NB46 普通单字表（~/Yozakura；二简 ui=事、en=嗯；试用）+ 夜莺 2.5 快符
 ---
 name: yeying_tune
-version: "local-202610150725"
+version: "local-202610150727"
 sort: by_weight
 use_preset_vocabulary: false
 columns: [text, code, weight]
@@ -1407,8 +1407,6 @@ columns: [text, code, weight]
 矬	cohm	99998
 嵳	cohm	99997
 搓	coo	99999
-搓	coo	99998
-搓	coo	99997
 措	coob	99999
 挫	coom	99999
 搓	coom	99998
@@ -5769,8 +5767,7 @@ columns: [text, code, weight]
 赤	iimt	99999
 墀	iimv	99999
 黐	iinq	99999
-吃	iio	99999
-摛	iio	99998
+摛	iio	99999
 抶	iioh	99999
 持	iioo	99999
 摛	iioq	99999
@@ -6632,7 +6629,6 @@ columns: [text, code, weight]
 汫	jkag	99999
 泾	jkam	99999
 景	jkb	99999
-景	jkb	99998
 晶	jkbb	99999
 弪	jkbm	99999
 曔	jkbq	99999
@@ -10550,8 +10546,6 @@ $	k	99997
 畆	mueh	99998
 畒	muex	99999
 幕	muf	99999
-幕	muf	99998
-幕	muf	99997
 暮	mufb	99999
 募	mufi	99999
 墓	mufm	99999
@@ -15810,8 +15804,6 @@ m	otl	99999
 穼	ufjw	99999
 邥	ufjy	99999
 伸	ufk	99999
-伸	ufk	99998
-伸	ufk	99997
 什	ufkc	99999
 侁	ufke	99999
 伸	ufkh	99999
@@ -17414,8 +17406,6 @@ m	otl	99999
 住	vukm	99999
 伫	vukp	99999
 煮	vul	99999
-煮	vul	99998
-煮	vul	99997
 鼄	vulh	99999
 鴸	vulj	99999
 朱	vull	99999
@@ -19421,8 +19411,6 @@ m	otl	99999
 陜	xxyx	99999
 陿	xxyx	99998
 训	xy	99999
-训	xy	99998
-训	xy	99997
 汛	xya	99999
 洵	xyab	99999
 汛	xyac	99999
@@ -19448,8 +19436,6 @@ m	otl	99999
 𬩽	xyey	99999
 鄩	xyey	99998
 讯	xyf	99999
-讯	xyf	99998
-讯	xyf	99997
 询	xyfb	99999
 殉	xyfb	99998
 讯	xyfc	99999
@@ -21184,8 +21170,6 @@ m	otl	99999
 浟	yzaq	99999
 湵	yzaq	99998
 右	yzc	99999
-右	yzc	99998
-右	yzc	99997
 酉	yzcc	99999
 𬨎	yzcc	99998
 輏	yzcc	99997

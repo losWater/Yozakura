@@ -5745,7 +5745,6 @@
 赤	iimt
 墀	iimv
 黐	iinq
-吃	iio
 摛	iio
 抶	iioh
 持	iioo
