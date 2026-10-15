@@ -26,7 +26,17 @@ def render(rows): return ''.join(f'{t}\t{c}\n' for t, c in rows)
 
 STAGE.mkdir(parents=True, exist_ok=True)
 link = STAGE / 'assets'
-if not link.exists(): link.symlink_to(NG / 'assets')
+if C.RIME_CACHE is None:
+    if not link.exists(): link.symlink_to(NG / 'assets')
+else:                                                   # 别的方案（夜桜）：魔虎发布信息用自己缓存里的最新版，其余资源链接夜莺仓库
+    if link.is_symlink(): link.unlink()
+    if link.exists(): shutil.rmtree(link)
+    for item in (NG / 'assets').iterdir():
+        if item.name != 'rime': (link / item.name).parent.mkdir(parents=True, exist_ok=True); (link / item.name).symlink_to(item)
+    for item in (NG / 'assets/rime').iterdir():
+        (link / 'rime').mkdir(parents=True, exist_ok=True)
+        if item.name != 'mohu-release.json': (link / 'rime' / item.name).symlink_to(item)
+    shutil.copy(C.RIME_CACHE / 'mohu-release.json', link / 'rime/mohu-release.json')
 tools = STAGE / 'tools'
 if tools.is_symlink(): tools.unlink()
 if tools.exists(): shutil.rmtree(tools)
@@ -40,11 +50,15 @@ for p in sorted(tools.rglob('*'), key=lambda p: -len(p.parts)):
             t2 = t2.replace(a, b)
         if t2 != t: p.write_text(t2, encoding='utf-8')
     if 'yeying25_' in p.name: p.rename(p.with_name(p.name.replace('yeying25_', 'yeying_')))
+if C.ID != 'nightingale':                               # 别的方案（夜桜）：标识、名称、双拼、测试另行替换
+    sys.path.insert(0, str(ROOT / 'yozakura'))
+    import rime_patch
+    rime_patch.patch(tools, C)
 TEST_PATCH = [('rime_mac/verify_single.py', "'zip{space}'", "'zie{space}'")]   # verify_release 已改为从包内码表抽测试码，不用再改
 for f, a, b in TEST_PATCH:
     t = (tools / f).read_text(encoding='utf-8'); assert a in t, (f, a[:40]); (tools / f).write_text(t.replace(a, b), encoding='utf-8')
 (STAGE / '.cache').mkdir(exist_ok=True)
-if not (STAGE / '.cache/rime').exists(): (STAGE / '.cache/rime').symlink_to(NG / '.cache/rime')
+if not (STAGE / '.cache/rime').exists(): (STAGE / '.cache/rime').symlink_to(C.RIME_CACHE or NG / '.cache/rime')
 (STAGE / 'maintenance.json').write_text(json.dumps({'active': C.NAME}, ensure_ascii=False, indent=2) + '\n')
 for d in ('主表', '配置', '资料', '记录', '产物', '备份'): (V / d).mkdir(parents=True, exist_ok=True)
 (V / '版本.json').write_text(json.dumps({'version': C.V, 'status': 'active', 'note': f'夜莺 {C.V}（{C.LAYOUT}）构建，由 Yozakura release/stage_rime.py 搭台；不是正式维护目录。'},
@@ -54,7 +68,7 @@ for d in ('主表', '配置', '资料', '记录', '产物', '备份'): (V / d).m
 ci = rd(C.T('字词表.txt'))
 sym = rd(N25 / '主表/符号表.txt'); symset = set(sym)
 single = [(t, c) for t, c in ci if len(t) == 1]          # 字词表里的单字（含彩蛋码、容错码），候选序同字词表
-plain = [r for r in rd(C.T('普通单字表.txt')) if r not in symset]
+plain = [r for r in rd(C.PLAIN) if r not in symset]
 pos = {r: i for i, r in enumerate(plain)}
 special = [r for r in single if r not in pos]
 by_code = collections.defaultdict(list)
@@ -78,5 +92,5 @@ for f in ('码表概念与规则.md', '评估规则.md'):
 import subprocess, tempfile
 with tempfile.TemporaryDirectory() as tmp:
     subprocess.run([sys.executable, str(ROOT / 'release/make_toolbox.py'), tmp], check=True)
-    shutil.copy(Path(tmp) / '夜莺啾啾工具箱.html', V / '资料/拆分原本.html')
+    shutil.copy(Path(tmp) / f'{C.TOOLBOX}.html', V / '资料/拆分原本.html')
 print('搭台', STAGE, '；单字表', len(single), '字词表', len(ci), '；特殊码', len(types))

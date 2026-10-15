@@ -36,6 +36,7 @@ class _C:
         self.MASCOT = None                                          # 工具箱 Q 版形象图；None＝沿用页面里的夜莺形象
         self.SCHEME = 'xiaohe'                                      # 双拼方案；字词表的词码按 2.5 小鹤码换算成它
         self.ID = 'nightingale'                                     # 方案标识（码表作者字段、文件名等；不带版本号）
+        self.RIME_CACHE = None                                      # 魔虎上游包与 mohu-release.json；None＝用夜莺仓库的 .cache/rime 与 assets
         self.INP = ROOT / 'build/out/n30'                           # 引擎输入（读音频率、元素）
         if os.environ.get('YZ_BRAND'):
             b = json.load(open(os.environ['YZ_BRAND'], encoding='utf-8'))
@@ -49,6 +50,9 @@ class _C:
             self.MASCOT = path(b.get('形象'))
             self.SCHEME, self.INP, self.ID = b['双拼'], path(b['引擎输入']), b['标识']
             if b.get('码表目录'): self.TABLES = path(b['码表目录'])
+            self.STAGE = Path.home() / f'.cache/{self.ID}-build'      # 搭台目录、魔虎缓存与夜莺分开
+            self.MAC_OUT = self.STAGE / f'{self.NAME}/产物/mac'
+            self.RIME_CACHE = Path.home() / f'.cache/{self.ID}-rime'
 
     def T(self, name):
         return self.TABLES / name
