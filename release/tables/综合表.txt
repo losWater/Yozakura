@@ -12062,10 +12062,10 @@ Ciallo～(∠・ω＜)⌒☆	cial
 搓泥	coni
 挫男	conj
 搓弄	cons
-措	coo
+搓	coo
 措	coob
-搓	coom
 挫	coom
+搓	coom
 撮	cooq
 错判	copj
 错配	copw
@@ -43831,7 +43831,7 @@ https://	http
 后座	hzzo
 后足	hzzu
 合作组织	hzzv
-吃	i
+出	i
 ——	i
 —	i
 差	ia
@@ -46373,6 +46373,7 @@ id劝退	idqt
 痴女	iinv
 池内	iinw
 长城内外	iinw
+吃	iio
 摛	iio
 抶	iioh
 持	iioo
@@ -46430,7 +46431,7 @@ id劝退	idqt
 踟	iist
 齝	iist
 吃素	iisu
-嗤	iit
+吃	iit
 常春藤	iit
 吃	iitb
 池塘	iith
@@ -48455,7 +48456,7 @@ ip正确	ipvq
 传统意义	ityy
 穿同一条裤子	ityz
 出庭作证	itzv
-出	iu
+处	iu
 城市	iu
 产生	iu
 滁	iua
@@ -48795,7 +48796,7 @@ ip正确	ipvq
 亍	iupo
 幮	iupo
 出圃	iupu
-处	iuq
+厨	iuq
 冲上去	iuq
 传上去	iuq
 出勤	iuqb
@@ -53240,7 +53241,7 @@ https://www.jsxiaoshi.com/	jisu
 汫	jkag
 敬爱	jkai
 泾	jkam
-睛	jkb
+景	jkb
 竟把	jkba
 晶	jkbb
 警报	jkbc
@@ -76511,7 +76512,7 @@ Mbps	mbps
 畆	mueh
 木耳	muer
 畒	muex
-慕	muf
+幕	muf
 谋杀犯	muf
 门市房	muf
 木筏	mufa
@@ -110307,7 +110308,7 @@ txt文件	txtj
 身家	ufjx
 说风就是雨	ufjy
 邥	ufjy
-什	ufk
+伸	ufk
 示范课	ufk
 十分恐怖	ufkb
 什	ufkc
@@ -123789,7 +123790,7 @@ https://api.ihint.me/shuang/	ulpb
 招生考试	vuku
 真实可信	vukx
 住口	vukz
-朱	vul
+煮	vul
 展示了	vul
 竹林	vulb
 筑牢	vulc
@@ -139856,6 +139857,7 @@ Word	word
 学习咋样	xxzy
 学习资源	xxzy
 吓走	xxzz
+训	xy
 需要	xy
 幸运	xy
 下雨	xy
@@ -139936,7 +139938,7 @@ Word	word
 愻	xyev
 𬩽	xyey
 鄩	xyey
-训	xyf
+讯	xyf
 洗衣粉	xyf
 洗衣服	xyf
 询	xyfb
@@ -150816,7 +150818,7 @@ magnet:?xt=urn:btih:	xylw
 一字不识	yzbu
 有悖	yzbw
 意在笔先	yzbx
-友	yzc
+右	yzc
 酉	yzcc
 𬨎	yzcc
 輏	yzcc

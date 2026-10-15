@@ -12062,10 +12062,10 @@ comq	错谬
 coni	搓泥
 conj	挫男
 cons	搓弄
-coo	措
+coo	搓
 coob	措
-coom	搓
 coom	挫
+coom	搓
 cooq	撮
 copj	错判
 copw	错配
@@ -43831,7 +43831,7 @@ hzzl	含在嘴里
 hzzo	后座
 hzzu	后足
 hzzv	合作组织
-i	吃
+i	出
 i	——
 i	—
 ia	差
@@ -46373,6 +46373,7 @@ iint	插翅难逃
 iinv	痴女
 iinw	池内
 iinw	长城内外
+iio	吃
 iio	摛
 iioh	抶
 iioo	持
@@ -46430,7 +46431,7 @@ iiss	赤松
 iist	踟
 iist	齝
 iisu	吃素
-iit	嗤
+iit	吃
 iit	常春藤
 iitb	吃
 iith	池塘
@@ -48455,7 +48456,7 @@ ityx	传统医学
 ityy	传统意义
 ityz	穿同一条裤子
 itzv	出庭作证
-iu	出
+iu	处
 iu	城市
 iu	产生
 iua	滁
@@ -48795,7 +48796,7 @@ iupn	出票
 iupo	亍
 iupo	幮
 iupu	出圃
-iuq	处
+iuq	厨
 iuq	冲上去
 iuq	传上去
 iuqb	出勤
@@ -53240,7 +53241,7 @@ jkae	瀞
 jkag	汫
 jkai	敬爱
 jkam	泾
-jkb	睛
+jkb	景
 jkba	竟把
 jkbb	晶
 jkbc	警报
@@ -76511,7 +76512,7 @@ mueh	亩
 mueh	畆
 muer	木耳
 muex	畒
-muf	慕
+muf	幕
 muf	谋杀犯
 muf	门市房
 mufa	木筏
@@ -110307,7 +110308,7 @@ ufjx	身价
 ufjx	身家
 ufjy	说风就是雨
 ufjy	邥
-ufk	什
+ufk	伸
 ufk	示范课
 ufkb	十分恐怖
 ufkc	什
@@ -123789,7 +123790,7 @@ vuku	正式开始
 vuku	招生考试
 vukx	真实可信
 vukz	住口
-vul	朱
+vul	煮
 vul	展示了
 vulb	竹林
 vulc	筑牢
@@ -139856,6 +139857,7 @@ xxzy	信息资源
 xxzy	学习咋样
 xxzy	学习资源
 xxzz	吓走
+xy	训
 xy	需要
 xy	幸运
 xy	下雨
@@ -139936,7 +139938,7 @@ xyeq	向隅而泣
 xyev	愻
 xyey	𬩽
 xyey	鄩
-xyf	训
+xyf	讯
 xyf	洗衣粉
 xyf	洗衣服
 xyfb	询
@@ -150816,7 +150818,7 @@ yzbu	诱捕
 yzbu	一字不识
 yzbw	有悖
 yzbx	意在笔先
-yzc	友
+yzc	右
 yzcc	酉
 yzcc	𬨎
 yzcc	輏

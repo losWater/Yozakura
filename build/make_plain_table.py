@@ -118,6 +118,10 @@ def main(run_dir, out_dir, scheme='ziranma'):
                 if len(c) == 4 and c[:3] == code3:
                     slots[c] = [((k[0], 1 if x == ch else (0 if x in old else k[1]), k[2], k[3]), x) if k[0] == 0 else (k, x) for k, x in v]
             print('手动三简', code3, ch, '（原', ''.join(old) or '空', '）')
+        # 自定义码（作者 2026-10-15）：不按“音码＋首根”的码，如 吃 iio；该码上原有的字不动，排在它后面
+        for code, ch, _ in json.load(open(manual, encoding='utf-8')).get('自定义码', []):
+            slots[code] = [((-1, 0, 0, 0), ch)] + [e for e in slots.get(code, []) if e[1] != ch]
+            print('自定义码', code, ch)
 
     # ---- 二简字补三码（2026-10-02 作者定）：三码位空着才补 ----
     filled = 0

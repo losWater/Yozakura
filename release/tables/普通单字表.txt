@@ -1393,10 +1393,10 @@
 嵯	cohm
 矬	cohm
 嵳	cohm
-措	coo
+搓	coo
 措	coob
-搓	coom
 挫	coom
+搓	coom
 撮	cooq
 厝	coq
 厝	coqb
@@ -5304,7 +5304,7 @@
 喉	hzth
 糇	hzz
 糇	hzzh
-吃	i
+出	i
 差	ia
 汊	iaa
 汊	iaaa
@@ -5745,6 +5745,7 @@
 赤	iimt
 墀	iimv
 黐	iinq
+吃	iio
 摛	iio
 抶	iioh
 持	iioo
@@ -5775,7 +5776,7 @@
 歯	iisr
 踟	iist
 齝	iist
-嗤	iit
+吃	iit
 吃	iitb
 噄	iiti
 嗤	iitm
@@ -6036,7 +6037,7 @@
 憧	isvh
 忡	isvn
 隀	isyh
-出	iu
+处	iu
 滁	iua
 滀	iuah
 滁	iual
@@ -6088,7 +6089,7 @@
 亍	iup
 亍	iupo
 幮	iupo
-处	iuq
+厨	iuq
 厨	iuqo
 处	iuqv
 琡	iur
@@ -6605,7 +6606,7 @@
 瀞	jkae
 汫	jkag
 泾	jkam
-睛	jkb
+景	jkb
 晶	jkbb
 弪	jkbm
 曔	jkbq
@@ -10518,7 +10519,7 @@
 亩	mueh
 畆	mueh
 畒	muex
-慕	muf
+幕	muf
 暮	mufb
 募	mufi
 墓	mufm
@@ -15765,7 +15766,7 @@ m	otl
 宷	ufji
 穼	ufjw
 邥	ufjy
-什	ufk
+伸	ufk
 什	ufkc
 侁	ufke
 伸	ufkh
@@ -17365,7 +17366,7 @@ m	otl
 侏	vukl
 住	vukm
 伫	vukp
-朱	vul
+煮	vul
 鼄	vulh
 鴸	vulj
 朱	vull
@@ -19365,6 +19366,7 @@ m	otl
 硖	xxxy
 陜	xxyx
 陿	xxyx
+训	xy
 汛	xya
 洵	xyab
 汛	xyac
@@ -19389,7 +19391,7 @@ m	otl
 愻	xyev
 𬩽	xyey
 鄩	xyey
-训	xyf
+讯	xyf
 询	xyfb
 殉	xyfb
 讯	xyfc
@@ -21122,7 +21124,7 @@ m	otl
 泑	yzai
 浟	yzaq
 湵	yzaq
-友	yzc
+右	yzc
 酉	yzcc
 𬨎	yzcc
 輏	yzcc

@@ -1,7 +1,7 @@
 # Source: 夜莺 3.0 候选 NB46 普通单字表（~/Yozakura；二简 ui=事、en=嗯；试用）+ 夜莺 2.5 快符
 ---
 name: yeying_tune
-version: "local-202610150711"
+version: "local-202610150725"
 sort: by_weight
 use_preset_vocabulary: false
 columns: [text, code, weight]
@@ -1406,10 +1406,12 @@ columns: [text, code, weight]
 嵯	cohm	99999
 矬	cohm	99998
 嵳	cohm	99997
-措	coo	99999
+搓	coo	99999
+搓	coo	99998
+搓	coo	99997
 措	coob	99999
-搓	coom	99999
-挫	coom	99998
+挫	coom	99999
+搓	coom	99998
 撮	cooq	99999
 厝	coq	99999
 厝	coqb	99999
@@ -5324,7 +5326,7 @@ columns: [text, code, weight]
 喉	hzth	99999
 糇	hzz	99999
 糇	hzzh	99999
-吃	i	99999
+出	i	99999
 ——	i	99998
 —	i	99997
 差	ia	99999
@@ -5767,7 +5769,8 @@ columns: [text, code, weight]
 赤	iimt	99999
 墀	iimv	99999
 黐	iinq	99999
-摛	iio	99999
+吃	iio	99999
+摛	iio	99998
 抶	iioh	99999
 持	iioo	99999
 摛	iioq	99999
@@ -5797,7 +5800,7 @@ columns: [text, code, weight]
 歯	iisr	99997
 踟	iist	99999
 齝	iist	99998
-嗤	iit	99999
+吃	iit	99999
 吃	iitb	99999
 噄	iiti	99999
 嗤	iitm	99999
@@ -6058,7 +6061,7 @@ columns: [text, code, weight]
 憧	isvh	99999
 忡	isvn	99999
 隀	isyh	99999
-出	iu	99999
+处	iu	99999
 滁	iua	99999
 滀	iuah	99999
 滁	iual	99999
@@ -6110,7 +6113,7 @@ columns: [text, code, weight]
 亍	iup	99999
 亍	iupo	99999
 幮	iupo	99998
-处	iuq	99999
+厨	iuq	99999
 厨	iuqo	99999
 处	iuqv	99999
 琡	iur	99999
@@ -6628,7 +6631,8 @@ columns: [text, code, weight]
 瀞	jkae	99997
 汫	jkag	99999
 泾	jkam	99999
-睛	jkb	99999
+景	jkb	99999
+景	jkb	99998
 晶	jkbb	99999
 弪	jkbm	99999
 曔	jkbq	99999
@@ -10545,7 +10549,9 @@ $	k	99997
 亩	mueh	99999
 畆	mueh	99998
 畒	muex	99999
-慕	muf	99999
+幕	muf	99999
+幕	muf	99998
+幕	muf	99997
 暮	mufb	99999
 募	mufi	99999
 墓	mufm	99999
@@ -15803,7 +15809,9 @@ m	otl	99999
 宷	ufji	99999
 穼	ufjw	99999
 邥	ufjy	99999
-什	ufk	99999
+伸	ufk	99999
+伸	ufk	99998
+伸	ufk	99997
 什	ufkc	99999
 侁	ufke	99999
 伸	ufkh	99999
@@ -17405,7 +17413,9 @@ m	otl	99999
 侏	vukl	99999
 住	vukm	99999
 伫	vukp	99999
-朱	vul	99999
+煮	vul	99999
+煮	vul	99998
+煮	vul	99997
 鼄	vulh	99999
 鴸	vulj	99999
 朱	vull	99999
@@ -19410,6 +19420,9 @@ m	otl	99999
 硖	xxxy	99999
 陜	xxyx	99999
 陿	xxyx	99998
+训	xy	99999
+训	xy	99998
+训	xy	99997
 汛	xya	99999
 洵	xyab	99999
 汛	xyac	99999
@@ -19434,7 +19447,9 @@ m	otl	99999
 愻	xyev	99999
 𬩽	xyey	99999
 鄩	xyey	99998
-训	xyf	99999
+讯	xyf	99999
+讯	xyf	99998
+讯	xyf	99997
 询	xyfb	99999
 殉	xyfb	99998
 讯	xyfc	99999
@@ -21168,7 +21183,9 @@ m	otl	99999
 泑	yzai	99999
 浟	yzaq	99999
 湵	yzaq	99998
-友	yzc	99999
+右	yzc	99999
+右	yzc	99998
+右	yzc	99997
 酉	yzcc	99999
 𬨎	yzcc	99998
 輏	yzcc	99997
