@@ -48605,6 +48605,7 @@ iuhd	出海
 iuhe	锄禾
 iuhe	楚河
 iuhh	出航
+iuhh	出
 iuhh	岀
 iuhj	出汗
 iuhj	楚汉
@@ -48619,6 +48620,7 @@ iuhu	储户
 iuhw	出身寒微
 iuhx	初花
 iuhy	初婚
+iuhy	䢺
 iui	绌
 iui	瞅啥瞅
 iuib	插上翅膀
@@ -48831,7 +48833,6 @@ iurf	出任
 iurf	芻
 iurf	楚人
 iurh	出让
-iurh	出
 iurh	出神入化
 iuri	初日
 iurk	城市人口
@@ -48842,7 +48843,6 @@ iurs	璴
 iuru	出入
 iuru	初入
 iurx	閦
-iury	䢺
 ius	锄
 iusb	躇
 iusd	初赛
@@ -100973,6 +100973,7 @@ svhf	岁
 svhj	岁寒
 svho	随货
 svhp	亗
+svht	祟
 svhx	碎花
 svhz	随后
 svi	绥
@@ -101048,7 +101049,6 @@ svrl	璲
 svrl	髓
 svrl	髄
 svrl	瓍
-svrt	祟
 svru	岁入
 svru	鞖
 svrz	碎肉
@@ -105294,6 +105294,7 @@ tnh	笤
 tnhb	天南海北
 tnhc	调好
 tnhd	跳海
+tnhd	糶
 tnhe	调和
 tnhf	条痕
 tnht	笤
@@ -105303,6 +105304,7 @@ tnhv	调回
 tnhv	跳回
 tnhx	挑花
 tnhy	童年回忆
+tnhz	粜
 tnhz	套你猴子
 tnib	体能储备
 tnie	跳车
@@ -105401,15 +105403,12 @@ tnqu	调取
 tnqw	探囊取物
 tnqx	头脑清醒
 tnqy	条
-tnr	粜
-tnrd	糶
 tnre	脁
 tnrj	挑染
 tnrs	条绒
 tnru	跳入
 tnru	调入
 tnry	天怒人怨
-tnrz	粜
 tns	跳
 tns	突尼斯
 tnse	调色

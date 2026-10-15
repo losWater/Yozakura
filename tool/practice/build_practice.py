@@ -58,6 +58,8 @@ for x in roots:
         new_roots.append({'根': '戈无点', '键': layout[g], '原键': meta['layout'][g], '组': x['组'], '例字': '尧、晓、烧、浇、挠'})
     if r == '天':
         new_roots.append({'根': '夭', '键': layout[g_of['夭']], '原键': '', '组': x['组'], '例字': '笑、跃、沃、妖、夭'})
+    if r == '山':
+        new_roots.append({'根': '出', '键': layout[g_of['出']], '原键': '', '组': x['组'], '例字': '出、础、拙、屈、窟'})
     if r == '毌':
         new_roots.append({'根': '父', '键': layout[g_of['父']], '原键': '', '组': x['组'], '例字': '父、爸、交、校、爷'})
 missing = set(g_of) - {x['根'] for x in new_roots}
@@ -74,6 +76,9 @@ ex['戈无点'] = {'1': lst[:1], '2': lst[:2], '4': lst[:4]}
 lst = [{'字': c, '位置': '首末' if len(splits[c]) == 1 else ('首根' if splits[c][0][0] == '夭' else '末根'),
         '拆分': ' ＋ '.join(p[0] for p in splits[c])} for c in ['笑', '跃', '沃', '妖', '袄', '夭'] if c in splits]
 ex['夭'] = {'1': lst[:1], '2': lst[:2], '4': lst[:4]}
+lst = [{'字': c, '位置': '首末' if len(splits[c]) == 1 else ('首根' if splits[c][0][0] == '出' else '末根'),
+        '拆分': ' ＋ '.join(p[0] for p in splits[c])} for c in ['出', '础', '拙', '屈', '窟', '祟'] if c in splits]
+ex['出'] = {'1': lst[:1], '2': lst[:2], '4': lst[:4]}
 lst = [{'字': c, '位置': '首末' if len(splits[c]) == 1 else ('首根' if splits[c][0][0] == '父' else '末根'),
         '拆分': ' ＋ '.join(p[0] for p in splits[c])} for c in ['爸', '交', '爷', '校', '父', '较'] if c in splits]
 ex['父'] = {'1': lst[:1], '2': lst[:2], '4': lst[:4]}

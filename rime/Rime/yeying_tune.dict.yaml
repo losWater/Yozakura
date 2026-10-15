@@ -1,7 +1,7 @@
 # Source: 夜莺 3.0 候选 NB46 普通单字表（~/Yozakura；二简 ui=事、en=嗯；试用）+ 夜莺 2.5 快符
 ---
 name: yeying_tune
-version: "local-202610150658"
+version: "local-202610150703"
 sort: by_weight
 use_preset_vocabulary: false
 columns: [text, code, weight]
@@ -6082,8 +6082,10 @@ columns: [text, code, weight]
 蓫	iugl	99999
 触	iugm	99999
 斶	iuh	99999
-岀	iuhh	99999
+出	iuhh	99999
+岀	iuhh	99998
 斶	iuhm	99999
+䢺	iuhy	99999
 绌	iui	99999
 绌	iuih	99999
 竐	iujh	99999
@@ -6114,11 +6116,9 @@ columns: [text, code, weight]
 琡	iur	99999
 雛	iurd	99999
 芻	iurf	99999
-出	iurh	99999
 琡	iurq	99999
 璴	iurs	99999
 閦	iurx	99999
-䢺	iury	99999
 锄	ius	99999
 躇	iusb	99999
 齭	iush	99999
@@ -14560,6 +14560,7 @@ m	otl	99999
 嵗	svha	99999
 岁	svhf	99999
 亗	svhp	99999
+祟	svht	99999
 绥	svi	99999
 繀	svid	99999
 绥	sviu	99999
@@ -14584,7 +14585,6 @@ m	otl	99999
 髓	svrl	99998
 髄	svrl	99997
 瓍	svrl	99996
-祟	svrt	99999
 鞖	svru	99999
 𬭼	svs	99999
 歳	svsa	99999
@@ -15225,8 +15225,10 @@ m	otl	99999
 迢	tngl	99999
 蓨	tngz	99999
 笤	tnh	99999
+糶	tnhd	99999
 笤	tnht	99999
 岧	tnht	99998
+粜	tnhz	99999
 絩	tnie	99999
 窕	tnj	99999
 窕	tnje	99999
@@ -15247,10 +15249,7 @@ m	otl	99999
 条	tnq	99999
 庣	tnqe	99999
 条	tnqy	99999
-粜	tnr	99999
-糶	tnrd	99999
 脁	tnre	99999
-粜	tnrz	99999
 跳	tns	99999
 跳	tnse	99999
 趒	tnse	99998
