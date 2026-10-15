@@ -47,15 +47,24 @@ firsts = sorted((c for c in set(os_) | set(ns) if (os_.get(c) or [None])[0] != (
 ow, nw = {(t, c) for t, c in old if len(t) > 1}, {(t, c) for t, c in new if len(t) > 1}
 added, removed = sorted(nw - ow, key=lambda x: key(x[1])), sorted(ow - nw, key=lambda x: key(x[1]))
 fmt = lambda cs: ' '.join(sorted(cs, key=key)) or '（无）'
+# ü 码（jv、qv、xv、yv）相关的变化单独放最后：ü 单字码 + 二字词 ü 容错码
+import json
+_info = json.load(open(C.T('字词表_说明.json'), encoding='utf-8'))
+UCODES = set(_info.get('ü容错词', {})) | {c for t_, c, k in _info.get('特殊码', []) if c[:2] in ('jv', 'qv', 'xv', 'yv')}
+f_main, f_u = [c for c in firsts if c not in UCODES], [c for c in firsts if c in UCODES]
+a_main, a_u = [x for x in added if x[1] not in UCODES], [x for x in added if x[1] in UCODES]
+first_line = lambda c: f'- {c}：{(os_.get(c) or ["（空）"])[0]} → {(ns.get(c) or ["（空）"])[0]}'
 out = [f'### 单字码变化（{len(chars)} 字）', '']
 out += [f'- {t}：{fmt(oc.get(t, []))} → {fmt(nc.get(t, []))}' for t in chars]
-out += ['', f'### 首选变化（{len(firsts)} 个码位）', '']
-out += [f'- {c}：{(os_.get(c) or ["（空）"])[0]} → {(ns.get(c) or ["（空）"])[0]}' for c in firsts]
-out += ['', f'### 新增词条（{len(added)} 条）', '', '、'.join(f'{t} {c}' for t, c in added) + '。']
+out += ['', f'### 首选变化（{len(f_main)} 个码位）', ''] + [first_line(c) for c in f_main]
+out += ['', f'### 新增词条（{len(a_main)} 条）', '', '、'.join(f'{t} {c}' for t, c in a_main) + '。']
 if removed:
     out += ['', f'### 删除词条（{len(removed)} 条）', '', '、'.join(f'{t} {c}' for t, c in removed) + '。']
+if f_u or a_u:
+    out += ['', f'### ü 码：首选变化（{len(f_u)} 个码位）', ''] + [first_line(c) for c in f_u]
+    out += ['', f'### ü 码：新增词条（{len(a_u)} 条）', '', '、'.join(f'{t} {c}' for t, c in a_u) + '。']
 md = C.CHANGELOG.read_text(encoding='utf-8')
 head = md.split('\n## 附录\n', 1)[0]
 intro = f'以下由 {C.PREV} 与 {C.V} 的字词表逐条比对生成，包含上面所有改动带来的全部变化。'
 C.CHANGELOG.write_text(head.rstrip('\n') + '\n\n## 附录\n\n' + intro + '\n\n' + '\n'.join(out) + '\n', encoding='utf-8')
-print(f'附录：单字码变化 {len(chars)} 字，首选变化 {len(firsts)} 码位，新增词条 {len(added)}，删除 {len(removed)}')
+print(f'附录：单字码变化 {len(chars)} 字，首选变化 {len(f_main)}＋ü {len(f_u)} 码位，新增词条 {len(a_main)}＋ü {len(a_u)}，删除 {len(removed)}')
