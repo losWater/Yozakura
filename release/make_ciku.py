@@ -74,8 +74,8 @@ for t, c in D30: codes_of[t].add(c)
 special = []                                                    # (字, 码, 类型)
 TOLERANCE = set()                                               # 容错码条目（一律排在词后；ü 单字码不算，见下）
 CUSTOM = {('莺', 'by'), ('鹤', 'eh')}                            # 自定义码（彩蛋）固定在首位
-# ü 单字码（作者 2026-10-15）：jv 剧、jvb 居这些是正式打法（居 jubt 难按），不是容错，和彩蛋码一样固定字在首位
-for t, c, kind in [('莺', 'by', '自定义码'), ('鹤', 'eh', '自定义码'), ('剧', 'jv', 'ü码'), ('绪', 'xv', 'ü码')]:
+# ü 单字码（作者 2026-10-15）：jv 剧、jvb 居这些是正式打法（居 jubt 难按），不是容错，和彩蛋码一样算自定义码、固定字在首位（夜莺构建工具只认 全码/简码/容错码/自定义码/全码词/简词）
+for t, c, kind in [('莺', 'by', '自定义码'), ('鹤', 'eh', '自定义码'), ('剧', 'jv', '自定义码'), ('绪', 'xv', '自定义码')]:
     assert not chars.get(c), (c, chars.get(c))
     chars[c].append(t); special.append((t, c, kind))
     CUSTOM.add((t, c))
@@ -83,7 +83,7 @@ skipped = []
 for t in '予居欲狙羽郁巨':
     full = sorted(c for c in codes_of[t] if len(c) == 4 and c[1] == 'u' and c[0] in 'jqxy')   # 2.5 做法：ü 写 v + 全码第三码
     if full and not chars.get(full[0][0] + 'v' + full[0][2]):
-        c = full[0][0] + 'v' + full[0][2]; chars[c].append(t); special.append((t, c, 'ü码')); CUSTOM.add((t, c))
+        c = full[0][0] + 'v' + full[0][2]; chars[c].append(t); special.append((t, c, '自定义码')); CUSTOM.add((t, c))
     else:
         skipped.append(t)
 
