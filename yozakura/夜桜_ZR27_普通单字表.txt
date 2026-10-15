@@ -1400,7 +1400,7 @@
 嵯	coho
 嵳	coho
 矬	cohz
-措	coo
+搓	coo
 措	cood
 搓	cooo
 撮	cooq
@@ -3742,10 +3742,10 @@
 稁	gken
 高	gket
 髙	gket
-睾	gkf
+睾	gkeu
+藁	gkf
 菒	gkfm
 诰	gkft
-睾	gkfu
 藁	gkfw
 告	gkg
 勂	gkgi
@@ -5288,7 +5288,7 @@
 𬭶	hzsd
 嘿	hzt
 嘿	hztd
-吃	i
+出	i
 差	ia
 汊	iaa
 汊	iaaa
@@ -5767,7 +5767,7 @@
 蚩	iirm
 妛	iiru
 鸱	iirv
-嗤	iit
+吃	iit
 噄	iiti
 嗤	iitm
 吃	iitn
@@ -6111,7 +6111,7 @@
 忡	isvn
 蹖	isxd
 隀	isym
-出	iu
+处	iu
 滁	iua
 滁	iual
 滀	iuam
@@ -6137,8 +6137,10 @@
 犓	iugf
 触	iugm
 斶	iuh
+出	iuhh
 岀	iuhh
 斶	iuhm
+䢺	iuhy
 绌	iui
 绌	iuih
 竐	iujh
@@ -6163,17 +6165,15 @@
 础	iuph
 亍	iupk
 幮	iupk
-处	iuq
+厨	iuq
 厨	iuqk
 处	iuqv
 琡	iur
 雛	iurd
 芻	iurf
-出	iurh
 琡	iurq
 閦	iurx
 璴	iurx
-䢺	iury
 锄	ius
 锄	iusi
 嘼	iutt
@@ -7620,9 +7620,9 @@
 胫	jybo
 兢	jyc
 兢	jyce
-睛	jyd
-鼱	jydb
+景	jyd
 睛	jydb
+鼱	jydb
 聙	jydb
 晶	jydd
 曔	jydq
@@ -10478,7 +10478,7 @@
 畆	mueh
 亩	muem
 畒	muex
-慕	muf
+幕	muf
 暮	mufd
 苜	mufd
 募	mufi
@@ -14563,6 +14563,7 @@ m	otl
 嵗	svha
 岁	svhl
 亗	svhp
+祟	svhv
 绥	svi
 繀	svid
 绥	sviu
@@ -14586,7 +14587,6 @@ m	otl
 夊	svqq
 髓	svr
 鞖	svru
-祟	svrv
 璲	svrw
 髓	svrw
 髄	svrw
@@ -14697,6 +14697,8 @@ m	otl
 迢	tcg
 迢	tcgw
 笤	tch
+糶	tchd
+粜	tchh
 笤	tcht
 岧	tcht
 絩	tcie
@@ -14719,10 +14721,7 @@ m	otl
 条	tcq
 庣	tcqe
 条	tcqy
-粜	tcr
-糶	tcrd
 脁	tcre
-粜	tcrh
 鲦	tcs
 鲦	tcsy
 嬥	tcu
@@ -15748,7 +15747,7 @@ m	otl
 审	ufjm
 穼	ufjw
 邥	ufjy
-什	ufk
+伸	ufk
 什	ufkc
 侁	ufke
 伸	ufkm
@@ -16825,7 +16824,7 @@ m	otl
 障	vhy
 障	vhyc
 墇	vhzc
-知	vi
+只	vi
 治	via
 汁	viac
 洷	viaf
@@ -16891,9 +16890,9 @@ m	otl
 觯	vigq
 馶	vigq
 觗	vigr
-智	vih
-雉	vihd
+知	vih
 智	vihd
+雉	vihd
 劕	vihg
 峙	vihk
 崻	vihk
@@ -17422,7 +17421,7 @@ m	otl
 侏	vukl
 伫	vukp
 住	vukz
-朱	vul
+煮	vul
 朱	vull
 鼄	vulm
 翥	vulo
@@ -19495,7 +19494,7 @@ m	otl
 浟	ybaq
 湵	ybaq
 脜	ybbd
-友	ybc
+右	ybc
 有	ybcb
 酉	ybcc
 𬨎	ybcc
