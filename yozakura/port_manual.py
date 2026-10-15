@@ -22,7 +22,7 @@ for row in ('yuiop', 'hjkl;', 'nm,./'):
 
 
 def feel(c):
-    """全码当量与手感问题（测评站口径：大跨排、小跨排、小指干扰＝同手小指与无名指连按）。"""
+    """全码当量与手感问题（测评站口径：大跨排、小跨排、小指干扰＝同手小指与无名指连按；另标同键三连）。"""
     if not c or len(c) != 4: return '—'
     eq = sum(M[c[i:i + 2]]['eq'] for i in range(3)); fl = []
     for i in range(3):
@@ -30,6 +30,8 @@ def feel(c):
         if M[p]['ms']: fl.append(p + '大跨')
         elif M[p]['ss']: fl.append(p + '小跨')
         if FIN[a][0] == FIN[b][0] and {FIN[a][1], FIN[b][1]} == {0, 1}: fl.append(p + '小指干扰')
+    for i in range(2):                                   # 作者 2026-10-15：同键三连（如 cooo 的 ooo）击键快了很痛苦，当量看不出来
+        if c[i] == c[i + 1] == c[i + 2]: fl.append(c[i] * 3 + '同键三连'); break
     return f"{c} {eq:.1f}" + (' ' + '、'.join(fl) if fl else '')
 
 
