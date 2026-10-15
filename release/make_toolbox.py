@@ -8,7 +8,7 @@
 用法：python release/make_toolbox.py [输出目录]   # 默认 ~/Downloads/夜莺<版本>_工具箱
       YZ_BRAND=yozakura/品牌.json python release/make_toolbox.py   # 换成别的方案（夜桜），见 release/config.py
 """
-import collections, json, re, subprocess, sys
+import base64, collections, json, re, subprocess, sys
 from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 N25 = Path.home() / 'Nightingale/夜莺2.5'
@@ -150,6 +150,10 @@ for k, v in views.items():
 html = page[:va] + json.dumps(views, ensure_ascii=False).replace('<', '\\u003c') + page[vb:]   # 同 2.5：内嵌页面里的 </script> 不能截断外层脚本
 html = rep(html, '<title>夜莺啾啾工具箱</title>', f'<title>{C.TOOLBOX}</title>')
 html = rep(html, '<h1>夜莺啾啾工具箱</h1>', f'<h1>{C.TOOLBOX}</h1>')
+if C.MASCOT:                                             # 换 Q 版形象（页面里两处同一张图）
+    old = re.search(r'alt="夜莺Q版形象" src="(data:image/png;base64,[^"]+)"', html).group(1)
+    html = rep(html, old, 'data:image/png;base64,' + base64.b64encode(C.MASCOT.read_bytes()).decode(), 2)
+    html = rep(html, 'alt="夜莺Q版形象"', f'alt="{C.NAME.removesuffix(C.V)}Q版形象"', 2)
 OUT.mkdir(parents=True, exist_ok=True)
 (OUT / f'{C.TOOLBOX}.html').write_text(html, encoding='utf-8')
 LABEL = {'query': '拆分查询', 'components': '部件反查', 'practice': '字根练习', 'roots': '字根表', 'image': '字根图', 'text': '完整拆分表'}

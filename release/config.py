@@ -33,6 +33,7 @@ class _C:
         self.PRACTICE_BASE = None                                   # 练习“只练改动过的根”的对照布局；None＝取 2.x 练习页里的键位
         self.STORAGE = 'nightingale_memory_v1'                      # 练习进度的浏览器存储名
         self.TOOLBOX = '夜莺啾啾工具箱'
+        self.MASCOT = None                                          # 工具箱 Q 版形象图；None＝沿用页面里的夜莺形象
         if os.environ.get('YZ_BRAND'):
             b = json.load(open(os.environ['YZ_BRAND'], encoding='utf-8'))
             base = Path(os.environ['YZ_BRAND']).resolve().parent
@@ -42,6 +43,7 @@ class _C:
             self.PRACTICE = {'版本': b['练习对照']['名称']}
             self.PRACTICE_BASE = path(b['练习对照']['布局'])
             self.STORAGE, self.TOOLBOX = b['练习存储'], b['工具箱名']
+            self.MASCOT = path(b.get('形象'))
 
     def T(self, name):
         return self.TABLES / name
