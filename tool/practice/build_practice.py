@@ -12,7 +12,7 @@ sys.path.insert(0, str(ROOT / 'release'))
 from config import C
 layout = json.load(open(sys.argv[1] if len(sys.argv) > 1 else C.LAYOUT_PATH, encoding='utf-8'))
 BASE = json.load(open(C.PRACTICE_BASE, encoding='utf-8')) if C.PRACTICE_BASE else None   # 对照布局（如夜桜对照 NB46）；None＝页面里的 2.x 键位
-WHO = C.NAME if BASE else C.V + ' '                           # 题目提示“…在 X 键，<WHO>搬家了”（版本号后留空格）
+WHO = C.NAME.removesuffix(C.V) if BASE else C.V + ' '                           # 题目提示“…在 X 键，<WHO>搬家了”（版本号后留空格）
 B = C.PRACTICE['版本']                                        # 对照版本名（如 2.x）
 out = Path(sys.argv[2] if len(sys.argv) > 2 else Path.home() / f'Downloads/{C.NAME}_字根练习.html')
 if len(sys.argv) > 3:
