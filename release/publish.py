@@ -63,6 +63,7 @@ def changelog_txt(md, out):
         if l.startswith('（草稿'): continue
         l = l.replace('**', '')
         if l.startswith('# '): l = l[2:]
+        elif l.startswith('### '): l = '〖' + l[4:] + '〗'; lines.append('')
         elif l.startswith('## '): l = '【' + l[3:] + '】'; lines.append('')
         elif l.startswith('  - '): l = '    - ' + l[4:]
         elif l.startswith('- '): l = '· ' + l[2:]
@@ -104,6 +105,7 @@ def build(skip_table):
     step(5, '校验值')
     (OUT / f'SHA256SUMS-tables-toolbox-{C.STAMP}.txt').write_text(
         ''.join(f'{sha(p)}  {p.name}\n' for p in (tables, toolbox)), encoding='utf-8')
+    run(PY, ROOT / 'release/changelog_appendix.py')        # 附录：与上一版逐条比对，全部列出
     changelog_txt(C.CHANGELOG, OUT / f'{C.NAME}更新日志.txt')
     step(6, '官网本地预览')
     shutil.rmtree(SITE, ignore_errors=True)
