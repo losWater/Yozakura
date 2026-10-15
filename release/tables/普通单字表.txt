@@ -3409,10 +3409,10 @@
 稁	gcen
 高	gcet
 髙	gcet
+睾	gceu
 膏	gcez
-睾	gcf
+诰	gcf
 诰	gcft
-睾	gcfu
 藁	gcg
 菒	gcgh
 藁	gcgw

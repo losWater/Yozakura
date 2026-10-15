@@ -28914,8 +28914,9 @@ gcen	稁
 gcer	高二
 gcet	高
 gcet	髙
+gceu	睾
 gcez	膏
-gcf	睾
+gcf	诰
 gcf	构词法
 gcfa	告发
 gcfa	高发
@@ -28924,7 +28925,6 @@ gcfg	高峰
 gcfh	高仿
 gcft	诰
 gcfu	告负
-gcfu	睾
 gcfw	高飞
 gcfw	稿费
 gcg	藁
