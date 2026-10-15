@@ -23,7 +23,7 @@ class _C:
         self.RECORD = f"{self.SOURCE}/{d['维护记录']}"
         self.CHANGELOGS = sorted((ROOT / 'release/更新日志').glob('夜莺*.md'), key=lambda p: [int(x) for x in p.stem[2:].split('.')], reverse=True)
         self.CHANGELOG = ROOT / f'release/更新日志/夜莺{self.V}.md'
-        self.TABLES = ROOT / 'release/tables'
+        self.TABLES = Path(os.environ['YZ_TABLES']) if os.environ.get('YZ_TABLES') else ROOT / 'release/tables'   # 个人版本地更新时指向另一目录
         self.STAGE = Path.home() / '.cache/yeying-build'           # Rime 打包搭台目录（release/stage_rime.py）
         self.MAC_OUT = self.STAGE / f'{self.NAME}/产物/mac'           # 夜莺构建工具的 Mac 产物
         # 工具箱/练习页用：默认取夜莺正式数据；环境变量 YZ_BRAND=<json> 可整体换成别的方案（如 yozakura/品牌.json）

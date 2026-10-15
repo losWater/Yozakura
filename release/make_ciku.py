@@ -22,7 +22,9 @@ sys.path.insert(0, str(ROOT / 'lib'))
 from shuangpin import encode
 
 N25 = Path.home() / 'Nightingale/夜莺2.5'
-OUT = Path(sys.argv[1]) if len(sys.argv) > 1 else ROOT / 'release/tables'
+sys.path.insert(0, str(ROOT / 'release'))
+from config import C
+OUT = Path(sys.argv[1]) if len(sys.argv) > 1 else C.TABLES
 RATIO, WORD_DEFAULT, FLOOR = 16, 0.5, 1e-3
 
 
@@ -32,7 +34,7 @@ def rd(p):
 
 W25 = rd(N25 / '主表/字词表.txt')
 SYM = rd(N25 / '主表/符号表.txt'); SYMSET = set(SYM)
-D30 = [r for r in rd(ROOT / 'release/tables/普通单字表.txt') if r not in SYMSET]
+D30 = [r for r in rd(C.T('普通单字表.txt')) if r not in SYMSET]
 
 # ---- 频率 ----
 E = yaml.load(open(ROOT / 'build/out/n30/elements.yaml', encoding='utf-8'), Loader=yaml.CSafeLoader)
@@ -138,6 +140,8 @@ def can_yield(ch, code, w):
 
 # ---- 合并 ----
 PINS = {c: ts for c, ts, _ in ORDER.get('钉选', [])}
+if os.environ.get('YZ_PERSONAL'):                       # 作者个人调整里的钉选（只在本机个人版生效）
+    PINS.update({c: ts for c, ts, _ in json.load(open(os.environ['YZ_PERSONAL'], encoding='utf-8')).get('钉选', [])})
 table, log, overflow = [], [], []
 for code in sorted(set(chars) | set(words)):
     C, W = chars.get(code, []), words.get(code, [])

@@ -1,7 +1,7 @@
 # Source: 夜莺 3.0 候选 NB46 普通单字表（~/Yozakura；二简 ui=事、en=嗯；试用）+ 夜莺 2.5 快符
 ---
 name: yeying_tune
-version: "local-202610150727"
+version: "local-202610150732"
 sort: by_weight
 use_preset_vocabulary: false
 columns: [text, code, weight]
@@ -215,7 +215,7 @@ columns: [text, code, weight]
 岙	aoy	99999
 岙	aoyh	99999
 隩	aoyy	99999
-不	b	99999
+边	b	99999
 》	b	99998
 >	b	99997
 吧	ba	99999
@@ -792,7 +792,7 @@ columns: [text, code, weight]
 仌	bkxx	99999
 鈵	bkxx	99998
 陃	bkyx	99999
-边	bm	99999
+变	bm	99999
 辩	bma	99999
 辡	bmaa	99999
 辩	bmaf	99999
@@ -1033,7 +1033,7 @@ columns: [text, code, weight]
 别	bpt	99999
 别	bptg	99999
 別	bptg	99998
-部	bu	99999
+不	bu	99999
 晡	bub	99999
 晡	bubw	99999
 布	buc	99999
@@ -1048,7 +1048,7 @@ columns: [text, code, weight]
 簿	buho	99999
 峬	buhw	99999
 篰	buhy	99999
-瓿	buj	99999
+部	buj	99999
 瓿	buja	99999
 勏	buji	99999
 郶	bujk	99999
@@ -1063,6 +1063,7 @@ columns: [text, code, weight]
 捕	buo	99999
 抪	buop	99999
 捕	buow	99999
+不	bup	99999
 不	bupp	99999
 庯	buqw	99999
 步	bus	99999

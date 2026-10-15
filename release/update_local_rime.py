@@ -7,7 +7,7 @@
 上次装进去的单字表存在 ~/.cache/yeying-local/installed_普通单字表.txt（make_dict 要用它区分附加条目）；首次取上一版 git 标签（v<上一版>）的表。
 用法：.venv/bin/python release/update_local_rime.py
 """
-import datetime, filecmp, shutil, subprocess, sys
+import datetime, filecmp, json, os, shutil, subprocess, sys
 from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 PY = str(ROOT / '.venv/bin/python')
@@ -17,8 +17,10 @@ STATE = Path.home() / '.cache/yeying-local'
 sys.path.insert(0, str(ROOT / 'release'))
 from config import C
 STAGE = C.STAGE
-TABLES = ROOT / 'release/tables'
+OFFICIAL = ROOT / 'release/tables'                       # 正式表（发布用）；下载目录里放的也是正式表
+TABLES = OFFICIAL
 PLAIN = TABLES / '普通单字表.txt'
+PERSONAL = ROOT / 'data/inputs/个人调整.json'             # 作者个人调整：只装进本机 Rime，不进正式表、不发布
 SENT_PKG = DL / '虎整句-Rime-20261001-D89-r3-四档纠错瓢虫版'
 NOYJ = DL / f'{C.NAME}_{C.LAYOUT}_无一简试验版_普通单字表.txt'
 run = lambda *a, **k: subprocess.run([str(x) for x in a], check=True, **k)
@@ -30,6 +32,20 @@ if not installed.exists():
         r = subprocess.run(['git', '-C', str(ROOT), 'show', f'v{C.PREV}:{path}'], capture_output=True)
         if r.returncode == 0: installed.write_bytes(r.stdout); break
 
+_p = json.load(open(PERSONAL, encoding='utf-8')) if PERSONAL.exists() else {}
+if any(_p.get(k) for k in ('一简', '二简', '三简', '自定义码', '钉选')):
+    # 个人版：正式手动调整 + 个人调整（后者在后、覆盖前者），在 runs/n30_v30/current 的引擎结果上重新出表，放到单独目录
+    TABLES = STATE / 'tables'; TABLES.mkdir(exist_ok=True); PLAIN = TABLES / '普通单字表.txt'
+    merged = json.load(open(ROOT / 'data/inputs/手动调整.json', encoding='utf-8'))
+    for k in ('一简', '二简', '三简', '自定义码'): merged[k] = merged.get(k, []) + _p.get(k, [])
+    json.dump(merged, open(STATE / '手动调整_含个人.json', 'w', encoding='utf-8'), ensure_ascii=False)
+    out = STATE / 'plain'; shutil.rmtree(out, ignore_errors=True)
+    run(PY, ROOT / 'build/make_plain_table.py', ROOT / 'runs/n30_v30/current', out, 'xiaohe',
+        env=dict(os.environ, YZ_MANUAL=str(STATE / '手动调整_含个人.json')), **quiet)
+    shutil.copy(next(out.glob('*.txt')), PLAIN)
+    os.environ['YZ_TABLES'] = str(TABLES)                 # 之后的字词表、搭台都读个人版的表
+    os.environ['YZ_PERSONAL'] = str(PERSONAL)             # 字词表叠加个人钉选
+    print('个人调整已叠加：', '；'.join(f'{k} ' + ' '.join(f'{c}{ch}' for c, ch, _ in _p.get(k, [])) for k in ('一简', '二简', '三简', '自定义码') if _p.get(k)))
 print('1/5 字词表'); run(PY, ROOT / 'release/make_ciku.py', **quiet)
 print('2/5 调频方案')
 run(PY, ROOT / 'rime/make_dict.py', installed, PLAIN, 'local-' + datetime.datetime.now().strftime('%Y%m%d%H%M'), **quiet)
@@ -66,9 +82,9 @@ install(ROOT / 'rime/Rime', {'yeying_tune.dict.yaml', 'lua/yeying_tune_lookup_da
 install(tmp / 'sentence')
 shutil.copy(PLAIN, installed)
 for name in ('普通单字表', '字词表', '综合表', '综合表_码前'):
-    shutil.copy(TABLES / f'{name}.txt', DL / f'{C.NAME}_{C.LAYOUT}_{name}.txt')
+    shutil.copy(OFFICIAL / f'{name}.txt', DL / f'{C.NAME}_{C.LAYOUT}_{name}.txt')
 (DL / f'{C.NAME}_{C.LAYOUT}_普通单字表_码前.txt').write_text(
-    ''.join(f'{c}\t{t}\n' for t, c in (l.rstrip('\n').split('\t')[:2] for l in open(PLAIN, encoding='utf-8-sig') if '\t' in l)), encoding='utf-8')
+    ''.join(f'{c}\t{t}\n' for t, c in (l.rstrip('\n').split('\t')[:2] for l in open(OFFICIAL / '普通单字表.txt', encoding='utf-8-sig') if '\t' in l)), encoding='utf-8')
 print('更新文件：', ' '.join(changed) or '无')
 if changed:
     run('/Library/Input Methods/Squirrel.app/Contents/MacOS/Squirrel', '--reload')

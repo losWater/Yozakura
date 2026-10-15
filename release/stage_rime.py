@@ -51,10 +51,10 @@ for d in ('主表', '配置', '资料', '记录', '产物', '备份'): (V / d).m
                                        ensure_ascii=False, indent=2) + '\n')
 
 # ---- 主表 ----
-ci = rd(ROOT / 'release/tables/字词表.txt')
+ci = rd(C.T('字词表.txt'))
 sym = rd(N25 / '主表/符号表.txt'); symset = set(sym)
 single = [(t, c) for t, c in ci if len(t) == 1]          # 字词表里的单字（含彩蛋码、容错码），候选序同字词表
-plain = [r for r in rd(ROOT / 'release/tables/普通单字表.txt') if r not in symset]
+plain = [r for r in rd(C.T('普通单字表.txt')) if r not in symset]
 pos = {r: i for i, r in enumerate(plain)}
 special = [r for r in single if r not in pos]
 by_code = collections.defaultdict(list)
@@ -66,7 +66,7 @@ shutil.copy(N25 / '主表/符号表.txt', V / '主表/符号表.txt')
 shutil.copy(N25 / '主表/快符.txt', V / '主表/快符.txt')
 
 # ---- 配置 ----
-info = json.load(open(ROOT / 'release/tables/字词表_说明.json', encoding='utf-8'))
+info = json.load(open(C.T('字词表_说明.json'), encoding='utf-8'))
 types = [{'text': t, 'code': c, 'type': k} for t, c, k in info['特殊码']]
 (V / '配置/编码类型.json').write_text(json.dumps({'source': f'Yozakura release/make_ciku.py 特殊码（{C.V}）', 'entries': types},
                                               ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
