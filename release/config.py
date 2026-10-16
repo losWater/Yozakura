@@ -38,6 +38,7 @@ class _C:
         self.ID = 'nightingale'                                     # 方案标识（码表作者字段、文件名等；不带版本号）
         self.RIME_CACHE = None                                      # 魔虎上游包与 mohu-release.json；None＝用夜莺仓库的 .cache/rime 与 assets
         self.INP = ROOT / 'build/out/n30'                           # 引擎输入（读音频率、元素）
+        self.BASIS = ROOT / 'data/inputs/字音基准.json'              # 字音基准（音码按本方案双拼）；官网性能统计用
         if os.environ.get('YZ_BRAND'):
             b = json.load(open(os.environ['YZ_BRAND'], encoding='utf-8'))
             base = Path(os.environ['YZ_BRAND']).resolve().parent
@@ -49,6 +50,7 @@ class _C:
             self.STORAGE, self.TOOLBOX = b['练习存储'], b['工具箱名']
             self.MASCOT = path(b.get('形象'))
             self.SCHEME, self.INP, self.ID = b['双拼'], path(b['引擎输入']), b['标识']
+            if b.get('字音基准'): self.BASIS = path(b['字音基准'])
             if b.get('码表目录'): self.TABLES = path(b['码表目录'])
             self.STAGE = Path.home() / f'.cache/{self.ID}-build'      # 搭台目录、魔虎缓存与夜莺分开
             self.MAC_OUT = self.STAGE / f'{self.NAME}/产物/mac'

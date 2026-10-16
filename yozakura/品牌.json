@@ -15,6 +15,7 @@
  "形象": "形象/夜桜Q版.png",
  "双拼": "ziranma",
  "引擎输入": "../build/out/zr31",
+ "字音基准": "../data/inputs/夜桜字音基准.json",
  "码表目录": "tables",
  "标识": "yozakura"
 }
