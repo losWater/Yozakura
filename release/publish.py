@@ -13,7 +13,7 @@
   7. 更新日志去掉“草稿”、写上发布日期并提交；Yozakura 打标签 v<版本>，同步到夜莺仓库 3.x 分支（work/夜莺3.0），推送
   8. GitHub 建发布页 v<版本>（正文 = 下载说明 + 更新日志），上传附件
   9. 触发 Windows 工作流（版本、日期作为输入），等它验证并上传 Windows 包
-  10. 按发布页实际附件重新生成官网，推到 gh-pages；逐个检查线上下载链接
+  10. 按发布页实际附件重新生成官网，推到 gh-pages；夜莺仓库首页 README 同步更新；逐个检查线上下载链接
 用法：.venv/bin/python release/publish.py [--publish] [--skip-table]
 """
 import hashlib, json, re, shutil, subprocess, sys, time, urllib.parse, urllib.request, zipfile
@@ -210,6 +210,14 @@ def publish():
     run('git', '-C', PAGES, 'add', '-A', '.')
     run('git', '-C', PAGES, 'commit', '-q', '-m', f'site: 夜莺 {C.V}\n\nCo-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>')
     run('git', '-C', PAGES, 'push', '-q', 'origin', 'gh-pages')
+    # 仓库首页 README 与官网同步（下载按发布页实际附件生成）
+    NG = Path.home() / 'Nightingale'
+    run('git', '-C', NG, 'pull', '-q', '--ff-only')
+    run(PY, ROOT / 'release/make_readme.py', NG / 'README.md')
+    run('git', '-C', NG, 'add', 'README.md')
+    if subprocess.run(['git', '-C', str(NG), 'diff', '--cached', '--quiet']).returncode:
+        run('git', '-C', NG, 'commit', '-q', '-m', f'README：夜莺 {C.V}\n\nCo-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>')
+        run('git', '-C', NG, 'push', '-q', 'origin', 'main')
     s, rel = api('GET', f'{API}/releases/tags/v{C.V}')
     bad = []
     for a in rel['assets']:
