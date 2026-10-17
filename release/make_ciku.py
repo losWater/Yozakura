@@ -102,8 +102,17 @@ for t in '予居欲狙羽郁巨':
 
 # ---- 词 ----
 words = collections.defaultdict(list)
+_src = collections.defaultdict(lambda: collections.defaultdict(list))   # 新码 → 小鹤码 → 词（2.5 原序）
 for t, c in W25:
-    if len(t) > 1: words[WC(t, c)].append(t)
+    if len(t) > 1: _src[WC(t, c)][c].append(t)
+for code, groups in _src.items():
+    # 非小鹤时几个小鹤码可能并到同一新码（二字词全拼换了码，长词只用声母几乎不变）：各组内保持 2.5 原序，
+    # 组与组按虎码词频归并（每次取各组首词中词频最高的），免得按小鹤码字母序把长词压在常用二字词前面
+    gs = [list(g) for g in groups.values()]
+    while gs:
+        g = max(gs, key=lambda g: wfreq(g[0]) or 0)     # 同频取靠前的组（max 取第一个最大值）
+        words[code].append(g.pop(0))
+        if not g: gs.remove(g)
 ORDER = json.load(open(ROOT / 'data/inputs/词序调整.json', encoding='utf-8'))
 
 
