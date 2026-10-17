@@ -18085,8 +18085,8 @@ DDoS	ddos
 大拇指	dmv
 电闸	dmva
 点着	dmvc
-店招	dmvc
 驔	dmvc
+店招	dmvc
 点着	dmve
 垫着	dmve
 点阵	dmvf
@@ -29262,8 +29262,8 @@ ez收徒	ezut
 高等法院	gdfy
 高度负责	gdfz
 港独分子	gdfz
-郭德纲	gdg
 荄	gdg
+郭德纲	gdg
 搞的鬼	gdg
 孤独感	gdg
 广大干部	gdgb
@@ -30374,8 +30374,8 @@ ez收徒	ezut
 各国人民	ggrm
 更弱	ggro
 骾	ggrp
-该公司	ggs
 鲠	ggs
+该公司	ggs
 贵公司	ggs
 歌功颂德	ggsd
 梗塞	ggse
@@ -31247,8 +31247,8 @@ ez收徒	ezut
 国家利益	gjly
 广结良缘	gjly
 甘露	gjlz
-郭敬明	gjm
 坩	gjm
+郭敬明	gjm
 关节面	gjm
 干嘛	gjma
 干吗	gjma
@@ -41193,8 +41193,8 @@ https://	http
 護	hufq
 护肤	hufu
 虎符	hufu
-还是个	hug
 葫	hug
+还是个	hug
 活守寡	hug
 挥手告别	hugb
 斛	hugc
@@ -50673,8 +50673,8 @@ ip正确	ipvq
 间不容息	jbrx
 浸润	jbry
 筋肉	jbrz
-锦标赛	jbs
 金	jbs
+锦标赛	jbs
 渐变色	jbs
 禁赛	jbsd
 金色	jbse
@@ -52166,8 +52166,8 @@ ip正确	ipvq
 几成	jiig
 集成	jiig
 机场	jiih
-几场	jiih
 畿	jiih
+几场	jiih
 鸡场	jiih
 棘	jiii
 鸡翅	jiii
@@ -52224,8 +52224,8 @@ ip正确	ipvq
 几届	jijp
 几节	jijp
 集结	jijp
-急救	jijq
 寂	jijq
+急救	jijq
 几丘	jijq
 祭酒	jijq
 几句	jiju
@@ -52583,8 +52583,8 @@ https://www.jsxiaoshi.com/	jisu
 嗘	jity
 几头	jitz
 鸡头	jitz
-基础上	jiu
 嫉	jiu
+基础上	jiu
 经常是	jiu
 击杀	jiua
 急刹	jiua
@@ -52659,8 +52659,8 @@ https://www.jsxiaoshi.com/	jisu
 急转	jivr
 纪传	jivr
 集中	jivs
-几种	jivs
 忣	jivs
+几种	jivs
 击中	jivs
 记住	jivu
 几株	jivu
@@ -52745,8 +52745,8 @@ https://www.jsxiaoshi.com/	jisu
 几下	jixx
 记下	jixx
 集训	jixy
-检察院	jiy
 际	jiy
+检察院	jiy
 金疮药	jiy
 挤压	jiya
 积压	jiya
@@ -57549,8 +57549,8 @@ https://www.jsxiaoshi.com/	jisu
 家书抵万金	judj
 九十度角	judj
 精神动力	judl
-绝世独立	judl
 鼰	judl
+绝世独立	judl
 据点	judm
 句点	judm
 锯掉	judn
@@ -57579,8 +57579,8 @@ https://www.jsxiaoshi.com/	jisu
 鴡	juej
 具	juel
 结绳而治	juev
-健身房	juf
 聚	juf
+健身房	juf
 经双方	juf
 句法	jufa
 聚	jufa
@@ -57609,8 +57609,8 @@ https://www.jsxiaoshi.com/	jisu
 就是个	jug
 几十个	jug
 居高	jugc
-举高	jugc
 輂	jugc
+举高	jugc
 及时赶到	jugd
 苴	juge
 桔梗	jugg
@@ -64918,8 +64918,8 @@ $	k
 老抽	lciz
 牢	lcj
 牢记	lcji
-老几	lcji
 労	lcji
+老几	lcji
 老井	lcjk
 老景	lcjk
 老将	lcjl
@@ -66214,8 +66214,8 @@ $	k
 力促	licu
 栗	licw
 轹	licy
-理查德	lid
 礼	lid
+理查德	lid
 拉扯大	lid
 礼	lidb
 力道	lidc
@@ -68492,8 +68492,8 @@ $	k
 嘹	lnt
 聊天	lntm
 嘹	lnty
-辽宁省	lnu
 嫽	lnu
+辽宁省	lnu
 冷凝水	lnu
 聊啥	lnua
 雷诺氏病	lnub
@@ -71717,9 +71717,9 @@ $	k
 另眼相待	lyxd
 冷眼相待	lyxd
 利益相关	lyxg
-兰因絮果	lyxg
 錀	lyxg
 磮	lyxg
+兰因絮果	lyxg
 另有新欢	lyxh
 轮系	lyxi
 略有小成	lyxi
@@ -73535,8 +73535,8 @@ Mbps	mbps
 没个正形	mgvx
 美国之音	mgvy
 民革中央	mgvy
-名古屋	mgw
 檬	mgw
+名古屋	mgw
 没个完	mgw
 萌娃	mgwa
 蒙文	mgwf
@@ -89048,8 +89048,8 @@ py交易	pyjy
 荠	qign
 全程高能	qign
 齐国	qigo
-起锅	qigo
 䓫	qigo
+起锅	qigo
 器官	qigr
 芪	qigr
 气管	qigr
@@ -103429,8 +103429,8 @@ san值狂掉	svkd
 统筹安排	tiap
 漽	tiav
 洟	tiax
-调查表	tib
 题	tib
+调查表	tib
 统筹部	tib
 提拔	tiba
 题跋	tiba
@@ -109865,8 +109865,8 @@ txt文件	txtj
 设定	uedk
 舌钉	uedk
 射电	uedm
-设点	uedm
 社	uedm
+设点	uedm
 射雕	uedn
 舍掉	uedn
 蛇毒	uedu
@@ -121646,8 +121646,8 @@ https://api.ihint.me/shuang/	ulpb
 智力残疾	vlcj
 整理材料	vlcl
 装错	vlco
-这里的	vld
 戆	vld
+这里的	vld
 整理的	vld
 壮大	vlda
 撞到	vldc
@@ -141715,8 +141715,8 @@ magnet:?xt=urn:btih:	xylw
 要塞	ycsd
 铫	ycse
 要死	ycsi
-咬死	ycsi
 齩	ycsi
+咬死	ycsi
 腰酸	ycsr
 要素	ycsu
 鳐	ycsv
@@ -143625,8 +143625,8 @@ magnet:?xt=urn:btih:	xylw
 一刀	yidc
 移到	yidc
 一代	yidd
-一袋	yidd
 衤	yidd
+一袋	yidd
 衣带	yidd
 医德	yide
 黓	yide
@@ -144170,8 +144170,8 @@ magnet:?xt=urn:btih:	xylw
 易容	yirs
 仪容	yirs
 一如	yiru
-移入	yiru
 嫛	yiru
+移入	yiru
 亦如	yiru
 逸	yis
 钇	yisb
@@ -144219,8 +144219,8 @@ magnet:?xt=urn:btih:	xylw
 弈	yitg
 伊藤	yitg
 一趟	yith
-饴糖	yith
 呹	yith
+饴糖	yith
 一堂	yith
 一体	yiti
 遗体	yiti
@@ -148043,8 +148043,8 @@ magnet:?xt=urn:btih:	xylw
 约去‘	ytqu
 粤曲	ytqu
 樱桃青轴	ytqv
-犹太人	ytr
 阅	ytr
+犹太人	ytr
 一头热	ytr
 越热	ytre
 阅	ytre
