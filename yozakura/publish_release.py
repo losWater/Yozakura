@@ -37,6 +37,11 @@ if s == 404:
     print('已建发布页', rel['html_url'])
 elif rel['body'] != body:
     s, rel = api('PATCH', f'{API}/releases/{rel["id"]}', {'body': body}); assert s == 200, (s, rel)
+local = {p.name for p in files}
+for a in rel['assets']:                                  # 本地附件已换成新版（日期变了）：发布页上的旧附件撤下
+    if a['name'] not in local:
+        s, _ = api('DELETE', f'{API}/releases/assets/{a["id"]}'); assert s == 204, (a['name'], s)
+        print('  撤下', a['name'], flush=True)
 have = {a['name'] for a in rel['assets']}
 for p in files:
     if p.name in have: continue

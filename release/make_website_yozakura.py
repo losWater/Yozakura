@@ -44,7 +44,10 @@ if OUT.exists(): shutil.rmtree(OUT)
 tmp = Path(tempfile.mkdtemp())
 yenv = dict(os.environ, YZ_BRAND=str(BRAND)); nenv = {k: v for k, v in os.environ.items() if k != 'YZ_BRAND'}
 row, cf = perf(yenv, ROOT / 'yozakura' / B['字词表'], V, OUT / 'performance-data.json')
-nrow, ncf = perf(nenv, NG.T('字词表.txt'), NG.V, tmp / 'ng.json')
+ng_table = NG.T('字词表.txt')                                    # 夜莺对照取已发布版（标签 v<版本>）的表，工作区里可能是下一版草稿
+_tag = subprocess.run(['git', '-C', str(ROOT), 'show', f'v{NG.V}:{ng_table.relative_to(ROOT).as_posix()}'], capture_output=True)
+if _tag.returncode == 0: ng_table = tmp / 'ng_字词表.txt'; ng_table.write_bytes(_tag.stdout)
+nrow, ncf = perf(nenv, ng_table, NG.V, tmp / 'ng.json')
 meta = json.load(open((ROOT / 'yozakura' / B['引擎输入']).resolve() / 'meta.json', encoding='utf-8'))
 n_groups = len(meta['groups'])
 zr = json.load(open(ROOT / 'yozakura' / B['布局'], encoding='utf-8'))
