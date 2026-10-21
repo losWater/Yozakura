@@ -85,6 +85,16 @@ types = [{'text': t, 'code': c, 'type': k} for t, c, k in info['特殊码']]
 (V / '配置/编码类型.json').write_text(json.dumps({'source': f'Yozakura release/make_ciku.py 特殊码（{C.V}）', 'entries': types},
                                               ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
 (V / '配置/单字版差异.json').write_text('[]\n'); (V / '配置/词语读音.json').write_text('{}\n')
+# 单字版自己调字序：补简码位时按字频挑字。通规字各读音的字频（字\t双拼音节\t字频），只含这些核心字
+import yaml
+sys.path.insert(0, str(ROOT / 'lib'))
+from shuangpin import encode
+lv = set()
+for i in (1, 2, 3): lv |= {c for c in open(ROOT / f'data/inputs/通规分级/level-{i}.txt', encoding='utf-8').read().split() if len(c) == 1}
+fq = collections.defaultdict(float)
+for e in yaml.load(open(C.INP / 'elements.yaml', encoding='utf-8'), Loader=yaml.CSafeLoader):
+    if e['拼音'] != 'reserved' and e['词'] in lv: fq[(e['词'], encode(e['拼音'], C.SCHEME))] += e['频率']
+(V / '配置/单字调频字频.txt').write_text(''.join(f'{t}\t{s}\t{f:.4f}\n' for (t, s), f in sorted(fq.items(), key=lambda x: -x[1])), encoding='utf-8')
 for f in ('码表概念与规则.md', '评估规则.md'):
     shutil.copy(N25 / '资料' / f, V / '资料' / f)
 

@@ -121,6 +121,8 @@ def char_code(ch, code):
     if SP == 'xiaohe' or ch in chars.get(code, []): return code     # 特殊码（如 剧 jv）两方案相同
     sy = recode(code[:2], 'xiaohe', SP)
     hit = [x for x in codes_of[ch] if x[:2] == sy and len(x) == len(code)]
+    if len(hit) > 1:                                    # 同读音两个全码（如 壑 新拆 hejz、原拆自定义码 hevz）：取首根码相同的
+        hit = [x for x in hit if x[2:3] == code[2:3]] or hit
     assert len(hit) == 1, (ch, code, hit)
     return hit[0]
 
@@ -139,7 +141,9 @@ ORDER['字不让'] = [[char_code(ch, c), ch, n] for c, ch, n in ORDER.get('字�
 for c, w, _ in ORDER.get('新增词', []):                                   # 作者新增的词（码按作者给的），排在该码原有的词后面
     assert w not in words[c], (c, w); words[c].append(w)
 for c, w, before in ORDER['提前']:   # 作者指定的词序调整
-    ws = words[c]; assert w in ws and before in ws, (c, w, before)
+    ws = words[c]
+    if SP != 'xiaohe' and w in ws and before not in ws: continue   # 换双拼后两词不在同一码位（如 仍有 rgyb、日拱一卒 rgyz），不用调
+    assert w in ws and before in ws, (c, w, before)
     ws.remove(w); ws.insert(ws.index(before), w)
 
 
@@ -166,10 +170,10 @@ def has_short(ch, sy):
 
 def can_yield(ch, code, w):
     sy = code[:2]
+    if (ch, code) in KEEP: return False, '作者指定不让'     # 作者逐个指定，优先于“有简码就让”（2026-10-17 壑 hejm 不让核减）
     if len(code) == 4 and len(w) == 2 and has_short(ch, sy): return True, '有简码'
     if (ch, code) in TOLERANCE: return True, '容错码'
     if (ch, code) in CUSTOM: return False, '自定义码 / ü码'
-    if (ch, code) in KEEP: return False, '作者指定不让'
     if len(code) == 3:                                  # 作者 2026-10-08：三码位只在词频超过字频 SHORT_RATIO 倍时让给简词（生僻字占的空三简）
         r = (wfreq(w) or WORD_DEFAULT) / max(rf.get((ch, sy), 0), 0.01)   # 字频下限 0.01/百万（与作者看的统计同口径）
         if r > SHORT_RATIO: return True, f'三码位{r:.0f}倍'
