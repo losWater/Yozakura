@@ -1,7 +1,7 @@
 """把夜莺的手动简码（data/inputs/手动调整.json，小鹤码）换算成夜桜（自然码 ZR27）的 yozakura/手动调整.json。
 - 二简：同一读音的自然码音节；三简：该读音在夜桜表里的全码前三码；一简：同一读音的声母键（双拼两方案相同）。
 - yozakura/手动调整.json 里“不照搬”列出的（码类、字）跳过（作者复核过的）。
-- 自定义码（不按音码＋首根的码）无法自动换算，只报告，需人工定。
+- 自定义码（不按音码＋首根的码）无法自动换算：作者定好的夜桜码写在 yozakura/手动调整.json 的“自定义码”里（[夜桜码, 字, 说明（含对应的小鹤码）]），换算时原样保留；夜莺有、夜桜还没有的只报告。
 - 每条三简报告：夜桜里这个码现在归谁（未套手动调整的表）、争码双方在小鹤/夜桜下的全码与当量、手感问题，便于按全码手感复核。
 用法：.venv/bin/python yozakura/port_manual.py <未套手动调整的夜桜单字表>   # 由 yozakura/rebuild.py 调用
 """
@@ -57,7 +57,9 @@ def main(base_table):
     out = {'说明': '夜桜（自然码 ZR27）的手动一简/二简/三简：由 yozakura/port_manual.py 从夜莺 data/inputs/手动调整.json 逐条换算（同一读音，码换成自然码）。'
                  '“不照搬”是作者复核后夜桜不采用的条目，不参与出表、换算时跳过。出表时 YZ_MANUAL 指向本文件。',
            '一简': [], '二简': [], '三简': [], '不照搬': old.get('不照搬', []),
-           '不照搬说明': '夜莺手动调整中经作者复核、夜桜不照搬的条目（记录在此，不参与出表）。'}
+           '不照搬说明': '夜莺手动调整中经作者复核、夜桜不照搬的条目（记录在此，不参与出表）。',
+           '自定义码': old.get('自定义码', []),
+           '自定义码说明': '夜莺自定义码（不按音码＋首根）的夜桜对应码，人工换算，换算脚本原样保留；说明里注明对应的小鹤码。'}
     report = []
     for kind in ('一简', '二简', '三简'):
         for code, ch, note in src.get(kind, []):
@@ -88,7 +90,9 @@ def main(base_table):
                 report.append(line)
             else:
                 report.append(f'{kind} {code}→{new} {ch}：夜桜里该码原归 {"、".join(zr_slot.get(new, [])) or "空"}')
+    done = {(x[1], m.group(1)) for x in out['自定义码'] for m in [re.search(r'小鹤 (\w+)', x[2])] if m}
     for code, ch, note in src.get('自定义码', []):
+        if (ch, code) in done: report.append(f'自定义码 {code} {ch}：夜桜已有人工换算'); continue
         report.append(f'⚠ 自定义码 {code} {ch} 无法自动换算，需作者定：{note}')
     json.dump(out, open(DST, 'w', encoding='utf-8'), ensure_ascii=False, indent=1)
     print('\n'.join(report))

@@ -16,7 +16,7 @@ files = sorted(p for p in SRC.iterdir() if p.suffix in ('.zip', '.txt', '.html')
 assert files, f'{SRC} 里没有附件'
 D = f'https://github.com/{REPO}/releases/download/{TAG}/'
 flav = {'v5': ('Rime V5 版（推荐）', '魔虎 V5 本地整句模型，自然码'), 'shape': ('Rime 形码版', '无模型，四码、五码顶屏'), 'single': ('Rime 形码单字版', '单字练习')}
-lines = [f'夜桜 {V}：夜莺 3.1 的字根与拆分，配自然码双拼；相对夜莺 NB46 有 27 组字根换键。', '', '## 下载', '']
+lines = [f'夜桜 {V}：夜莺的字根与拆分，配自然码双拼。', '', '## 下载', '']
 for k in ('v5', 'shape', 'single'):
     for p in files:
         if re.fullmatch(rf'Yozakura-Rime-{re.escape(V)}-mac-{k}-\d{{8}}\.zip', p.name):
@@ -28,7 +28,11 @@ lines += ['', 'Windows 小狼毫包即将提供。解压后放进 Rime 用户目
           '官网：https://loswater.github.io/Nightingale/yozakura/ · 设计与维护记录：'
           f'https://github.com/{REPO}/blob/main/docs/夜桜自然码.md', '',
           '魔虎原作者 [fcxxxz / rime-mohu](https://github.com/fcxxxz/rime-mohu)：V5 模型、原生引擎及相关 Lua 为魔虎原作；原作者声明和许可证保留在包内。']
-body = '\n'.join(lines) + '\n'
+LOG = ROOT / f'yozakura/更新日志/{NAME}.md'                # 本版更新日志（去掉标题、草稿行与注释）接在正文后面
+if LOG.exists():
+    log = [l for l in LOG.read_text(encoding='utf-8').split('\n')[1:] if not l.startswith('（草稿') and not l.startswith('<!--')]
+    lines += ['', '---', '', '# 更新日志', ''] + log
+body = re.sub(r'\n{3,}', '\n\n', '\n'.join(lines)).strip() + '\n'
 
 s, rel = api('GET', f'{API}/releases/tags/{TAG}')
 if s == 404:

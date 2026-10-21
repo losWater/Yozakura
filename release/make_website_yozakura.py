@@ -104,6 +104,10 @@ download = ('<section class="section download" id="download"><div><span class="e
             + '<p>魔虎原作者 <a href="https://github.com/fcxxxz/rime-mohu">fcxxxz / rime-mohu</a>：V5 模型、原生引擎及相关 Lua 为魔虎原作。'
             '夜桜提供码表与适配；原作者声明和许可证保留在包内。</p></div></section>')
 
+# 夜桜本版更新日志（yozakura/更新日志/夜桜<版本>.md，有才链）
+yz_log = (f'<a href="{SRC}/yozakura/更新日志/{NAME}{V}.md">{NAME} {V} 更新日志 <span>↗</span></a>'
+          if (ROOT / f'yozakura/更新日志/{NAME}{V}.md').exists() else '')
+
 # ---- 与夜莺对比 ----
 groups = meta['groups']
 chips = ''.join(f'<li><b>{escape(groups[g][0])}</b><small>{escape("、".join(groups[g][1:4]))}{"…" if len(groups[g]) > 4 else ""}</small>'
@@ -121,7 +125,7 @@ html = f'''<!doctype html>
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="description" content="{NAME} {V}，夜莺的自然码版：夜莺 {NG.V} 的字根与拆分，配自然码双拼。">
+  <meta name="description" content="{NAME} {V}，夜莺的自然码版：夜莺的字根与拆分，配自然码双拼。">
   <meta name="theme-color" content="#1c1520">
   <title>{NAME} · 夜莺的自然码版</title>
   <link rel="icon" href="../bird.svg" type="image/svg+xml">
@@ -154,7 +158,7 @@ html = f'''<!doctype html>
     <section class="hero" aria-labelledby="hero-title">
       <div class="hero-copy"><div class="eyebrow"><span class="status-dot"></span> {NAME} {V} · 夜莺的自然码版</div>
         <h1 id="hero-title">{NAME}<span>同一套字根，<br>换一种双拼。</span></h1>
-        <p class="intro">夜莺 {NG.V} 的字根与拆分 · 自然码双拼</p>
+        <p class="intro">夜莺的字根与拆分 · 自然码双拼</p>
         <p class="principles">乱序字根 <i>·</i> 拆分直观 <i>·</i> 常用字无重 <i>·</i> 常用字词避重</p>
         <div class="actions"><a class="button primary" href="#learn">开始学习 <span>→</span></a><a class="button secondary" href="#download">下载码表 <span>↓</span></a></div>
         <a class="quiet-link" href="tools/split.html">已经在用了？查一个字的拆分 ↗</a><br>
@@ -166,7 +170,7 @@ html = f'''<!doctype html>
       </figure>
     </section>
     <section class="features" aria-label="方案特点">
-      <article><span class="feature-number">01 / 同源</span><h2>与夜莺同根</h2><p>字根、归并、拆分与夜莺 {NG.V} 完全相同，<br>夜莺改动时夜桜同步更新。</p></article>
+      <article><span class="feature-number">01 / 同源</span><h2>与夜莺同根</h2><p>字根、归并、拆分与夜莺相同，<br>夜莺改动时夜桜同步更新。</p></article>
       <article><span class="feature-number">02 / 双拼</span><h2>自然码音码</h2><p>音码用自然码双拼。<br>为配合自然码，{len(moved)} 组字根换了键。</p></article>
       <article><span class="feature-number">03 / 单字</span><h2>常用字无重</h2><p>前 1500 字选重为 {r15["选重"]}，<br>前 6000 字加权选重率 {r60["选重加权%"]:.3f}%。</p></article>
       <article><span class="feature-number">04 / 字词</span><h2>常用字词避重</h2><p>有简码的字在全码位让给词。<br>高频字词全码冲突 {cf["全部单字全码"]} 对降到 {cf["剔除有简码的字"]}。</p></article>
@@ -180,14 +184,14 @@ html = f'''<!doctype html>
     <section class="section" id="tools"><div class="section-heading"><div><span class="eyebrow">YOUR TOOLBOX</span><h2>遇到一个字，就来这里。</h2></div><p>查询与练习，随时打开。<br>都在浏览器本地运行，不需要联网。</p></div>
       <div class="tool-grid"><a class="tool-card" href="tools/split.html"><span class="tool-glyph">拆</span><h3>拆分查询 <b>↗</b></h3><p>查汉字的规范拆分与全部编码，也可以输入编码查候选。</p></a><a class="tool-card" href="tools/components.html"><span class="tool-glyph">根</span><h3>部件反查 <b>↗</b></h3><p>从熟悉的部件出发，按首根、末根找到目标字。</p></a><a class="tool-card" href="tools/root-chart.html"><span class="tool-glyph">图</span><h3>字根图 <b>↗</b></h3><p>整张键盘上的字根分布，适合打印或放在手边。</p></a><a class="tool-card" href="tools/toolbox.html"><span class="tool-glyph">箱</span><h3>{B["工具箱名"]} <b>↗</b></h3><p>以上全部合在一个页面里，含完整拆分表，可下载离线用。</p></a></div>
     </section>
-    <section class="section" id="diff"><div class="section-heading"><div><span class="eyebrow">FROM NIGHTINGALE</span><h2>从夜莺过来，只要记住这些。</h2></div><p>拆分、简码规则都不变。<br>{len(moved)} 组字根换了键，其余 {n_groups - len(moved)} 组与夜莺 {NG.V} 相同。</p></div>
+    <section class="section" id="diff"><div class="section-heading"><div><span class="eyebrow">FROM NIGHTINGALE</span><h2>从夜莺过来，只要记住这些。</h2></div><p>拆分、简码规则都不变。<br>{len(moved)} 组字根换了键，其余 {n_groups - len(moved)} 组与夜莺相同。</p></div>
       <ul class="moved">{chips}</ul>
       <div class="section-heading" style="margin-top:46px"><div><h2 style="font-size:22px">与夜莺 {NG.V} 同口径对比</h2></div><p>两边都按各自的正式字词表重算。</p></div>
       <table class="compare"><thead><tr><th></th><th scope="col">{NAME} {V}</th><th scope="col">夜莺 {NG.V}</th></tr></thead><tbody>{cmp_rows}</tbody></table>
       <p style="font-size:13px;color:var(--muted)">夜莺手动定的简码，夜桜按同一读音换算成自然码照搬；个别经作者复核不照搬的，记录在设计记录里。</p>
     </section>
     {download}
-    <section class="section updates" id="updates"><div><img class="update-portrait" src="yozakura-chibi.jpg" alt="夜桜头像" width="900" height="900" loading="lazy"><span class="eyebrow">GROWING WITH NIGHTINGALE</span><h2>夜莺每进一步，夜桜也跟上一步。</h2><p>夜桜的字根和拆分取自夜莺，夜莺调整后夜桜一条命令重建。<br>用自然码打字的反馈，同样欢迎。</p></div><div class="update-links"><a href="{SRC}/docs/夜桜自然码.md">设计与维护记录 <span>↗</span></a><a href="../changelog.html">夜莺更新日志 <span>↗</span></a><a href="https://github.com/{REPO}/issues">反馈一个问题 <span>↗</span></a></div></section>
+    <section class="section updates" id="updates"><div><img class="update-portrait" src="yozakura-chibi.jpg" alt="夜桜头像" width="900" height="900" loading="lazy"><span class="eyebrow">GROWING WITH NIGHTINGALE</span><h2>夜莺每进一步，夜桜也跟上一步。</h2><p>夜桜的字根和拆分取自夜莺，夜莺调整后夜桜一条命令重建。<br>用自然码打字的反馈，同样欢迎。</p></div><div class="update-links"><a href="{SRC}/docs/夜桜自然码.md">设计与维护记录 <span>↗</span></a>{yz_log}<a href="../changelog.html">夜莺更新日志 <span>↗</span></a><a href="https://github.com/{REPO}/issues">反馈一个问题 <span>↗</span></a></div></section>
   </main>
   <footer><a class="brand" href="#">{NAME}<span>YOZAKURA</span></a><p class="community">欢迎加入qq群聊交流：<strong>1121088815</strong></p><a href="https://github.com/{REPO}">在 GitHub 上一起完善 ↗</a></footer>
 </body>
