@@ -93,6 +93,12 @@ j = j.replace('"type": "ocd2",\n        "file": "moran_chaifen.ocd2"', '"type": 
 assert 'ocd2' not in j, j
 (OUT / 'opencc/moran_chaifen.json').write_text(j, encoding='utf-8')
 
+# ---- 方案显示名：魔然 → 夜桜魔然（只改菜单显示名，方案 ID 不变，用户的 *.custom.yaml 照样生效）----
+for f, old in (('moran', '魔然'), ('moran_fixed', '字詞·魔然'), ('moran_aux', '輔篩·魔然'), ('moran_sentence', '整句·魔然')):
+    s = (OUT / f'{f}.schema.yaml').read_text(encoding='utf-8')
+    assert s.count(f'\n  name: {old}\n') == 1, (f, old)
+    (OUT / f'{f}.schema.yaml').write_text(s.replace(f'\n  name: {old}\n', f'\n  name: {old.replace("魔然", "夜桜魔然")}\n'), encoding='utf-8')
+
 # ---- 字词定长码表：用户自己的表，只换单字 ----
 subprocess.run([str(ROOT / '.venv/bin/python'), str(ROOT / 'yozakura/定制/make_custom.py'), str(FIXED), str(OUT / 'moran_fixed_simp.dict.yaml')], check=True)
 
