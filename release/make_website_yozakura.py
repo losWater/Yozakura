@@ -93,7 +93,8 @@ status = f'{NAME} {V} <span class="divider">/</span> ' + (f'{DATE} 发布' if DA
 download = ('<section class="section download" id="download"><div><span class="eyebrow">MAKE IT YOURS</span><h2>把夜桜带到你的键盘。</h2>'
             '<p>选择你使用的系统，下载对应输入法包。</p>'
             f'<div class="version"><span class="status-dot"></span> {status}</div>'
-            + (f'<a class="quiet-link" href="{REL}/tag/{TAG}">查看发布页与全部附件 ↗</a>' if DATE else '') + '</div><div>'
+            + (f'<a class="quiet-link" href="{REL}/tag/{TAG}">查看发布页与全部附件 ↗</a>' if DATE else '')
+            + (f'<br><a class="quiet-link" href="changelog.html">{V} 更新日志 →</a>' if (ROOT / f'yozakura/更新日志/{NAME}{V}.md').exists() else '') + '</div><div>'
             '<p>请按操作系统下载，Windows 与 Mac 包不能混装。已经装了夜莺也没关系：夜桜的方案名和文件名都和夜莺分开，两个可以并存。</p>'
             '<h3>macOS · 鼠须管</h3><p>V5 限 Apple Silicon。</p>' + platform('mac') +
             '<h3>Windows · 小狼毫</h3>' + platform('windows') +
@@ -104,9 +105,39 @@ download = ('<section class="section download" id="download"><div><span class="e
             + '<p>魔虎原作者 <a href="https://github.com/fcxxxz/rime-mohu">fcxxxz / rime-mohu</a>：V5 模型、原生引擎及相关 Lua 为魔虎原作。'
             '夜桜提供码表与适配；原作者声明和许可证保留在包内。</p></div></section>')
 
-# 夜桜本版更新日志（yozakura/更新日志/夜桜<版本>.md，有才链）
-yz_log = (f'<a href="{SRC}/yozakura/更新日志/{NAME}{V}.md">{NAME} {V} 更新日志 <span>↗</span></a>'
-          if (ROOT / f'yozakura/更新日志/{NAME}{V}.md').exists() else '')
+# ---- 更新日志页 changelog.html：yozakura/更新日志/夜桜<版本>.md 各版，新版在前；套夜莺官网“作者的话”页的版式，配色同本页 ----
+LOGS = sorted((ROOT / 'yozakura/更新日志').glob(f'{NAME}*.md'), key=lambda f: [int(x) for x in f.stem.removeprefix(NAME).split('.')], reverse=True)
+yz_log = f'<a href="changelog.html">{NAME}更新日志 <span>→</span></a>' if LOGS else ''
+THEME = ':root{--bg:#1c1520;--panel:#261c2b;--text:#f1e9ee;--muted:#b4a3ad;--line:#3d2f40;--accent:#f2b6cc;--button:#f0bfd2;--ink:#3a1d2b;--moon:#f3dbe5}' \
+        ':root[data-theme=light]{--bg:#faf3f5;--panel:#f3e6eb;--text:#3b2433;--muted:#7a5d6b;--line:#e6d2da;--accent:#a8466e;--button:#a8466e;--ink:#fff;--moon:#f2d6e0}'
+if LOGS:
+    import markdown
+    md = markdown.Markdown(extensions=['toc', 'tables'], extension_configs={'toc': {'baselevel': 2}})
+    parts = []
+    for f in LOGS:
+        lines = [l for l in f.read_text(encoding='utf-8').split('\n') if not l.startswith('（草稿') and not l.startswith('<!--')]
+        lines[0] = '# ' + lines[0].lstrip('# ').replace(' 更新日志', '')
+        parts.append('\n'.join(lines))
+    body = md.convert('\n\n'.join(parts))
+    _a = subprocess.run(['git', '-C', str(Path.home() / 'Nightingale'), 'show', 'origin/gh-pages:author.html'], capture_output=True)
+    t = _a.stdout.decode('utf-8') if _a.returncode == 0 else (SITE / 'author.html').read_text(encoding='utf-8')
+    for a, b in (('href="style.css"', 'href="../style.css"'), ('href="author.css"', 'href="../author.css"'), ('src="site.js"', 'src="../site.js"'), ('href="bird.svg"', 'href="../bird.svg"')):
+        assert a in t, a; t = t.replace(a, b)
+    t = re.sub(r'<meta name="description" content="[^"]*">', f'<meta name="description" content="{NAME}各版本更新日志，最新为 {V}。">', t)
+    t = re.sub(r'<title>[^<]*</title>', f'<title>更新日志 · {NAME}{V}</title>', t)
+    t = re.sub(r'<header class="header">.*?</header>', f'<header class="header"><a class="brand" href="index.html">{NAME}<span>YOZAKURA</span></a><nav aria-label="主导航">'
+               f'<a href="index.html">首页</a><a href="index.html#download">下载</a><a href="../index.html">夜莺 ↗</a></nav>'
+               '<div class="header-end"><button id="theme" type="button" aria-label="切换至浅色模式">☼</button></div></header>', t, count=1, flags=re.S)
+    t = re.sub(r'<header class="article-heading">.*?</header>', f'<header class="article-heading"><p class="eyebrow">{NAME}</p><h1>更新日志</h1>'
+               f'<p>最新：{V}' + (f'（{DATE}）' if DATE else '') + '</p></header>', t, flags=re.S)
+    t = re.sub(r'(<nav aria-label="文章目录">).*?(</nav>)', lambda m_: m_.group(1) + md.toc + m_.group(2), t, flags=re.S)
+    t = re.sub(r'(<article class="article-body" id="article">).*?(<p class="article-return">)', lambda m_: m_.group(1) + body + m_.group(2), t, flags=re.S)
+    t = re.sub(r'<p class="article-return">.*?</p>', '<p class="article-return"><a href="index.html#download">← 返回夜桜首页</a></p>', t, flags=re.S)
+    t = re.sub(r'<footer>.*?</footer>', f'<footer><a class="brand" href="index.html">{NAME}<span>YOZAKURA</span></a><p class="community">欢迎加入qq群聊交流：<strong>1121088815</strong></p></footer>', t, flags=re.S)
+    t = t.replace('</head>', f'<style>{THEME}::selection{{background:#c9739a}}.article-body table{{border-collapse:collapse;margin:1em 0}}'
+                  '.article-body th,.article-body td{border:1px solid var(--line);padding:6px 12px;text-align:center}</style></head>', 1)
+    assert '夜莺</span>' not in t and 'NIGHTINGALE' not in t, '更新日志页残留夜莺页眉'
+    (OUT / 'changelog.html').write_text(t, encoding='utf-8')
 
 # ---- 与夜莺对比 ----
 groups = meta['groups']
@@ -151,7 +182,7 @@ html = f'''<!doctype html>
 <body>
   <a class="skip" href="#main">跳到正文</a>
   <header class="header"><a class="brand" href="#">{NAME}<span>YOZAKURA</span></a>
-    <nav aria-label="主导航"><a href="#learn">开始学习</a><a href="#tools">查询与练习</a><a href="#diff">与夜莺的区别</a><a href="#download">下载</a><a href="../index.html">夜莺 ↗</a></nav>
+    <nav aria-label="主导航"><a href="#learn">开始学习</a><a href="#tools">查询与练习</a><a href="#diff">与夜莺的区别</a><a href="#download">下载</a>{'<a href="changelog.html">更新日志</a>' if LOGS else ''}<a href="../index.html">夜莺 ↗</a></nav>
     <div class="header-end"><a href="https://github.com/{REPO}" class="github">GitHub ↗</a><button id="theme" type="button" aria-label="切换至浅色模式" title="切换明暗模式">☼</button></div>
   </header>
   <main id="main">
@@ -161,7 +192,7 @@ html = f'''<!doctype html>
         <p class="intro">夜莺的字根与拆分 · 自然码双拼</p>
         <p class="principles">乱序字根 <i>·</i> 拆分直观 <i>·</i> 常用字无重 <i>·</i> 常用字词避重</p>
         <div class="actions"><a class="button primary" href="#learn">开始学习 <span>→</span></a><a class="button secondary" href="#download">下载码表 <span>↓</span></a></div>
-        <a class="quiet-link" href="tools/split.html">已经在用了？查一个字的拆分 ↗</a><br>
+        {f'<a class="quiet-link" href="changelog.html">{V} 更新了什么？看更新日志 →</a><br>' if LOGS else ''}<a class="quiet-link" href="tools/split.html">已经在用了？查一个字的拆分 ↗</a><br>
         <a class="sibling" href="../index.html">用小鹤双拼？请看夜莺 ↗</a>
       </div>
       <figure class="hero-art character-art">
