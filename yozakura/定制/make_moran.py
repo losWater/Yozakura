@@ -2,6 +2,7 @@
 - moran.chars.dict.yaml：夜桜收的字按读音取夜桜辅码（该读音没有夜桜全码时取字的主辅码），一个字有几个夜桜辅码就出几行，首行原权重、其余 ×3/4（同魔然 gen_chars.py）；
 - moran.base/tencent/moe/computer/words 词库：逐音节换成该字的夜桜辅码（同魔然 update-compact-dict 的做法，按读音取）；
 - lua/zrmdb.txt（辅筛、提示）、opencc 拆分提示：换成夜桜辅码与夜桜拆分；拆分提示改用文本词典（免装 opencc 工具）；
+- 四码字词序照夜桜字词表（lua/yozakura_order.txt）：魔然的 YYXX 单字是 abbrev，四码有词时单字被吞，补 o 才出；
 - 只收夜桜有码的字（作者 2026-10-22：夜桜支持的字少一些就少一些）：夜桜没收的字从单字表、辅筛库、拆分提示里去掉，含这些字的词条也去掉；
 - moran_fixed_simp（字词定长码表）：用户自己的表，按 yozakura/定制/make_custom.py 只换单字。
 用法：.venv/bin/python yozakura/定制/make_moran.py <魔然简体全量包解压目录> <用户 moran_fixed_simp.dict.yaml> <输出目录>
@@ -100,6 +101,85 @@ j = j.replace('"type": "ocd2",\n      "file": "moran_chaifen.ocd2"', '"type": "t
 j = j.replace('"type": "ocd2",\n        "file": "moran_chaifen.ocd2"', '"type": "text",\n        "file": "moran_chaifen.txt"')
 assert 'ocd2' not in j, j
 (OUT / 'opencc/moran_chaifen.json').write_text(j, encoding='utf-8')
+
+# ---- 四码字词序：按夜桜字词表 ----
+# 魔然把单字 YYXX 设为 abbrev（moran.yaml「降低 YYXX 優先級」），四码整段对上词时单字全码根本不出，要补 o 才能打。
+# 夜桜单字全码＝自然码＋首末根，与魔然 YYXX 同码，二字词码也同为自然码，所以四码上字词谁先直接照夜桜字词表
+# （作者的规则：字有简码或词频超过字频 16 倍才让词）。只收有单字的四码；其余码、夜桜没有的词、魔然多出的辅码排在后面。
+seq = collections.defaultdict(list)
+for l in open(ROOT / 'yozakura' / B['字词表'], encoding='utf-8-sig'):
+    t, c = l.rstrip('\n').split('\t')[:2]
+    if len(c) == 4 and c.isalpha() and ' ' not in t: seq[c].append(t)
+seq = {c: v for c, v in seq.items() if any(len(t) == 1 for t in v)}
+(OUT / 'lua/yozakura_order.txt').write_text(''.join(f'{c}\t{" ".join(v)}\n' for c, v in sorted(seq.items())), encoding='utf-8')
+stat['四码字词序'] = len(seq)
+p = OUT / 'lua/moran_express_translator.lua'; s = p.read_text(encoding='utf-8')
+a = '''    local smart_iter = top.raw_query_smart(env, input, seg, env.enable_word_filter and env.enable_aux_hint)
+'''
+assert s.count(a) == 1 and s.count('''        local ijrq_enabled = env.ijrq_enable
+''') == 1 and s.count('''function top.output_begin(env)''') == 1
+s = s.replace(a, a + '''    -- 夜桜：四碼按夜桜字詞表排序（YYXX 單字在 moran.yaml 是 abbrev，有詞時不出，故按 YYXXo 另查）
+    local yozakura_ordered = false
+    local order = smart_iter ~= nil and input_len == 4 and not is_sentence_making and top.yozakura_order()[input]
+    if order then
+        local full, chars, words, rest, list, used = {}, {}, {}, {}, {}, {}
+        for cand in top.raw_query_smart(env, input .. "o", seg, false) do
+            if utf8.len(cand.text) == 1 and cand._end - cand._start == 5 and not full[cand.text] then
+                cand._end = seg._end
+                cand.preedit = input
+                full[cand.text] = cand
+                table.insert(chars, cand)
+            end
+        end
+        for cand in smart_iter do
+            if utf8.len(cand.text) > 1 and cand._end - cand._start == 4 and not full[cand.text] then
+                full[cand.text] = cand
+                table.insert(words, cand)
+            else
+                table.insert(rest, cand)
+            end
+        end
+        local function add(cand)
+            if not used[cand.text] then table.insert(list, cand); used[cand.text] = true end
+        end
+        for _, t in ipairs(order) do
+            if full[t] then add(full[t]) end
+        end
+        -- 夜桜此碼沒有的：魔然的詞、魔然多出的輔碼（字的其他讀音、舊拆法），按原次序排在後面
+        for _, cand in ipairs(words) do add(cand) end
+        for _, cand in ipairs(chars) do add(cand) end
+        for _, cand in ipairs(rest) do add(cand) end
+        local i = 0
+        smart_iter = function() i = i + 1; return list[i] end
+        yozakura_ordered = true
+    end
+''')
+s = s.replace('''        local ijrq_enabled = env.ijrq_enable
+''', '''        local ijrq_enabled = env.ijrq_enable and not yozakura_ordered  -- 夜桜字詞表已按簡碼讓位
+''')
+s = s.replace('''function top.output_begin(env)''', '''-- | 夜桜四碼字詞序（lua/yozakura_order.txt：碼\\t候選 候選…）
+function top.yozakura_order()
+    if top.yozakura_order_table == nil then
+        top.yozakura_order_table = {}
+        local pathsep = (package.config or '/'):sub(1, 1)
+        local file = moran.open_rime_file('lua' .. pathsep .. 'yozakura_order.txt', pathsep)
+        if file then
+            for line in file:lines() do
+                local code, items = line:match("^(%a+)\\t(.+)$")
+                if code then
+                    local list = {}
+                    for t in items:gmatch("%S+") do table.insert(list, t) end
+                    top.yozakura_order_table[code] = list
+                end
+            end
+            file:close()
+        end
+    end
+    return top.yozakura_order_table
+end
+
+function top.output_begin(env)''')
+p.write_text(s, encoding='utf-8')
 
 # ---- 方案显示名：魔然 → 夜桜魔然（只改菜单显示名，方案 ID 不变，用户的 *.custom.yaml 照样生效）----
 for f, old in (('moran', '魔然'), ('moran_fixed', '字詞·魔然'), ('moran_aux', '輔篩·魔然'), ('moran_sentence', '整句·魔然')):
