@@ -211,13 +211,16 @@ def publish():
     run('git', '-C', PAGES, 'commit', '-q', '-m', f'site: 夜莺 {C.V}\n\nCo-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>')
     run('git', '-C', PAGES, 'push', '-q', 'origin', 'gh-pages')
     # 仓库首页 README 与官网同步（下载按发布页实际附件生成）
-    NG = Path.home() / 'Nightingale'
-    run('git', '-C', NG, 'pull', '-q', '--ff-only')
-    run(PY, ROOT / 'release/make_readme.py', NG / 'README.md')
-    run('git', '-C', NG, 'add', 'README.md')
-    if subprocess.run(['git', '-C', str(NG), 'diff', '--cached', '--quiet']).returncode:
-        run('git', '-C', NG, 'commit', '-q', '-m', f'README：夜莺 {C.V}\n\nCo-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>')
-        run('git', '-C', NG, 'push', '-q', 'origin', 'main')
+    # 用 GitHub API 读写 main 上的 README（不动本地 ~/Nightingale 工作区）
+    import base64
+    s, cur = api('GET', f'{API}/contents/README.md?ref=main'); assert s == 200, s
+    tmp = OUT / 'README.md'; tmp.write_bytes(base64.b64decode(cur['content']))
+    run(PY, ROOT / 'release/make_readme.py', tmp)
+    new = tmp.read_bytes(); tmp.unlink()
+    if new != base64.b64decode(cur['content']):
+        s, _ = api('PUT', f'{API}/contents/README.md', {'message': f'README：夜莺 {C.V}\n\nCo-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>',
+                                                      'content': base64.b64encode(new).decode(), 'sha': cur['sha'], 'branch': 'main'})
+        assert s in (200, 201), s
     s, rel = api('GET', f'{API}/releases/tags/v{C.V}')
     bad = []
     for a in rel['assets']:
