@@ -161,7 +161,8 @@ def publish():
     if subprocess.run(['git', '-C', str(ROOT), 'diff', '--cached', '--quiet']).returncode:
         run('git', '-C', ROOT, 'commit', '-q', '-m', f'夜莺 {C.V} 更新日志定稿（{C.DATE}）\n\nCo-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>')
     step(7, f'Yozakura 标签 v{C.V}，同步夜莺分支')
-    run('git', '-C', ROOT, 'tag', '-a', f'v{C.V}', '-m', f'夜莺 {C.V} 发布（{C.DATE}）')
+    if subprocess.run(['git', '-C', str(ROOT), 'rev-parse', '-q', '--verify', f'refs/tags/v{C.V}'], capture_output=True).returncode:   # 中途断网重跑时标签已在
+        run('git', '-C', ROOT, 'tag', '-a', f'v{C.V}', '-m', f'夜莺 {C.V} 发布（{C.DATE}）')
     run('git', '-C', ROOT, 'push', '-q', 'origin', 'HEAD', f'v{C.V}')
     target = sync_branch()
     step(8, f'发布页 v{C.V}')
