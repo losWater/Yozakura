@@ -12,7 +12,7 @@ B = json.load(open(ROOT / 'yozakura/品牌.json', encoding='utf-8'))
 V, ID, NAME = B['版本'], B['标识'], B['名称']
 REPO = 'losWater/Yozakura'; API = f'https://api.github.com/repos/{REPO}'; TAG = f'{ID}-v{V}'
 SRC = Path.home() / f'Downloads/{NAME}_发布附件'
-files = sorted(p for p in SRC.iterdir() if p.suffix in ('.zip', '.txt', '.html'))
+files = sorted(p for p in SRC.iterdir() if p.suffix in ('.zip', '.txt', '.html') and re.match(r'(Yozakura-|SHA256SUMS-)', p.name))   # 只传正式附件（文件夹里别的文件不碰）
 assert files, f'{SRC} 里没有附件'
 D = f'https://github.com/{REPO}/releases/download/{TAG}/'
 flav = {'v5': ('Rime V5 版（推荐）', '魔虎 V5 本地整句模型，自然码'), 'shape': ('Rime 形码版', '无模型，四码、五码顶屏'), 'single': ('Rime 形码单字版', '单字练习')}
@@ -31,7 +31,10 @@ lines += ['', 'Windows 小狼毫包即将提供。解压后放进 Rime 用户目
 LOG = ROOT / f'yozakura/更新日志/{NAME}.md'                # 本版更新日志（去掉标题、草稿行与注释）接在正文后面
 if LOG.exists():
     log = [l for l in LOG.read_text(encoding='utf-8').split('\n')[1:] if not l.startswith('（草稿') and not l.startswith('<!--')]
-    lines += ['', '---', '', '# 更新日志', ''] + log
+    lines += ['', '---', '', '# 更新日志', ''] + ([f'从 1.0 升级到 {V}：下面是 {V} 本身的修改，之后附 ' + '、'.join(B['合并日志']) + ' 的修改。', ''] if B.get('合并日志') else []) + log
+    for name in B.get('合并日志', []):                       # 合并发布：附上之前版本的更新日志
+        old = [l for l in (ROOT / f'yozakura/更新日志/{name}.md').read_text(encoding='utf-8').split('\n') if not l.startswith('（草稿') and not l.startswith('<!--')]
+        lines += ['', '---', ''] + ['#' + old[0]] + old[1:]
 body = re.sub(r'\n{3,}', '\n\n', '\n'.join(lines)).strip() + '\n'
 
 s, rel = api('GET', f'{API}/releases/tags/{TAG}')
