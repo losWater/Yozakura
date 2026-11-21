@@ -3389,6 +3389,7 @@ www.baidu.com	baidu
 帮忙	bhmh
 兵荒马乱	bhml
 蚌	bhmr
+帮你	bhni
 不会那么	bhnm
 帮您	bhnn
 稖	bhnt
@@ -10909,8 +10910,8 @@ Ciallo～(∠・ω＜)⌒☆	cial
 赐给	cigz
 糍	cih
 辝	ciha
-伺候	cihb
 此后	cihb
+伺候	cihb
 雌黄	cihd
 此恨	cihf
 擦出火花	cihh
@@ -24179,8 +24180,8 @@ ez收徒	ezut
 焚	ffwp
 燓	ffwp
 发愤忘食	ffwu
-分为	ffwz
 氛围	ffwz
+分为	ffwz
 反方向	ffx
 丰富性	ffx
 分校	ffxc
@@ -27175,6 +27176,7 @@ ez收徒	ezut
 浮生	fuug
 复生	fuug
 负伤	fuuh
+富商	fuuh
 府上	fuuh
 附上	fuuh
 腐蚀	fuui
@@ -29599,8 +29601,8 @@ ez收徒	ezut
 隔绝	gejt
 格局	geju
 歌剧	geju
-格局	gejv
 歌剧	gejv
+格局	gejv
 各家	gejw
 各界	gejx
 歌	gek
@@ -41154,6 +41156,7 @@ Google	goog
 鸿爪	hsvw
 汗酸味	hsw
 红瓦	hswa
+红温	hswf
 红外	hswl
 骇死我了	hswl
 害死我了	hswl
@@ -43905,8 +43908,8 @@ https://	http
 出埃及记	iajj
 插件	iajm
 查检	iajm
-插进	iajn
 差劲	iajn
+插进	iajn
 查究	iajq
 查卷	iajr
 察觉	iajt
@@ -52698,8 +52701,8 @@ ip正确	ipvq
 积	jinl
 稘	jinl
 積	jinl
-几年	jinm
 纪念	jinm
+几年	jinm
 纪年	jinm
 穧	jinp
 稷	jinq
@@ -52911,8 +52914,8 @@ https://www.jsxiaoshi.com/	jisu
 击伤	jiuh
 记上	jiuh
 接触生活	jiuh
-几十	jiui
 即使	jiui
+几十	jiui
 及时	jiui
 集市	jiui
 进场时机	jiuj
@@ -67624,8 +67627,8 @@ $	k
 莱州	llvb
 沦落至此	llvc
 理论指导	llvd
-来者	llve
 来着	llve
+来者	llve
 屡立战功	llvg
 赖账	llvh
 利令智昏	llvh
@@ -69116,8 +69119,8 @@ $	k
 陆	lqyh
 浏阳	lqyh
 另起一行	lqyh
-六一	lqyi
 留意	lqyi
+六一	lqyi
 留言	lqyj
 流言	lqyj
 柳腰	lqyk
@@ -78387,8 +78390,8 @@ https://typer.owenyang.top/	mxyi
 纳新	naxn
 拿	naxo
 拿下	naxw
-那些	naxx
 哪些	naxx
+那些	naxx
 那行	naxy
 哪行	naxy
 哪样	nay
@@ -88296,8 +88299,8 @@ py交易	pyjy
 壳	qczr
 全村最后的希望	qczw
 强	qd
-期待	qd
 确定	qd
+期待	qd
 取得	qd
 溬	qdah
 漒	qdam
@@ -120662,8 +120665,8 @@ https://api.ihint.me/shuang/	ulpb
 稙	vine
 稚嫩	vinf
 秷	vinf
-只能	ving
 智能	ving
+只能	ving
 职能	ving
 智囊	vinh
 秩	vinh
@@ -135192,8 +135195,8 @@ Word	word
 心脉痹阻	xmbz
 献	xmc
 新名词	xmc
-献策	xmce
 酰	xmce
+献策	xmce
 项目策划	xmch
 舷	xmci
 献词	xmci
@@ -142236,6 +142239,7 @@ magnet:?xt=urn:btih:	xylw
 叶子	yezi
 椰子	yezi
 椰枣	yezk
+也在	yezl
 一而再再而三	yezs
 衣服	yf
 一份	yf
@@ -142484,9 +142488,9 @@ magnet:?xt=urn:btih:	xylw
 异国风情	ygfq
 月高风轻	ygfq
 一个方向	ygfx
+一个个	ygg
 一根根	ygg
 一股股	ygg
-一个个	ygg
 有关规定	yggd
 有关国家	yggj
 严格管理	yggl
@@ -143285,9 +143289,9 @@ magnet:?xt=urn:btih:	xylw
 酏	yicf
 一层	yicg
 轶	yich
+依次	yici
 一次	yici
 以此	yici
-依次	yici
 一餐	yicj
 远程操控	yick
 輢	yick
@@ -144412,9 +144416,9 @@ magnet:?xt=urn:btih:	xylw
 沿海	yjhl
 烟海	yjhl
 崦	yjhm
+烟火	yjho
 验货	yjho
 嶖	yjho
-烟火	yjho
 焰火	yjho
 岩	yjhp
 篶	yjhp
@@ -145014,6 +145018,7 @@ magnet:?xt=urn:btih:	xylw
 要案	ykan
 溔	ykap
 腰	ykb
+要把	ykba
 摇臂	ykbi
 耀斑	ykbj
 腰板	ykbj

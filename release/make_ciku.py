@@ -205,7 +205,10 @@ for code in sorted(set(chars) | set(words)):
         log.append((code, C, W[0], dec, order[0]))
     if code in PINS:                                    # 作者钉选：指定的几项按顺序排最前，其余原序
         assert all(x in order for x in PINS[code]), (code, PINS[code], order)
-        order = PINS[code] + [x for x in order if x not in PINS[code]]
+        pin = PINS[code]
+        if SP != 'xiaohe' and len(code) < 4:            # 钉选是作者在小鹤码上定的；换双拼后的短码位上本有的字不被越过（字重要）
+            pin = [x for x in order if len(x) == 1 and x not in pin and order.index(x) < order.index(pin[0])] + pin
+        order = pin + [x for x in order if x not in pin]
     table += [(t, code) for t in order]
 
 OUT.mkdir(parents=True, exist_ok=True)

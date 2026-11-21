@@ -3389,6 +3389,7 @@ bhmc	变幻莫测
 bhmh	帮忙
 bhml	兵荒马乱
 bhmr	蚌
+bhni	帮你
 bhnm	不会那么
 bhnn	帮您
 bhnt	稖
@@ -10909,8 +10910,8 @@ cigx	财产关系
 cigz	赐给
 cih	糍
 ciha	辝
-cihb	伺候
 cihb	此后
+cihb	伺候
 cihd	雌黄
 cihf	此恨
 cihh	擦出火花
@@ -24179,8 +24180,8 @@ ffwl	份外
 ffwp	焚
 ffwp	燓
 ffwu	发愤忘食
-ffwz	分为
 ffwz	氛围
+ffwz	分为
 ffx	反方向
 ffx	丰富性
 ffxc	分校
@@ -27175,6 +27176,7 @@ fuuf	复审
 fuug	浮生
 fuug	复生
 fuuh	负伤
+fuuh	富商
 fuuh	府上
 fuuh	附上
 fuui	腐蚀
@@ -29599,8 +29601,8 @@ gejn	各尽
 gejt	隔绝
 geju	格局
 geju	歌剧
-gejv	格局
 gejv	歌剧
+gejv	格局
 gejw	各家
 gejx	各界
 gek	歌
@@ -41154,6 +41156,7 @@ hsvu	话虽这么说
 hsvw	鸿爪
 hsw	汗酸味
 hswa	红瓦
+hswf	红温
 hswl	红外
 hswl	骇死我了
 hswl	害死我了
@@ -43905,8 +43908,8 @@ iaji	茶几
 iajj	出埃及记
 iajm	插件
 iajm	查检
-iajn	插进
 iajn	差劲
+iajn	插进
 iajq	查究
 iajr	查卷
 iajt	察觉
@@ -52698,8 +52701,8 @@ jinl	挤奶
 jinl	积
 jinl	稘
 jinl	積
-jinm	几年
 jinm	纪念
+jinm	几年
 jinm	纪年
 jinp	穧
 jinq	稷
@@ -52911,8 +52914,8 @@ jiuh	嫉
 jiuh	击伤
 jiuh	记上
 jiuh	接触生活
-jiui	几十
 jiui	即使
+jiui	几十
 jiui	及时
 jiui	集市
 jiuj	进场时机
@@ -67624,8 +67627,8 @@ llv	连理枝
 llvb	莱州
 llvc	沦落至此
 llvd	理论指导
-llve	来者
 llve	来着
+llve	来者
 llvg	屡立战功
 llvh	赖账
 llvh	利令智昏
@@ -69116,8 +69119,8 @@ lqyh	留洋
 lqyh	陆
 lqyh	浏阳
 lqyh	另起一行
-lqyi	六一
 lqyi	留意
+lqyi	六一
 lqyj	留言
 lqyj	流言
 lqyk	柳腰
@@ -78387,8 +78390,8 @@ naxm	纳贤
 naxn	纳新
 naxo	拿
 naxw	拿下
-naxx	那些
 naxx	哪些
+naxx	那些
 naxy	那行
 naxy	哪行
 nay	哪样
@@ -88296,8 +88299,8 @@ qczq	墽
 qczr	壳
 qczw	全村最后的希望
 qd	强
-qd	期待
 qd	确定
+qd	期待
 qd	取得
 qdah	溬
 qdam	漒
@@ -120662,8 +120665,8 @@ vind	稚
 vine	稙
 vinf	稚嫩
 vinf	秷
-ving	只能
 ving	智能
+ving	只能
 ving	职能
 vinh	智囊
 vinh	秩
@@ -135192,8 +135195,8 @@ xmbz	先辈
 xmbz	心脉痹阻
 xmc	献
 xmc	新名词
-xmce	献策
 xmce	酰
+xmce	献策
 xmch	项目策划
 xmci	舷
 xmci	献词
@@ -142236,6 +142239,7 @@ yezc	墷
 yezi	叶子
 yezi	椰子
 yezk	椰枣
+yezl	也在
 yezs	一而再再而三
 yf	衣服
 yf	一份
@@ -142484,9 +142488,9 @@ ygfm	有关方面
 ygfq	异国风情
 ygfq	月高风轻
 ygfx	一个方向
+ygg	一个个
 ygg	一根根
 ygg	一股股
-ygg	一个个
 yggd	有关规定
 yggj	有关国家
 yggl	严格管理
@@ -143285,9 +143289,9 @@ yice	臆测
 yicf	酏
 yicg	一层
 yich	轶
+yici	依次
 yici	一次
 yici	以此
-yici	依次
 yicj	一餐
 yick	远程操控
 yick	輢
@@ -144412,9 +144416,9 @@ yjhk	演好
 yjhl	沿海
 yjhl	烟海
 yjhm	崦
+yjho	烟火
 yjho	验货
 yjho	嶖
-yjho	烟火
 yjho	焰火
 yjhp	岩
 yjhp	篶
@@ -145014,6 +145018,7 @@ ykai	要隘
 ykan	要案
 ykap	溔
 ykb	腰
+ykba	要把
 ykbi	摇臂
 ykbj	耀斑
 ykbj	腰板
