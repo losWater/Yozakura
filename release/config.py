@@ -36,7 +36,7 @@ class _C:
         self.MASCOT = None                                          # 工具箱 Q 版形象图；None＝沿用页面里的夜莺形象
         self.SCHEME = 'xiaohe'                                      # 双拼方案；字词表的词码按 2.5 小鹤码换算成它
         self.ID = 'nightingale'                                     # 方案标识（码表作者字段、文件名等；不带版本号）
-        self.RIME_CACHE = None                                      # 魔虎上游包与 mohu-release.json；None＝用夜莺仓库的 .cache/rime 与 assets
+        self.RIME_CACHE = Path.home() / '.cache/yeying-rime'         # 魔虎上游包与 mohu-release.json（2026-11-21 起不再用夜莺仓库里 9 月的旧包；模型 zip 链接夜莺缓存）
         self.INP = ROOT / 'build/out/n30'                           # 引擎输入（读音频率、元素）
         self.BASIS = ROOT / 'data/inputs/字音基准.json'              # 字音基准（音码按本方案双拼）；官网性能统计用
         if os.environ.get('YZ_BRAND'):

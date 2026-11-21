@@ -66,8 +66,7 @@ def patch(tools, C, eng='Yozakura'):
             if t2 != t: f.write_text(t2, encoding='utf-8')
     sub(rm / 'src/v5-tiger.yaml', [('scheme: flypy', 'scheme: zrm'), ('candidate_type: mohu_flypy', 'candidate_type: mohu_zrm'),
                                    ('nightingale.lexicon.txt', f'{ID}.lexicon.txt')])
-    sub(rm / 'build_v5.py', [("for name in ('libtigerengine.dylib', 'libonnxruntime.1.dylib'):", "for name in ('libtigerengine.dylib',):   # 魔虎 2026-10-15 起 Mac 运行库不含 onnxruntime"),
-                             ("'nightingale.lexicon.txt'", f"'{ID}.lexicon.txt'")])
+    sub(rm / 'build_v5.py', [("'nightingale.lexicon.txt'", f"'{ID}.lexicon.txt'")])   # onnxruntime 的适配已移到 release/stage_rime.py（夜莺也用新运行库）
 
     # ---- 数据：多字词读音、~ 反查表换自然码 ----
     rc = {encode(p, 'xiaohe'): encode(p, 'ziranma') for p in syllables()}

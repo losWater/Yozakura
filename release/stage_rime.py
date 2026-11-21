@@ -58,7 +58,16 @@ TEST_PATCH = [('rime_mac/verify_single.py', "'zip{space}'", "'zie{space}'")]   #
 for f, a, b in TEST_PATCH:
     t = (tools / f).read_text(encoding='utf-8'); assert a in t, (f, a[:40]); (tools / f).write_text(t.replace(a, b), encoding='utf-8')
 (STAGE / '.cache').mkdir(exist_ok=True)
-if not (STAGE / '.cache/rime').exists(): (STAGE / '.cache/rime').symlink_to(C.RIME_CACHE or NG / '.cache/rime')
+_cache = STAGE / '.cache/rime'
+if _cache.is_symlink() and _cache.resolve() != Path(C.RIME_CACHE or NG / '.cache/rime').resolve(): _cache.unlink()
+if not _cache.exists(): _cache.symlink_to(C.RIME_CACHE or NG / '.cache/rime')
+# 魔虎 2026-10-15 起 Mac 运行库不含 onnxruntime：上游包里没有就不取
+import zipfile
+_up = next((C.RIME_CACHE or NG / '.cache/rime') / n for n in ('rime-mohu-zrm-latest.zip', 'rime-mohu-flypy-latest.zip') if ((C.RIME_CACHE or NG / '.cache/rime') / n).exists())
+if 'mohu/runtime/libonnxruntime.1.dylib' not in zipfile.ZipFile(_up).namelist():
+    _b = tools / 'rime_mac/build_v5.py'; _t = _b.read_text(encoding='utf-8')
+    _a = "for name in ('libtigerengine.dylib', 'libonnxruntime.1.dylib'):"
+    assert _a in _t; _b.write_text(_t.replace(_a, "for name in ('libtigerengine.dylib',):   # 魔虎 2026-10-15 起 Mac 运行库不含 onnxruntime"), encoding='utf-8')
 (STAGE / 'maintenance.json').write_text(json.dumps({'active': C.NAME}, ensure_ascii=False, indent=2) + '\n')
 for d in ('主表', '配置', '资料', '记录', '产物', '备份'): (V / d).mkdir(parents=True, exist_ok=True)
 (V / '版本.json').write_text(json.dumps({'version': C.V, 'status': 'active', 'note': f'夜莺 {C.V}（{C.LAYOUT}）构建，由 Yozakura release/stage_rime.py 搭台；不是正式维护目录。'},
