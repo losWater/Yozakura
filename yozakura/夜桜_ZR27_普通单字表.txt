@@ -196,6 +196,7 @@
 媼	aoue
 懊	aov
 懊	aovy
+遨	aow
 岙	aoy
 岙	aoyh
 隩	aoyy
@@ -1150,6 +1151,7 @@
 礤	capv
 嚓	cat
 嚓	catv
+遪	caw
 凑	cb
 凑	cba
 凑	cbay
@@ -1634,6 +1636,7 @@
 妲	daup
 怛	dav
 怛	davp
+达	daw
 跶	dax
 鎝	daxt
 跶	daxw
@@ -1921,7 +1924,7 @@
 娣	diue
 媂	diup
 嫡	diut
-棣	diw
+递	diw
 棣	diwp
 梑	diwp
 柢	diwr
@@ -2770,6 +2773,7 @@
 鲕	ersl
 咡	ert
 咡	ertd
+迩	erw
 栮	erwd
 樲	erwl
 栭	erwl
@@ -2957,7 +2961,7 @@
 唪	fgt
 唪	fgtr
 妦	fgur
-枫	fgw
+逢	fgw
 檒	fgwm
 枫	fgwp
 甮	fgxb
@@ -3072,7 +3076,7 @@
 婏	fjus
 憣	fjvm
 忛	fjvr
-樊	fjw
+返	fjw
 柉	fjwb
 橎	fjwm
 蠜	fjwm
@@ -5458,6 +5462,7 @@
 屮	iern
 唓	ietc
 迠	ievw
+迠	iew
 坼	iez
 坼	iezh
 陈	if
@@ -5980,6 +5985,7 @@
 惙	iov
 惙	iovq
 逴	iovw
+逴	iow
 辶	ioww
 龊	iox
 踔	ioxc
@@ -7138,6 +7144,7 @@
 迥	jsrw
 颎	jss
 颎	jssj
+迥	jsw
 坰	jsz
 坰	jszt
 埛	jszt
@@ -7413,8 +7420,8 @@
 毠	jwig
 乫	jwin
 加	jwit
-迦	jwiw
 架	jwiw
+迦	jwiw
 袈	jwix
 家	jwj
 家	jwjo
@@ -7461,7 +7468,7 @@
 嫁	jwu
 嫁	jwuo
 忦	jwvn
-枷	jww
+迦	jww
 槚	jwwj
 檟	jwwl
 榢	jwwo
@@ -8351,6 +8358,7 @@
 喇	latg
 啦	latj
 嚹	latn
+邋	law
 楋	lawg
 柆	lawj
 鑞	laxn
@@ -8468,7 +8476,7 @@
 憀	lcvf
 敹	lcvq
 憭	lcvy
-橑	lcw
+辽	lcw
 橑	lcwy
 蹽	lcx
 蹘	lcxf
@@ -9091,8 +9099,8 @@
 粦	lnhn
 亃	lnhn
 翷	lnho
-遴	lnhw
 箖	lnhw
+遴	lnhw
 崊	lnhw
 繗	lnin
 冧	lnjw
@@ -9130,7 +9138,7 @@
 恡	lnvh
 悋	lnvt
 懔	lnvv
-檩	lnw
+遴	lnw
 橉	lnwn
 檩	lnwv
 林	lnww
@@ -9203,7 +9211,7 @@
 啰	lotl
 咯	lotq
 鴼	lovq
-椤	low
+逻	low
 椤	lowl
 饠	loxd
 论	lp
@@ -10118,6 +10126,7 @@
 咪	mit
 嘧	mith
 咪	mith
+迷	miw
 榓	miwe
 樒	miwh
 櫁	miwm
@@ -10257,6 +10266,7 @@
 鿏	mlsq
 唛	mlt
 唛	mltq
+迈	mlw
 埋	mlz
 売	mlze
 埋	mlzm
@@ -10832,6 +10842,7 @@
 愵	niva
 怩	nivs
 惄	nivv
+逆	niw
 柅	niws
 𫠜	nix
 𫠜	nixe
@@ -12256,6 +12267,7 @@ m	otl
 逄	phqw
 鳑	phs
 鳑	phsl
+逄	phw
 沗	phyp
 批	pi
 淠	pia
@@ -13085,8 +13097,8 @@ m	otl
 兛	qmcc
 乾	qmcn
 軡	qmcq
-迁	qmcw
 椠	qmcw
+迁	qmcw
 遷	qmcw
 堑	qmcz
 塹	qmcz
@@ -13181,7 +13193,7 @@ m	otl
 悓	qmve
 虔	qmvp
 悭	qmvz
-杄	qmw
+迁	qmw
 棈	qmwb
 杄	qmwc
 榩	qmwp
@@ -13288,6 +13300,7 @@ m	otl
 宭	qpjt
 麇	qpq
 麇	qpqn
+逡	qpw
 求	qq
 泅	qqa
 浗	qqaa
@@ -14532,6 +14545,7 @@ m	otl
 愫	suv
 憟	suvh
 愫	suvi
+速	suw
 樎	suwd
 榡	suwi
 櫯	suwn
@@ -14731,6 +14745,7 @@ m	otl
 嬥	tcu
 嬥	tcud
 恌	tcve
+迢	tcw
 樤	tcwy
 跳	tcx
 跳	tcxe
@@ -14770,6 +14785,7 @@ m	otl
 熥	tgpw
 疼	tgq
 疼	tgqa
+邆	tgw
 鼟	tgzp
 汤	th
 烫	tha
@@ -16040,7 +16056,7 @@ m	otl
 恃	uivk
 恀	uivl
 示	uivv
-柿	uiw
+适	uiw
 榯	uiwk
 栻	uiwo
 柿	uiwp
@@ -17270,6 +17286,7 @@ m	otl
 衠	vpkl
 稕	vpne
 迍	vppw
+迍	vpw
 转	vr
 沌	vra
 沌	vran
@@ -17443,8 +17460,8 @@ m	otl
 猪	vuo
 猪	vuod
 豬	vuod
-逐	vuow
 橥	vuow
+逐	vuow
 拄	vuoz
 烛	vup
 炢	vupa
@@ -17468,7 +17485,7 @@ m	otl
 鮢	vusl
 嘱	vut
 嘱	vutq
-柱	vuw
+逐	vuw
 术	vuwa
 杼	vuwb
 槠	vuwd
@@ -18810,8 +18827,8 @@ m	otl
 蟳	xpmk
 迅	xpn
 卂	xpnc
-巡	xpnw
 迅	xpnw
+巡	xpnw
 廵	xpnw
 獯	xpo
 獯	xpod
@@ -18836,7 +18853,7 @@ m	otl
 噀	xptl
 恂	xpv
 恂	xpvd
-栒	xpw
+巡	xpw
 栒	xpwd
 樳	xpwk
 杊	xpwn
@@ -20566,6 +20583,7 @@ m	otl
 恽	ypvc
 愠	ypve
 愪	ypvl
+运	ypw
 枟	ypwh
 橒	ypwh
 餫	ypxc
@@ -21024,7 +21042,7 @@ m	otl
 懙	yuvl
 惐	yuvp
 虞	yuvy
-榆	yuw
+逾	yuw
 棜	yuwa
 棛	yuwb
 鬰	yuwf
@@ -21203,6 +21221,7 @@ m	otl
 咋	zatk
 咂	zatp
 囐	zaty
+迊	zaw
 紮	zawi
 走	zb
 鄹	zbd
@@ -21274,6 +21293,7 @@ m	otl
 啧	zet
 啧	zetj
 咋	zetk
+迮	zew
 樍	zewl
 歵	zexl
 怎	zf
@@ -21498,6 +21518,7 @@ m	otl
 噪	zktw
 慥	zkv
 慥	zkvw
+造	zkw
 梍	zkws
 躁	zkx
 蹧	zkxd
@@ -21592,7 +21613,7 @@ m	otl
 鳟	zpsk
 噂	zpt
 噂	zptk
-樽	zpw
+遵	zpw
 樽	zpwk
 銌	zpxe
 鐏	zpxk

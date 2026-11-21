@@ -1065,6 +1065,7 @@ AI作图	aizt
 鏖战	aovj
 熬煮	aovu
 懊	aovy
+遨	aow
 嗷呜	aowu
 傲物	aowu
 翱翔	aoxd
@@ -10241,6 +10242,7 @@ ban位买房	bwmf
 擦伤	cauh
 擦拭	caui
 擦着	cave
+遪	caw
 擦洗	caxi
 擦鞋	caxx
 擦写	caxx
@@ -13748,6 +13750,7 @@ C位出道	cwid
 打住	davu
 大椎	davv
 大抓	davw
+达	daw
 打文	dawf
 大王	dawh
 大网	dawh
@@ -16253,7 +16256,7 @@ DDoS	ddos
 骶椎	divv
 到处转转	divv
 大处着眼	divy
-棣	diw
+递	diw
 吊车尾	diw
 低洼	diwa
 低温	diwf
@@ -22814,6 +22817,7 @@ DDoS	ddos
 耳中	ervs
 而终	ervs
 耳坠	ervv
+迩	erw
 栮	erwd
 耳闻	erwf
 二万	erwj
@@ -24573,7 +24577,7 @@ ez收徒	ezut
 凤爪	fgvw
 复古主义	fgvy
 复国主义	fgvy
-枫	fgw
+逢	fgw
 放过我	fgw
 发给我	fgw
 风闻	fgwf
@@ -25772,7 +25776,7 @@ ez收徒	ezut
 封建主义思想	fjvx
 封建主义	fjvy
 飞机制造	fjvz
-樊	fjw
+返	fjw
 柉	fjwb
 反问	fjwf
 范文	fjwf
@@ -44937,6 +44941,7 @@ id劝退	idqt
 车主	ievu
 扯住	ievu
 迠	ievw
+迠	iew
 超额完成	iewi
 车万	iewj
 除恶务尽	iewj
@@ -47756,6 +47761,7 @@ id劝退	idqt
 惙	iovq
 戳中	iovs
 逴	iovw
+逴	iow
 辶	ioww
 龊	iox
 踔	ioxc
@@ -56223,6 +56229,7 @@ https://www.jsxiaoshi.com/	jisu
 就算这样	jsvy
 即使这样	jsvy
 就是这样	jsvy
+迥	jsw
 聚散无常	jswi
 见所未见	jswj
 急死我了	jswl
@@ -57972,8 +57979,8 @@ https://www.jsxiaoshi.com/	jisu
 家畜	jwiu
 教无常师	jwiu
 积微成著	jwiv
-迦	jwiw
 架	jwiw
+迦	jwiw
 家无长物	jwiw
 袈	jwix
 家	jwj
@@ -58261,7 +58268,7 @@ https://www.jsxiaoshi.com/	jisu
 极为重要	jwvy
 九五之尊	jwvz
 九五至尊	jwvz
-枷	jww
+迦	jww
 吉娃娃	jww
 加温	jwwf
 加完	jwwj
@@ -64435,6 +64442,7 @@ $	k
 蜡质	lavi
 拉住	lavu
 蜡烛	lavu
+邋	law
 啦？”	lawe
 楋	lawg
 拉网	lawh
@@ -64910,7 +64918,7 @@ $	k
 敹	lcvq
 料中	lcvs
 憭	lcvy
-橑	lcw
+辽	lcw
 另存为	lcw
 瞭望	lcwh
 上老王论坛当老王	lcwh
@@ -68207,8 +68215,8 @@ $	k
 磷火	lnho
 烂泥糊不上墙	lnhq
 临湖	lnhu
-遴	lnhw
 箖	lnhw
+遴	lnhw
 崊	lnhw
 老牛吃嫩草	lnic
 临床	lnid
@@ -68350,7 +68358,7 @@ $	k
 懔	lnvv
 鳞爪	lnvw
 列宁主义	lnvy
-檩	lnw
+遴	lnw
 林网	lnwh
 里嫩外焦	lnwj
 橉	lnwn
@@ -68565,7 +68573,7 @@ $	k
 裸照	lovk
 鴼	lovq
 螺柱	lovu
-椤	low
+逻	low
 螺纹	lowf
 落网	lowh
 椤	lowl
@@ -73718,6 +73726,7 @@ Mbps	mbps
 密诏	mivk
 密召	mivk
 迷住	mivu
+迷	miw
 榓	miwe
 秘闻	miwf
 密文	miwf
@@ -74628,6 +74637,7 @@ Mbps	mbps
 没了主意	mlvy
 螟蛉之子	mlvz
 满脸褶子	mlvz
+迈	mlw
 卖文	mlwf
 卖完	mlwj
 买完	mlwj
@@ -79481,6 +79491,7 @@ https://typer.owenyang.top/	mxyi
 怩	nivs
 你住	nivu
 惄	nivv
+逆	niw
 泥瓦	niwa
 泥丸	niwj
 腻歪	niwl
@@ -84929,6 +84940,7 @@ pdf文件	pdfj
 配合治疗	phvl
 攀花折柳	phvl
 旁注	phvu
+逄	phw
 配合无间	phwj
 旁骛	phwu
 蓬户瓮牖	phwy
@@ -90265,8 +90277,8 @@ py交易	pyjy
 乾	qmcn
 前村	qmcp
 軡	qmcq
-迁	qmcw
 椠	qmcw
+迁	qmcw
 遷	qmcw
 堑	qmcz
 塹	qmcz
@@ -90668,7 +90680,7 @@ py交易	pyjy
 全面掌握	qmvw
 启蒙主义	qmvy
 悭	qmvz
-杄	qmw
+迁	qmw
 千瓦	qmwa
 棈	qmwb
 杄	qmwc
@@ -91196,6 +91208,7 @@ py交易	pyjy
 青萍之末	qpvm
 群众	qpvs
 群主	qpvu
+逡	qpw
 群舞	qpwu
 起跑线	qpx
 欺骗性	qpx
@@ -100944,6 +100957,7 @@ steam://install/	steam
 虽说这样	suvy
 扫射转移	suvy
 死神之子	suvz
+速	suw
 碎尸万段	suwd
 樎	suwd
 素闻	suwf
@@ -102462,6 +102476,7 @@ san值狂掉	svkd
 跳转	tcvr
 调转	tcvr
 挑中	tcvs
+迢	tcw
 条纹	tcwf
 条文	tcwf
 眺望	tcwh
@@ -103011,6 +103026,7 @@ san值狂掉	svkd
 同归殊途	tgut
 提供者	tgv
 铁骨铮铮	tgvv
+邆	tgw
 体感温度	tgwd
 通关文牒	tgwd
 藤蔓	tgwj
@@ -112676,7 +112692,7 @@ txt文件	txtj
 双城之战	uivv
 生产秩序	uivx
 市场秩序	uivx
-柿	uiw
+适	uiw
 生成物	uiw
 渗出物	uiw
 试问	uiwf
@@ -122648,6 +122664,7 @@ https://api.ihint.me/shuang/	ulpb
 诈骗者	vpv
 迍邅	vpvj
 谆谆	vpvp
+迍	vpw
 质朴无华	vpwh
 这篇文章	vpwv
 只怕万一	vpwy
@@ -124066,8 +124083,8 @@ https://api.ihint.me/shuang/	ulpb
 猪	vuo
 猪	vuod
 豬	vuod
-逐	vuow
 橥	vuow
+逐	vuow
 拄	vuoz
 烛	vup
 装饰品	vup
@@ -124244,7 +124261,7 @@ https://api.ihint.me/shuang/	ulpb
 真是这样	vuvy
 只是这样	vuvy
 战神之弈	vuvy
-柱	vuw
+逐	vuw
 装饰物	vuw
 猪娃	vuwa
 术	vuwa
@@ -124270,9 +124287,9 @@ https://api.ihint.me/shuang/	ulpb
 这是为啥	vuwu
 真水无香	vuwx
 指鼠为鸭	vuwy
-诸位	vuwz
 柱	vuwz
 樦	vuwz
+诸位	vuwz
 助威	vuwz
 躅	vux
 只是想	vux
@@ -136378,8 +136395,8 @@ Word	word
 逊尼	xpni
 殉难	xpnj
 细皮嫩肉	xpnr
-巡	xpnw
 迅	xpnw
+巡	xpnw
 廵	xpnw
 獯	xpo
 獯	xpod
@@ -136454,7 +136471,7 @@ Word	word
 巡展	xpvj
 新瓶装旧酒	xpvj
 寻找	xpvk
-栒	xpw
+巡	xpw
 小品文	xpw
 栒	xpwd
 询问	xpwf
@@ -146825,6 +146842,7 @@ magnet:?xt=urn:btih:	xylw
 云中	ypvs
 鸦片战争	ypvv
 扬葩振藻	ypvz
+运	ypw
 运往	ypwh
 枟	ypwh
 橒	ypwh
@@ -149239,7 +149257,7 @@ magnet:?xt=urn:btih:	xylw
 以上这些	yuvx
 虞	yuvy
 因事制宜	yuvy
-榆	yuw
+逾	yuw
 一上午	yuw
 引申为	yuw
 永失我爱	yuwa
@@ -149251,9 +149269,9 @@ magnet:?xt=urn:btih:	xylw
 鬰	yuwf
 鬱	yuwf
 余温	yuwf
-渔翁	yuwg
 榆	yuwg
 桙	yuwg
+渔翁	yuwg
 演示文稿	yuwg
 欲望	yuwh
 渔网	yuwh
@@ -149327,9 +149345,9 @@ magnet:?xt=urn:btih:	xylw
 悆	yuxv
 以身殉职	yuxv
 右手小指	yuxv
+余下	yuxw
 逾	yuxw
 込	yuxw
-余下	yuxw
 鱼虾	yuxw
 央视新闻	yuxw
 以身相许	yuxx
@@ -151470,6 +151488,7 @@ magnet:?xt=urn:btih:	xylw
 杂质	zavi
 杂种	zavs
 砸中	zavs
+迊	zaw
 杂文	zawf
 紮	zawi
 咋玩	zawj
@@ -152059,6 +152078,7 @@ magnet:?xt=urn:btih:	xylw
 则说	zeuo
 罪恶深重	zeuv
 罪恶昭彰	zevv
+迮	zew
 责问	zewf
 樍	zewl
 则无	zewu
@@ -153509,6 +153529,7 @@ magnet:?xt=urn:btih:	xylw
 造纸	zkvi
 糟糠之妻	zkvq
 慥	zkvw
+造	zkw
 早亡	zkwh
 早晚	zkwj
 梍	zkws
@@ -154427,7 +154448,7 @@ magnet:?xt=urn:btih:	xylw
 遵旨	zpvi
 遵照	zpvk
 尊重	zpvs
-樽	zpw
+遵	zpw
 樽	zpwk
 尊为	zpwz
 尊位	zpwz

@@ -60,6 +60,7 @@ def main(base_table):
            '不照搬说明': '夜莺手动调整中经作者复核、夜桜不照搬的条目（记录在此，不参与出表）。',
            '自定义码': old.get('自定义码', []),
            '自定义码说明': '夜莺自定义码（不按音码＋首根）的夜桜对应码，人工换算，换算脚本原样保留；说明里注明对应的小鹤码。'}
+    if old.get('先拆三简'): out['先拆三简'] = old['先拆三简']           # 夜桜按自己的码另算（先拆走之），原样保留
     report = []
     for kind in ('一简', '二简', '三简'):
         for code, ch, note in src.get(kind, []):
@@ -93,6 +94,7 @@ def main(base_table):
     done = {(x[1], m.group(1)) for x in out['自定义码'] for m in [re.search(r'小鹤 (\w+)', x[2])] if m}
     for code, ch, note in src.get('自定义码', []):
         if (ch, code) in done: report.append(f'自定义码 {code} {ch}：夜桜已有人工换算'); continue
+        if '先拆走之' in note and '容错' not in note: continue      # 先拆走之的三码：夜桜按自己的码与同一规则另算
         report.append(f'⚠ 自定义码 {code} {ch} 无法自动换算，需作者定：{note}')
     json.dump(out, open(DST, 'w', encoding='utf-8'), ensure_ascii=False, indent=1)
     print('\n'.join(report))

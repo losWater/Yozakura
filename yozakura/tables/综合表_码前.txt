@@ -1065,6 +1065,7 @@ aovi	熬制
 aovj	鏖战
 aovu	熬煮
 aovy	懊
+aow	遨
 aowu	嗷呜
 aowu	傲物
 aoxd	翱翔
@@ -10241,6 +10242,7 @@ cauf	擦身
 cauh	擦伤
 caui	擦拭
 cave	擦着
+caw	遪
 caxi	擦洗
 caxx	擦鞋
 caxx	擦写
@@ -13748,6 +13750,7 @@ davs	打中
 davu	打住
 davv	大椎
 davw	大抓
+daw	达
 dawf	打文
 dawh	大王
 dawh	大网
@@ -16253,7 +16256,7 @@ divu	抵住
 divv	骶椎
 divv	到处转转
 divy	大处着眼
-diw	棣
+diw	递
 diw	吊车尾
 diwa	低洼
 diwf	低温
@@ -22814,6 +22817,7 @@ ervk	耳罩
 ervs	耳中
 ervs	而终
 ervv	耳坠
+erw	迩
 erwd	栮
 erwf	耳闻
 erwj	二万
@@ -24573,7 +24577,7 @@ fgvu	封住
 fgvw	凤爪
 fgvy	复古主义
 fgvy	复国主义
-fgw	枫
+fgw	逢
 fgw	放过我
 fgw	发给我
 fgwf	风闻
@@ -25772,7 +25776,7 @@ fjvx	抚今追昔
 fjvx	封建主义思想
 fjvy	封建主义
 fjvz	飞机制造
-fjw	樊
+fjw	返
 fjwb	柉
 fjwf	反问
 fjwf	范文
@@ -44937,6 +44941,7 @@ ievs	车中
 ievu	车主
 ievu	扯住
 ievw	迠
+iew	迠
 iewi	超额完成
 iewj	车万
 iewj	除恶务尽
@@ -47756,6 +47761,7 @@ iove	戳着
 iovq	惙
 iovs	戳中
 iovw	逴
+iow	逴
 ioww	辶
 iox	龊
 ioxc	踔
@@ -56223,6 +56229,7 @@ jsvx	集散中心
 jsvy	就算这样
 jsvy	即使这样
 jsvy	就是这样
+jsw	迥
 jswi	聚散无常
 jswj	见所未见
 jswl	急死我了
@@ -57972,8 +57979,8 @@ jwit	加
 jwiu	家畜
 jwiu	教无常师
 jwiv	积微成著
-jwiw	迦
 jwiw	架
+jwiw	迦
 jwiw	家无长物
 jwix	袈
 jwj	家
@@ -58261,7 +58268,7 @@ jwvx	敬畏之心
 jwvy	极为重要
 jwvz	九五之尊
 jwvz	九五至尊
-jww	枷
+jww	迦
 jww	吉娃娃
 jwwf	加温
 jwwj	加完
@@ -64435,6 +64442,7 @@ lavi	拉直
 lavi	蜡质
 lavu	拉住
 lavu	蜡烛
+law	邋
 lawe	啦？”
 lawg	楋
 lawh	拉网
@@ -64910,7 +64918,7 @@ lcvq	零存整取
 lcvq	敹
 lcvs	料中
 lcvy	憭
-lcw	橑
+lcw	辽
 lcw	另存为
 lcwh	瞭望
 lcwh	上老王论坛当老王
@@ -68207,8 +68215,8 @@ lnho	翷
 lnho	磷火
 lnhq	烂泥糊不上墙
 lnhu	临湖
-lnhw	遴
 lnhw	箖
+lnhw	遴
 lnhw	崊
 lnic	老牛吃嫩草
 lnid	临床
@@ -68350,7 +68358,7 @@ lnvt	悋
 lnvv	懔
 lnvw	鳞爪
 lnvy	列宁主义
-lnw	檩
+lnw	遴
 lnwh	林网
 lnwj	里嫩外焦
 lnwn	橉
@@ -68565,7 +68573,7 @@ lovi	罗织
 lovk	裸照
 lovq	鴼
 lovu	螺柱
-low	椤
+low	逻
 lowf	螺纹
 lowh	落网
 lowl	椤
@@ -73718,6 +73726,7 @@ mivi	迷之
 mivk	密诏
 mivk	密召
 mivu	迷住
+miw	迷
 miwe	榓
 miwf	秘闻
 miwf	密文
@@ -74628,6 +74637,7 @@ mlvy	马列主义
 mlvy	没了主意
 mlvz	螟蛉之子
 mlvz	满脸褶子
+mlw	迈
 mlwf	卖文
 mlwj	卖完
 mlwj	买完
@@ -79481,6 +79491,7 @@ nivr	逆转
 nivs	怩
 nivu	你住
 nivv	惄
+niw	逆
 niwa	泥瓦
 niwj	泥丸
 niwl	腻歪
@@ -84929,6 +84940,7 @@ phvi	旁支
 phvl	配合治疗
 phvl	攀花折柳
 phvu	旁注
+phw	逄
 phwj	配合无间
 phwu	旁骛
 phwy	蓬户瓮牖
@@ -90265,8 +90277,8 @@ qmcl	钱财
 qmcn	乾
 qmcp	前村
 qmcq	軡
-qmcw	迁
 qmcw	椠
+qmcw	迁
 qmcw	遷
 qmcz	堑
 qmcz	塹
@@ -90668,7 +90680,7 @@ qmvw	前爪
 qmvw	全面掌握
 qmvy	启蒙主义
 qmvz	悭
-qmw	杄
+qmw	迁
 qmwa	千瓦
 qmwb	棈
 qmwc	杄
@@ -91196,6 +91208,7 @@ qpvd	裙装
 qpvm	青萍之末
 qpvs	群众
 qpvu	群主
+qpw	逡
 qpwu	群舞
 qpx	起跑线
 qpx	欺骗性
@@ -100944,6 +100957,7 @@ suvy	素食主义
 suvy	虽说这样
 suvy	扫射转移
 suvz	死神之子
+suw	速
 suwd	碎尸万段
 suwd	樎
 suwf	素闻
@@ -102462,6 +102476,7 @@ tcvp	调准
 tcvr	跳转
 tcvr	调转
 tcvs	挑中
+tcw	迢
 tcwf	条纹
 tcwf	条文
 tcwh	眺望
@@ -103011,6 +103026,7 @@ tguq	通过申请
 tgut	同归殊途
 tgv	提供者
 tgvv	铁骨铮铮
+tgw	邆
 tgwd	体感温度
 tgwd	通关文牒
 tgwj	藤蔓
@@ -112676,7 +112692,7 @@ uivv	示
 uivv	双城之战
 uivx	生产秩序
 uivx	市场秩序
-uiw	柿
+uiw	适
 uiw	生成物
 uiw	渗出物
 uiwf	试问
@@ -122648,6 +122664,7 @@ vpuu	准数
 vpv	诈骗者
 vpvj	迍邅
 vpvp	谆谆
+vpw	迍
 vpwh	质朴无华
 vpwv	这篇文章
 vpwy	只怕万一
@@ -124066,8 +124083,8 @@ vunw	终身难忘
 vuo	猪
 vuod	猪
 vuod	豬
-vuow	逐
 vuow	橥
+vuow	逐
 vuoz	拄
 vup	烛
 vup	装饰品
@@ -124244,7 +124261,7 @@ vuvx	重赏之下
 vuvy	真是这样
 vuvy	只是这样
 vuvy	战神之弈
-vuw	柱
+vuw	逐
 vuw	装饰物
 vuwa	猪娃
 vuwa	术
@@ -124270,9 +124287,9 @@ vuwq	终身未娶
 vuwu	这是为啥
 vuwx	真水无香
 vuwy	指鼠为鸭
-vuwz	诸位
 vuwz	柱
 vuwz	樦
+vuwz	诸位
 vuwz	助威
 vux	躅
 vux	只是想
@@ -136378,8 +136395,8 @@ xpnc	卂
 xpni	逊尼
 xpnj	殉难
 xpnr	细皮嫩肉
-xpnw	巡
 xpnw	迅
+xpnw	巡
 xpnw	廵
 xpo	獯
 xpod	獯
@@ -136454,7 +136471,7 @@ xpvi	寻址
 xpvj	巡展
 xpvj	新瓶装旧酒
 xpvk	寻找
-xpw	栒
+xpw	巡
 xpw	小品文
 xpwd	栒
 xpwf	询问
@@ -146825,6 +146842,7 @@ ypvr	运转
 ypvs	云中
 ypvv	鸦片战争
 ypvz	扬葩振藻
+ypw	运
 ypwh	运往
 ypwh	枟
 ypwh	橒
@@ -149239,7 +149257,7 @@ yuvx	由上至下
 yuvx	以上这些
 yuvy	虞
 yuvy	因事制宜
-yuw	榆
+yuw	逾
 yuw	一上午
 yuw	引申为
 yuwa	永失我爱
@@ -149251,9 +149269,9 @@ yuwf	语文
 yuwf	鬰
 yuwf	鬱
 yuwf	余温
-yuwg	渔翁
 yuwg	榆
 yuwg	桙
+yuwg	渔翁
 yuwg	演示文稿
 yuwh	欲望
 yuwh	渔网
@@ -149327,9 +149345,9 @@ yuxv	愈
 yuxv	悆
 yuxv	以身殉职
 yuxv	右手小指
+yuxw	余下
 yuxw	逾
 yuxw	込
-yuxw	余下
 yuxw	鱼虾
 yuxw	央视新闻
 yuxx	以身相许
@@ -151470,6 +151488,7 @@ zavi	杂志
 zavi	杂质
 zavs	杂种
 zavs	砸中
+zaw	迊
 zawf	杂文
 zawi	紮
 zawj	咋玩
@@ -152059,6 +152078,7 @@ zeui	择时
 zeuo	则说
 zeuv	罪恶深重
 zevv	罪恶昭彰
+zew	迮
 zewf	责问
 zewl	樍
 zewu	则无
@@ -153509,6 +153529,7 @@ zkvi	早知
 zkvi	造纸
 zkvq	糟糠之妻
 zkvw	慥
+zkw	造
 zkwh	早亡
 zkwj	早晚
 zkws	梍
@@ -154427,7 +154448,7 @@ zpvh	尊长
 zpvi	遵旨
 zpvk	遵照
 zpvs	尊重
-zpw	樽
+zpw	遵
 zpwk	樽
 zpwz	尊为
 zpwz	尊位
