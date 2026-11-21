@@ -3,6 +3,7 @@
 - 读音：tool/quanzi/readings.py（魔然为主，魔然没有的字取冰雪拼音），每个读音出一个码；新字之间按字频排。
 - 码：双拼 + 首根键 + 末根键（只有一个根的字重复这个键），同码排在正式表原有的字后面，新字之间按字频。
 - 简码：二码、三码位在整张表里都空着的，给新字补上（字频高的先得）；其余不管，也不做测试。
+- 同时出 Rime 码表格式 <标识>_quanzi.dict.yaml（同目录）。
 - 综合表（可选）：正式综合表原样，新字（含补的简码）排在同码原有条目之后，不越过原有的简词。
 用法：.venv/bin/python tool/quanzi/make_quanzi.py <正式单字表> <布局 json> <双拼 xiaohe|ziranma> <输出单字表> [<正式综合表> <输出综合表>]
 """
@@ -57,6 +58,16 @@ for ch, code in new:
 
 lines = [f'{t}\t{c}\n' for c in sorted(slots) for t in dict.fromkeys(slots[c])]
 Path(out_path).write_text(''.join(lines), encoding='utf-8')
+# Rime 码表格式（同目录，<标识>_quanzi.dict.yaml）：同码按表中顺序给权重 99999、99998…
+ID = 'yeying' if scheme == 'xiaohe' else 'yozakura'
+w = collections.Counter()
+rows = []
+for l in lines:
+    t, c = l.rstrip('\n').split('\t'); rows.append(f'{t}\t{c}\t{99999 - w[c]}'); w[c] += 1
+yml = Path(out_path).with_name(f'{ID}_quanzi.dict.yaml')
+yml.write_text(f'# {Path(out_path).stem}（Rime 码表格式）\n# 正式单字表原样，后接机器拆分补入的字；读音取魔然、冰雪拼音，拆分取 chai 算法。\n---\n'
+               f'name: {ID}_quanzi\nversion: "{Path(out_path).stem}"\nsort: by_weight\nuse_preset_vocabulary: false\ncolumns: [text, code, weight]\n...\n'
+               + '\n'.join(rows) + '\n', encoding='utf-8')
 print(f'正式表 {len(have)} 字；新增 {len({c for c, _ in new})} 字 {len(new)} 码；补简码 {filled}；跳过 {dict(skipped)}；共 {len({l.split(chr(9))[0] for l in lines})} 字 {len(lines)} 行 → {out_path}')
 
 if len(sys.argv) > 6:                                   # 综合表：新字追加到同码原有条目之后
