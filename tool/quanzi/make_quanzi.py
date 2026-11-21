@@ -1,9 +1,10 @@
-"""全字版单字表：正式单字表原样保留，再把 chai 里所有带读音、正式表没收的字按机器拆分补进去（作者 2026-11-21）。
+"""全字版单字表：正式单字表原样保留，再把魔然读音表里正式表没收的字按机器拆分补进去（作者 2026-11-21）。
 - 拆分：tool/quanzi/chai_split.ts 用 chai 算法按现行字根拆（out/splits_chai.json）；竹字头 chai 拆成 𠂉丶𠂉丶，这里并回 ⺮。
-- 读音：chai 的 dictionary.txt（~/.cache/chai-data，assets.chaifen.app/dictionary.txt），每个读音出一个码。
-- 码：双拼 + 首根键 + 末根键（只有一个根的字重复这个键），同码排在正式表原有的字后面，新字之间按 chai 字频。
+- 读音：魔然的 tools/data/chars.txt（约 8.4 万字，作者 2026-11-21 定），每个读音出一个码；新字之间按魔然的简体字频排。
+- 码：双拼 + 首根键 + 末根键（只有一个根的字重复这个键），同码排在正式表原有的字后面，新字之间按字频。
 - 简码：二码、三码位在整张表里都空着的，给新字补上（字频高的先得）；其余不管，也不做测试。
-用法：.venv/bin/python tool/quanzi/make_quanzi.py <正式单字表> <布局 json> <双拼 xiaohe|ziranma> <输出>
+- 综合表（可选）：正式综合表原样，新字（含补的简码）排在同码原有条目之后，不越过原有的简词。
+用法：.venv/bin/python tool/quanzi/make_quanzi.py <正式单字表> <布局 json> <双拼 xiaohe|ziranma> <输出单字表> [<正式综合表> <输出综合表>]
 """
 import collections, json, sys
 from pathlib import Path
@@ -22,12 +23,13 @@ slots = collections.defaultdict(list)
 for t, c in base: slots[c].append(t)
 
 splits = json.load(open(ROOT / 'tool/quanzi/out/splits_chai.json', encoding='utf-8'))
+READINGS = Path.home() / '.cache/auxcmp/moran/tools/data/chars.txt'   # 魔然读音表：字\t拼音（无调，ü 作 v）\t繁频\t简频
 reads, freq = collections.defaultdict(list), collections.Counter()
-for l in open(Path.home() / '.cache/chai-data/dictionary.txt', encoding='utf-8'):
+for l in open(READINGS, encoding='utf-8'):
     p = l.rstrip('\n').split('\t')
-    if len(p) >= 2 and len(p[0]) == 1 and p[1]:
-        if p[1] not in reads[p[0]]: reads[p[0]].append(p[1])
-        freq[p[0]] += int(p[2]) if len(p) > 2 and p[2].isdigit() else 0
+    if l.startswith('#') or len(p) < 2 or len(p[0]) != 1 or not p[1]: continue
+    if p[1] not in reads[p[0]]: reads[p[0]].append(p[1])
+    freq[p[0]] += int(p[3]) if len(p) > 3 and p[3].isdigit() else 0
 
 
 def fix(seq):                                           # chai 的竹字头 = 𠂉 丶 𠂉 丶
@@ -60,3 +62,14 @@ for ch, code in new:
 lines = [f'{t}\t{c}\n' for c in sorted(slots) for t in dict.fromkeys(slots[c])]
 Path(out_path).write_text(''.join(lines), encoding='utf-8')
 print(f'正式表 {len(have)} 字；新增 {len({c for c, _ in new})} 字 {len(new)} 码；补简码 {filled}；跳过 {dict(skipped)}；共 {len({l.split(chr(9))[0] for l in lines})} 字 {len(lines)} 行 → {out_path}')
+
+if len(sys.argv) > 6:                                   # 综合表：新字追加到同码原有条目之后
+    comb = collections.defaultdict(list)
+    for l in open(sys.argv[5], encoding='utf-8-sig'):
+        if '\t' in l: t, c = l.rstrip('\n').split('\t')[:2]; comb[c].append(t)
+    n = 0
+    for l in lines:
+        t, c = l.rstrip('\n').split('\t')
+        if t not in have and t not in comb[c]: comb[c].append(t); n += 1
+    Path(sys.argv[6]).write_text(''.join(f'{t}\t{c}\n' for c in sorted(comb) for t in comb[c]), encoding='utf-8')
+    print(f'综合表：新增 {n} 行，共 {sum(map(len, comb.values()))} 行 → {sys.argv[6]}')
