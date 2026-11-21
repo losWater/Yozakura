@@ -1,6 +1,6 @@
-"""全字版单字表：正式单字表原样保留，再把魔然读音表里正式表没收的字按机器拆分补进去（作者 2026-11-21）。
+"""全字版单字表：正式单字表原样保留，再把读音表里正式表没收的字按机器拆分补进去（作者 2026-11-21）。
 - 拆分：tool/quanzi/chai_split.ts 用 chai 算法按现行字根拆（out/splits_chai.json）；竹字头 chai 拆成 𠂉丶𠂉丶，这里并回 ⺮。
-- 读音：魔然的 tools/data/chars.txt（约 8.4 万字，作者 2026-11-21 定），每个读音出一个码；新字之间按魔然的简体字频排。
+- 读音：tool/quanzi/readings.py（魔然为主，魔然没有的字取冰雪拼音），每个读音出一个码；新字之间按字频排。
 - 码：双拼 + 首根键 + 末根键（只有一个根的字重复这个键），同码排在正式表原有的字后面，新字之间按字频。
 - 简码：二码、三码位在整张表里都空着的，给新字补上（字频高的先得）；其余不管，也不做测试。
 - 综合表（可选）：正式综合表原样，新字（含补的简码）排在同码原有条目之后，不越过原有的简词。
@@ -23,13 +23,9 @@ slots = collections.defaultdict(list)
 for t, c in base: slots[c].append(t)
 
 splits = json.load(open(ROOT / 'tool/quanzi/out/splits_chai.json', encoding='utf-8'))
-READINGS = Path.home() / '.cache/auxcmp/moran/tools/data/chars.txt'   # 魔然读音表：字\t拼音（无调，ü 作 v）\t繁频\t简频
-reads, freq = collections.defaultdict(list), collections.Counter()
-for l in open(READINGS, encoding='utf-8'):
-    p = l.rstrip('\n').split('\t')
-    if l.startswith('#') or len(p) < 2 or len(p[0]) != 1 or not p[1]: continue
-    if p[1] not in reads[p[0]]: reads[p[0]].append(p[1])
-    freq[p[0]] += int(p[3]) if len(p) > 3 and p[3].isdigit() else 0
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from readings import load
+reads, freq = load()
 
 
 def fix(seq):                                           # chai 的竹字头 = 𠂉 丶 𠂉 丶
