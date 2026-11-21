@@ -1003,6 +1003,7 @@ aok	傲
 aokh	澳抗
 aokq	傲
 aokz	拗口
+aol	遨
 aoli	傲立
 aom	坳
 aomf	澳门
@@ -8246,6 +8247,7 @@ bukv	不亏
 buky	不困
 bukz	不扣
 bukz	补扣
+bul	逋
 bul	别说了
 bul	不说了
 bul	不顺利
@@ -10226,6 +10228,7 @@ caie	擦车
 caiu	擦除
 cajm	擦肩
 cajn	擦脚
+cal	遪
 call	擦亮
 calm	擦脸
 calw	擦泪
@@ -12052,6 +12055,7 @@ cojp	错解
 cojt	错觉
 cokd	错开
 cokj	错看
+col	遳
 cola	错啦
 cole	错了
 colo	错落
@@ -13518,6 +13522,7 @@ dakx	打垮
 dakxpd	大跨排
 dakz	大口
 dakz	搭扣
+dal	达
 dala	耷拉
 dala	打蜡
 dalc	大佬
@@ -14766,6 +14771,7 @@ ddks	袋
 ddkt	大胆狂徒
 ddkw	柋
 ddkz	代扣
+ddl	逮
 ddl	达到了
 ddl	懂得了
 ddl	得到了
@@ -16218,10 +16224,10 @@ dihe	地核
 dihe	第
 dihh	笛
 dihj	𬱖
+dihl	帝皇
 dihl	迪
 dihl	廸
 dihl	篴
-dihl	帝皇
 dihl	地黄
 dihl	多重好礼
 dihm	埊
@@ -16288,6 +16294,7 @@ diku	底裤
 diku	地库
 dikx	东床快婿
 dikz	抵扣
+dil	迪
 dil	当成了
 dil	得出来
 dil	洞察力
@@ -21516,6 +21523,7 @@ dykk	倒要看看
 dykn	都有可能
 dyku	抖音快手
 dykw	大有可为
+dyl	遁
 dyl	都有了
 dyl	答应了
 dyl	第一轮
@@ -22716,7 +22724,7 @@ erkl	侕
 erko	耳廓
 erks	耳孔
 erky	尓
-erl	鸸
+erl	迩
 erlc	二老
 erld	而来
 erld	二来
@@ -31851,6 +31859,7 @@ glko	广阔
 glks	光控
 glku	各类考试
 glkx	管理科学
+gll	逛
 gll	过来了
 gll	孤零零
 gll	光溜溜
@@ -35697,7 +35706,7 @@ gzkr	够宽
 gzkt	佝
 gzku	够酷
 gzl	骨子里
-gzl	耇
+gzl	遘
 gzl	工作量
 gzl	瓜子脸
 gzla	够啦
@@ -39210,6 +39219,7 @@ hlkr	偟
 hlks	惶恐
 hlkt	赫拉克利特
 hlku	喝了口水
+hll	遑
 hll	回来了
 hll	轰隆隆
 hll	灰溜溜
@@ -45106,6 +45116,7 @@ ifkf	充分开发
 ifkj	乘法口诀
 ifkl	充分考虑
 ifku	衬裤
+ifl	迧
 ifl	吃饭了
 ifl	长方脸
 iflb	车匪路霸
@@ -45458,6 +45469,7 @@ igks	程控
 igkv	惩
 igkz	城口
 igkz	唇干口燥
+igl	逞
 igl	成功了
 igl	超过了
 igl	成功率
@@ -47569,6 +47581,7 @@ ioic	绰
 ioic	綽
 ioir	戳穿
 ioji	戳记
+iol	逴
 iole	戳了
 ioll	辶
 ioo	戳
@@ -50521,6 +50534,7 @@ jbkx	矜夸
 jbky	绝不可以
 jbkz	进口
 jbkz	紧扣
+jbl	进
 jbl	具备了
 jbl	进不来
 jblb	紧邻
@@ -56916,6 +56930,7 @@ jskb	尖酸刻薄
 jskl	窘况
 jskl	囧况
 jsky	窘困
+jsl	迥
 jsl	就算了
 jsl	急死了
 jslh	聚散离合
@@ -57772,6 +57787,7 @@ jukv	巨亏
 jukw	金蛇狂舞
 juky	接受考验
 jukz	巨口
+jul	遽
 jul	减少了
 jul	结束了
 jul	揭示了
@@ -68645,6 +68661,7 @@ lokh	倮
 lokl	箩筐
 lokr	落款
 loks	落空
+lol	逻
 lola	罗拉
 lolb	罗琳
 lole	落了
@@ -68841,6 +68858,7 @@ lpkd	裂开
 lpkd	咧开
 lpkr	列宽
 lpkz	裂口
+lpl	迾
 lpl	离谱了
 lpld	连篇累牍
 lplp	猎猎
@@ -69104,7 +69122,7 @@ lqks	流控
 lqku	六库
 lqku	录取考生
 lqkz	流寇
-lql	旒
+lql	遛
 lql	了起来
 lql	留起来
 lqlb	柳林
@@ -72091,6 +72109,7 @@ majx	骂架
 make	马克
 make	马可
 makv	傌
+mal	遤
 mala	麻辣
 mala	马拉
 mald	马来
@@ -72887,13 +72906,13 @@ mdkh	麦糠
 mdkl	佅
 mdks	卖空
 mdku	摸底考试
-mdl	霾
+mdl	迈
 mdl	麦当劳
 mdl	没道理
 mdld	买来
 mdle	买了
-mdlh	麦浪
 mdlh	霾
+mdlh	麦浪
 mdli	卖力
 mdli	麦粒
 mdlj	马丁路德金
@@ -85234,12 +85253,12 @@ phjr	普惠金融
 phjx	配合教学
 phk	彷
 phkl	彷
-phl	耪
+phl	逄
 phl	破坏了
 phl	破坏力
 phld	澎湖列岛
-phll	雱
 phll	耪
+phll	雱
 phlm	胖脸
 phlo	旁落
 phlt	炮火连天
@@ -86710,6 +86729,7 @@ poke	破壳
 poki	繁
 poks	破空
 pokz	破口
+pol	迫
 pola	泼辣
 polb	迫临
 pold	泼赖
@@ -94569,6 +94589,7 @@ rckp	如此可怕
 rckr	如此宽容
 rckw	如此渴望
 rckx	如此开心
+rcl	遶
 rcld	如此了得
 rcle	饶了
 rclk	人财两空
@@ -95177,6 +95198,7 @@ rgk	仍
 rgke	仍可
 rgkf	人工客服
 rgks	仍
+rgl	辸
 rgl	让给了
 rgl	绕过来
 rgl	扔给了
@@ -101742,6 +101764,7 @@ takf	他
 takj	他看
 takj	踏勘
 taks	踏空
+tal	遢
 tala	趿拉
 tald	他来
 talh	踏浪
@@ -102137,6 +102160,7 @@ tcke	逃课
 tcki	絛
 tcks	掏空
 tcku	套裤
+tcl	逃
 tcl	太菜了
 tcl	太惨了
 tcl	听错了
@@ -103006,6 +103030,7 @@ tgjy	通过决议
 tgks	腾空
 tgkv	儯
 tgkw	天工开物
+tgl	邆
 tgl	提供了
 tgl	提高了
 tgl	通过了
@@ -103605,6 +103630,7 @@ tiku	题库
 tikv	徲
 tikw	腾出空位
 tiky	提出抗议
+til	逖
 til	提出了
 til	提出来
 til	太迟了
@@ -105364,6 +105390,7 @@ tnks	鋚
 tnks	鎥
 tnks	跳空
 tnky	條
+tnl	迢
 tnl	太难了
 tnl	太牛了
 tnl	头脑里
@@ -107132,6 +107159,7 @@ tukq	徒手空拳
 tuks	徒
 tuku	图库
 tukz	吐口
+tul	途
 tul	太少了
 tul	太帅了
 tulc	徒劳
@@ -108513,6 +108541,7 @@ tzkj	偷看
 tzks	偷空
 tzkv	头盔
 tzkv	偷窥
+tzl	透
 tzl	逃走了
 tzl	太早了
 tzl	筒子楼
@@ -123799,7 +123828,7 @@ vuku	正式开始
 vuku	招生考试
 vukx	真实可信
 vukz	住口
-vul	煮
+vul	逐
 vul	展示了
 vulb	竹林
 vulc	筑牢
@@ -135653,7 +135682,7 @@ xmks	线控
 xmks	闲空
 xmku	线裤
 xmkz	僩
-xml	霰
+xml	暹
 xml	下命令
 xml	小毛驴
 xmlc	显老
@@ -135671,8 +135700,8 @@ xmln	闲聊
 xmlo	陷落
 xmlo	暹罗
 xmlp	先烈
-xmlq	限流
 xmlq	霰
+xmlq	限流
 xmlq	腺瘤
 xmlu	显露
 xmlu	线路
@@ -147069,6 +147098,7 @@ yrks	圆孔
 yrku	冤苦
 yrku	贻人口实
 yrkz	圆口
+yrl	远
 yrlb	园林
 yrlc	元老
 yrld	原来
@@ -151444,6 +151474,7 @@ zakb	偺
 zakd	砸开
 zakj	咋看
 zakr	杂款
+zal	迊
 zala	咋啦
 zald	咋来
 zale	咋了
@@ -152321,6 +152352,7 @@ zek	迮
 zekb	伬
 zeke	则可
 zekl	迮
+zel	迮
 zelb	择邻
 zeld	坐而论道
 zeli	啫喱

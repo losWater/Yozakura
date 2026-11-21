@@ -1002,6 +1002,7 @@ AI作图	aizt
 澳抗	aokh
 傲	aokq
 拗口	aokz
+遨	aol
 傲立	aoli
 坳	aom
 澳门	aomf
@@ -8243,6 +8244,7 @@ BOSS直聘	bsvp
 不困	buky
 不扣	bukz
 补扣	bukz
+逋	bul
 别说了	bul
 不说了	bul
 不顺利	bul
@@ -10221,6 +10223,7 @@ ban位买房	bwmf
 擦除	caiu
 擦肩	cajm
 擦脚	cajn
+遪	cal
 擦亮	call
 擦脸	calm
 擦泪	calw
@@ -12047,6 +12050,7 @@ Ciallo～(∠・ω＜)⌒☆	cial
 错觉	cojt
 错开	cokd
 错看	cokj
+遳	col
 错啦	cola
 错了	cole
 错落	colo
@@ -13512,6 +13516,7 @@ C位出道	cwid
 大跨排	dakxpd
 大口	dakz
 搭扣	dakz
+达	dal
 耷拉	dala
 打蜡	dala
 大佬	dalc
@@ -14760,6 +14765,7 @@ C位出道	cwid
 大胆狂徒	ddkt
 柋	ddkw
 代扣	ddkz
+逮	ddl
 达到了	ddl
 懂得了	ddl
 得到了	ddl
@@ -16212,10 +16218,10 @@ DDoS	ddos
 第	dihe
 笛	dihh
 𬱖	dihj
+帝皇	dihl
 迪	dihl
 廸	dihl
 篴	dihl
-帝皇	dihl
 地黄	dihl
 多重好礼	dihl
 埊	dihm
@@ -16282,6 +16288,7 @@ DDoS	ddos
 地库	diku
 东床快婿	dikx
 抵扣	dikz
+迪	dil
 当成了	dil
 得出来	dil
 洞察力	dil
@@ -21510,6 +21517,7 @@ DDoS	ddos
 都有可能	dykn
 抖音快手	dyku
 大有可为	dykw
+遁	dyl
 都有了	dyl
 答应了	dyl
 第一轮	dyl
@@ -22709,7 +22717,7 @@ DDoS	ddos
 耳廓	erko
 耳孔	erks
 尓	erky
-鸸	erl
+迩	erl
 二老	erlc
 而来	erld
 二来	erld
@@ -31840,6 +31848,7 @@ ez收徒	ezut
 光控	glks
 各类考试	glku
 管理科学	glkx
+逛	gll
 过来了	gll
 孤零零	gll
 光溜溜	gll
@@ -35686,7 +35695,7 @@ Google	goog
 佝	gzkt
 够酷	gzku
 骨子里	gzl
-耇	gzl
+遘	gzl
 工作量	gzl
 瓜子脸	gzl
 够啦	gzla
@@ -39198,6 +39207,7 @@ Google	goog
 惶恐	hlks
 赫拉克利特	hlkt
 喝了口水	hlku
+遑	hll
 回来了	hll
 轰隆隆	hll
 灰溜溜	hll
@@ -45092,6 +45102,7 @@ id劝退	idqt
 乘法口诀	ifkj
 充分考虑	ifkl
 衬裤	ifku
+迧	ifl
 吃饭了	ifl
 长方脸	ifl
 车匪路霸	iflb
@@ -45444,6 +45455,7 @@ id劝退	idqt
 惩	igkv
 城口	igkz
 唇干口燥	igkz
+逞	igl
 成功了	igl
 超过了	igl
 成功率	igl
@@ -47555,6 +47567,7 @@ id劝退	idqt
 綽	ioic
 戳穿	ioir
 戳记	ioji
+逴	iol
 戳了	iole
 辶	ioll
 戳	ioo
@@ -50506,6 +50519,7 @@ ip正确	ipvq
 绝不可以	jbky
 进口	jbkz
 紧扣	jbkz
+进	jbl
 具备了	jbl
 进不来	jbl
 紧邻	jblb
@@ -56901,6 +56915,7 @@ https://www.jsxiaoshi.com/	jisu
 窘况	jskl
 囧况	jskl
 窘困	jsky
+迥	jsl
 就算了	jsl
 急死了	jsl
 聚散离合	jslh
@@ -57757,6 +57772,7 @@ https://www.jsxiaoshi.com/	jisu
 金蛇狂舞	jukw
 接受考验	juky
 巨口	jukz
+遽	jul
 减少了	jul
 结束了	jul
 揭示了	jul
@@ -68628,6 +68644,7 @@ $ddcmd(　　　静夜思·李白\r\r床前明月光，疑是地上霜。\r举�
 箩筐	lokl
 落款	lokr
 落空	loks
+逻	lol
 罗拉	lola
 罗琳	lolb
 落了	lole
@@ -68824,6 +68841,7 @@ $ddcmd(　　　静夜思·李白\r\r床前明月光，疑是地上霜。\r举�
 咧开	lpkd
 列宽	lpkr
 裂口	lpkz
+迾	lpl
 离谱了	lpl
 连篇累牍	lpld
 猎猎	lplp
@@ -69087,7 +69105,7 @@ $ddcmd(　　　静夜思·李白\r\r床前明月光，疑是地上霜。\r举�
 六库	lqku
 录取考生	lqku
 流寇	lqkz
-旒	lql
+遛	lql
 了起来	lql
 留起来	lql
 柳林	lqlb
@@ -72073,6 +72091,7 @@ $ddcmd(　　　静夜思·李白\r\r床前明月光，疑是地上霜。\r举�
 马克	make
 马可	make
 傌	makv
+遤	mal
 麻辣	mala
 马拉	mala
 马来	mald
@@ -72869,13 +72888,13 @@ Mbps	mbps
 佅	mdkl
 卖空	mdks
 摸底考试	mdku
-霾	mdl
+迈	mdl
 麦当劳	mdl
 没道理	mdl
 买来	mdld
 买了	mdle
-麦浪	mdlh
 霾	mdlh
+麦浪	mdlh
 卖力	mdli
 麦粒	mdli
 马丁路德金	mdlj
@@ -84368,12 +84387,12 @@ pdf文件	pdfj
 配合教学	phjx
 彷	phk
 彷	phkl
-耪	phl
+逄	phl
 破坏了	phl
 破坏力	phl
 澎湖列岛	phld
-雱	phll
 耪	phll
+雱	phll
 胖脸	phlm
 旁落	phlo
 炮火连天	phlt
@@ -85844,6 +85863,7 @@ P图	pitu
 繁	poki
 破空	poks
 破口	pokz
+迫	pol
 泼辣	pola
 迫临	polb
 泼赖	pold
@@ -93700,6 +93720,7 @@ QQ音乐	qqyy
 如此宽容	rckr
 如此渴望	rckw
 如此开心	rckx
+遶	rcl
 如此了得	rcld
 饶了	rcle
 人财两空	rclk
@@ -94308,6 +94329,7 @@ QQ音乐	qqyy
 仍可	rgke
 人工客服	rgkf
 仍	rgks
+辸	rgl
 让给了	rgl
 绕过来	rgl
 扔给了	rgl
@@ -100870,6 +100892,7 @@ san值狂掉	svkd
 他看	takj
 踏勘	takj
 踏空	taks
+遢	tal
 趿拉	tala
 他来	tald
 踏浪	talh
@@ -101265,6 +101288,7 @@ san值狂掉	svkd
 絛	tcki
 掏空	tcks
 套裤	tcku
+逃	tcl
 太菜了	tcl
 太惨了	tcl
 听错了	tcl
@@ -102134,6 +102158,7 @@ san值狂掉	svkd
 腾空	tgks
 儯	tgkv
 天工开物	tgkw
+邆	tgl
 提供了	tgl
 提高了	tgl
 通过了	tgl
@@ -102733,6 +102758,7 @@ san值狂掉	svkd
 徲	tikv
 腾出空位	tikw
 提出抗议	tiky
+逖	til
 提出了	til
 提出来	til
 太迟了	til
@@ -104492,6 +104518,7 @@ T恤衫	tixuuj
 鎥	tnks
 跳空	tnks
 條	tnky
+迢	tnl
 太难了	tnl
 太牛了	tnl
 头脑里	tnl
@@ -106260,6 +106287,7 @@ T恤衫	tixuuj
 徒	tuks
 图库	tuku
 吐口	tukz
+途	tul
 太少了	tul
 太帅了	tul
 徒劳	tulc
@@ -107641,6 +107669,7 @@ txt文件	txtj
 偷空	tzks
 头盔	tzkv
 偷窥	tzkv
+透	tzl
 逃走了	tzl
 太早了	tzl
 筒子楼	tzl
@@ -122924,7 +122953,7 @@ https://api.ihint.me/shuang/	ulpb
 招生考试	vuku
 真实可信	vukx
 住口	vukz
-煮	vul
+逐	vul
 展示了	vul
 竹林	vulb
 筑牢	vulc
@@ -134774,7 +134803,7 @@ Word	word
 闲空	xmks
 线裤	xmku
 僩	xmkz
-霰	xml
+暹	xml
 下命令	xml
 小毛驴	xml
 显老	xmlc
@@ -134792,8 +134821,8 @@ Word	word
 陷落	xmlo
 暹罗	xmlo
 先烈	xmlp
-限流	xmlq
 霰	xmlq
+限流	xmlq
 腺瘤	xmlq
 显露	xmlu
 线路	xmlu
@@ -146189,6 +146218,7 @@ magnet:?xt=urn:btih:	xylw
 冤苦	yrku
 贻人口实	yrku
 圆口	yrkz
+远	yrl
 园林	yrlb
 元老	yrlc
 原来	yrld
@@ -150562,6 +150592,7 @@ magnet:?xt=urn:btih:	xylw
 砸开	zakd
 咋看	zakj
 杂款	zakr
+迊	zal
 咋啦	zala
 咋来	zald
 咋了	zale
@@ -151439,6 +151470,7 @@ magnet:?xt=urn:btih:	xylw
 伬	zekb
 则可	zeke
 迮	zekl
+迮	zel
 择邻	zelb
 坐而论道	zeld
 啫喱	zeli

@@ -1,7 +1,7 @@
 # Source: 夜莺 3.0 候选 NB46 普通单字表（~/Yozakura；二简 ui=事、en=嗯；试用）+ 夜莺 2.5 快符
 ---
 name: yeying_tune
-version: "local-202610182142"
+version: "local-202611210443"
 sort: by_weight
 use_preset_vocabulary: false
 columns: [text, code, weight]
@@ -171,6 +171,7 @@ columns: [text, code, weight]
 芺	aogy	99998
 傲	aok	99999
 傲	aokq	99999
+遨	aol	99999
 坳	aom	99999
 坳	aomi	99999
 垇	aomp	99999
@@ -1058,6 +1059,7 @@ columns: [text, code, weight]
 堡	buk	99999
 堡	bukm	99999
 佈	bukp	99999
+逋	bul	99999
 埠	bum	99999
 埠	bumc	99999
 埗	bumf	99999
@@ -1159,6 +1161,7 @@ columns: [text, code, weight]
 〕	c	99997
 擦	ca	99999
 遪	cahl	99999
+遪	cal	99999
 擦	cao	99999
 擦	caot	99999
 攃	caot	99998
@@ -1408,6 +1411,7 @@ columns: [text, code, weight]
 嵯	cohm	99999
 矬	cohm	99998
 嵳	cohm	99997
+遳	col	99999
 搓	coo	99999
 措	coob	99999
 挫	coom	99999
@@ -1623,6 +1627,7 @@ columns: [text, code, weight]
 答	daht	99999
 龘	dajp	99999
 龖	dajp	99998
+达	dal	99999
 垯	dam	99999
 垯	daml	99999
 蟽	daml	99998
@@ -1755,6 +1760,7 @@ columns: [text, code, weight]
 帒	ddkp	99998
 袋	ddks	99999
 柋	ddkw	99999
+逮	ddl	99999
 埭	ddm	99999
 埭	ddmp	99999
 叇	ddp	99999
@@ -1921,6 +1927,7 @@ columns: [text, code, weight]
 偙	dikp	99999
 低	dikr	99999
 彽	dikr	99998
+迪	dil	99999
 堤	dim	99999
 坘	dime	99999
 地	dimf	99999
@@ -2560,6 +2567,7 @@ columns: [text, code, weight]
 囤	dyj	99999
 囤	dyjb	99999
 伅	dykb	99999
+遁	dyl	99999
 墩	dym	99999
 逇	dyml	99999
 墩	dymq	99999
@@ -2766,7 +2774,7 @@ columns: [text, code, weight]
 厼	erhy	99999
 侕	erkl	99999
 尓	erky	99999
-鸸	erl	99999
+迩	erl	99999
 耏	erlf	99999
 鸸	erlj	99999
 而	erll	99999
@@ -3781,6 +3789,7 @@ columns: [text, code, weight]
 輄	glce	99998
 茪	glge	99999
 侊	glke	99999
+逛	gll	99999
 垙	glm	99999
 垙	glme	99999
 逛	glo	99999
@@ -4230,7 +4239,7 @@ columns: [text, code, weight]
 购	gzjh	99999
 佝	gzk	99999
 佝	gzkt	99999
-耇	gzl	99999
+遘	gzl	99999
 耇	gzlt	99999
 垢	gzm	99999
 彀	gzmh	99999
@@ -4664,6 +4673,7 @@ columns: [text, code, weight]
 徨	hlk	99999
 徨	hlkr	99999
 偟	hlkr	99998
+遑	hll	99999
 蝗	hlm	99999
 蟥	hlml	99999
 墴	hlml	99998
@@ -5517,6 +5527,7 @@ columns: [text, code, weight]
 宸	ifj	99999
 宸	ifjr	99999
 儭	ifke	99999
+迧	ifl	99999
 霃	ifle	99999
 墋	ifmf	99999
 称	ifn	99999
@@ -5594,6 +5605,7 @@ columns: [text, code, weight]
 惩	igk	99999
 偁	igkm	99999
 惩	igkv	99999
+逞	igl	99999
 城	igm	99999
 城	igmb	99999
 赪	igmj	99999
@@ -5963,6 +5975,7 @@ columns: [text, code, weight]
 绰	ioi	99999
 绰	ioic	99999
 綽	ioic	99998
+逴	iol	99999
 辶	ioll	99999
 戳	ioo	99999
 戳	iooe	99999
@@ -6318,6 +6331,7 @@ columns: [text, code, weight]
 赆	jbja	99999
 仅	jbk	99999
 仅	jbkq	99999
+进	jbl	99999
 劲	jbm	99999
 壗	jbme	99999
 劲	jbmi	99999
@@ -7339,6 +7353,7 @@ columns: [text, code, weight]
 窘	jsj	99999
 囧	jsjr	99999
 窘	jsjt	99999
+迥	jsl	99999
 坰	jsm	99999
 坰	jsmt	99999
 埛	jsmt	99998
@@ -7512,6 +7527,7 @@ columns: [text, code, weight]
 俱	jukl	99999
 倶	jukl	99998
 倨	jukt	99999
+遽	jul	99999
 耟	julr	99999
 弆	jum	99999
 弆	jumg	99999
@@ -9256,6 +9272,7 @@ $	k	99997
 倮	lok	99999
 儸	lokd	99999
 倮	lokh	99999
+逻	lol	99999
 螺	lom	99999
 螺	lomi	99999
 摞	loo	99999
@@ -9310,6 +9327,7 @@ $	k	99997
 峛	lph	99999
 峛	lphg	99999
 儠	lpkb	99999
+迾	lpl	99999
 埒	lpm	99999
 蛚	lpmg	99999
 埒	lpmo	99999
@@ -9366,7 +9384,7 @@ $	k	99997
 畂	lqhq	99999
 绺	lqi	99999
 绺	lqit	99999
-旒	lql	99999
+遛	lql	99999
 旒	lqln	99999
 旈	lqln	99998
 塯	lqmh	99999
@@ -9865,6 +9883,7 @@ $	k	99997
 蔴	magw	99999
 鷌	majv	99999
 傌	makv	99999
+遤	mal	99999
 蚂	mam	99999
 蟆	mamf	99999
 蚂	mamv	99999
@@ -10026,7 +10045,7 @@ $	k	99997
 荬	mdg	99999
 荬	mdgy	99999
 佅	mdkl	99999
-霾	mdl	99999
+迈	mdl	99999
 霾	mdlh	99999
 霡	mdlp	99999
 埋	mdm	99999
@@ -12319,9 +12338,9 @@ m	otl	99999
 旁	phjl	99999
 彷	phk	99999
 彷	phkl	99999
-耪	phl	99999
-雱	phll	99999
-耪	phll	99998
+逄	phl	99999
+耪	phll	99999
+雱	phll	99998
 螃	phm	99999
 螃	phml	99999
 炐	phpr	99999
@@ -12651,6 +12670,7 @@ m	otl	99999
 鄱	poiy	99999
 繁	pok	99999
 繁	poki	99999
+迫	pol	99999
 坡	pom	99999
 坡	pomg	99999
 珀	por	99999
@@ -13791,6 +13811,7 @@ m	otl	99999
 荛	rcge	99999
 绕	rci	99999
 绕	rcie	99999
+遶	rcl	99999
 遶	rcml	99999
 扰	rco	99999
 扰	rcon	99999
@@ -13861,6 +13882,7 @@ m	otl	99999
 芿	rggs	99999
 仍	rgk	99999
 仍	rgks	99999
+辸	rgl	99999
 扔	rgo	99999
 扔	rgos	99999
 辸	rgsl	99999
@@ -14699,6 +14721,7 @@ m	otl	99999
 它	taju	99999
 侤	takb	99999
 他	takf	99999
+遢	tal	99999
 塔	tam	99999
 塌	tamo	99999
 塔	tamt	99999
@@ -14760,6 +14783,7 @@ m	otl	99999
 绦	tciy	99999
 縧	tciy	99998
 絛	tcki	99999
+逃	tcl	99999
 掏	tco	99999
 搯	tcod	99999
 掏	tcov	99999
@@ -14848,6 +14872,7 @@ m	otl	99999
 藤	tggp	99999
 虅	tggv	99999
 儯	tgkv	99999
+邆	tgl	99999
 鼟	tgmp	99999
 誊	tgn	99999
 誊	tgnf	99999
@@ -14977,6 +15002,7 @@ m	otl	99999
 偍	tiks	99999
 倜	tikt	99999
 徲	tikv	99999
+逖	til	99999
 蝭	tims	99999
 稊	tine	99999
 提	tio	99999
@@ -15247,6 +15273,7 @@ m	otl	99999
 鋚	tnks	99998
 鎥	tnks	99997
 條	tnky	99999
+迢	tnl	99999
 蜩	tnm	99999
 蜩	tnmt	99999
 挑	tno	99999
@@ -15494,6 +15521,7 @@ m	otl	99999
 宊	tujy	99998
 徒	tuk	99999
 徒	tuks	99999
+途	tul	99999
 土	tum	99999
 土	tumm	99999
 堍	tums	99999
@@ -15602,6 +15630,7 @@ m	otl	99999
 偷	tzk	99999
 偸	tzkb	99999
 偷	tzkg	99999
+透	tzl	99999
 透	tzn	99999
 透	tznl	99999
 投	tzo	99999
@@ -17411,7 +17440,7 @@ m	otl	99999
 侏	vukl	99999
 住	vukm	99999
 伫	vukp	99999
-煮	vul	99999
+逐	vul	99999
 鼄	vulh	99999
 鴸	vulj	99999
 朱	vull	99999
@@ -18714,7 +18743,7 @@ m	otl	99999
 衘	xmko	99999
 衔	xmks	99999
 僩	xmkz	99999
-霰	xml	99999
+暹	xml	99999
 霰	xmlq	99999
 蚬	xmm	99999
 壏	xmme	99999
@@ -20642,6 +20671,7 @@ m	otl	99999
 圜	yrjs	99998
 寃	yrjs	99997
 衏	yrko	99999
+远	yrl	99999
 袁	yrm	99999
 垸	yrme	99999
 遠	yrml	99999
@@ -21279,6 +21309,7 @@ m	otl	99999
 雑	zahd	99999
 杂	zahy	99999
 偺	zakb	99999
+迊	zal	99999
 拶	zao	99999
 扎	zaob	99999
 拶	zaof	99999
@@ -21395,6 +21426,7 @@ m	otl	99999
 迮	zek	99999
 伬	zekb	99999
 迮	zekl	99999
+迮	zel	99999
 蠌	zemu	99999
 择	zeo	99999
 捑	zeoa	99999
